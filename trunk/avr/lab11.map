@@ -1,0 +1,27 @@
+
+AVRASM ver. 2.1.12  C:\Nerd Stuff\uC\avr\lab11.asm Tue Apr 21 15:58:56 2009
+
+
+EQU  DDRB         00000017
+EQU  PORTB        00000018
+EQU  PINB         00000016
+EQU  DDRC         00000014
+EQU  PORTC        00000015
+EQU  PINC         00000013
+EQU  DDRD         00000011
+EQU  PORTD        00000012
+EQU  PIND         00000010
+EQU  SPL          0000003d
+EQU  SPH          0000003e
+EQU  ADCSRA       00000006
+EQU  ADMUX        00000007
+EQU  ADCH         00000005
+EQU  ADCL         00000004
+CSEG entry        00000000
+CSEG main         00000011
+CSEG incr         00000012
+CSEG next         00000017
+CSEG decr         00000019
+CSEG adc_read     0000001f
+CSEG adc_wait     00000022
+CSEG dac_write    00000028

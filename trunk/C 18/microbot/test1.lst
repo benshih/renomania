@@ -1,0 +1,916 @@
+
+
+HI-TECH Software PICC Macro Assembler V9.65 build 4410 
+                                                      Sun Aug 16 11:04:30 2009
+
+HI-TECH Software Omniscient Code Generator build 4410
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code 
+                                 Generator build 4410"
+     2                           
+     3                           	processor	12F509
+     4                           clrc	macro
+     5                           	bcf	status,0
+     6  0000                     	endm
+     7                           clrz	macro
+     8                           	bcf	status,2
+     9  0000                     	endm
+    10                           setc	macro
+    11                           	bsf	status,0
+    12  0000                     	endm
+    13                           setz	macro
+    14                           	bsf	status,2
+    15  0000                     	endm
+    16                           skipc	macro
+    17                           	btfss	status,0
+    18  0000                     	endm
+    19                           skipz	macro
+    20                           	btfss	status,2
+    21  0000                     	endm
+    22                           skipnc	macro
+    23                           	btfsc	status,0
+    24  0000                     	endm
+    25                           skipnz	macro
+    26                           	btfsc	status,2
+    27  0000                     	endm
+    28  0000                     indf	equ	0
+    29  0000                     indf0	equ	0
+    30  0000                     pc	equ	2
+    31  0000                     pcl	equ	2
+    32  0000                     status	equ	3
+    33  0000                     fsr	equ	4
+    34  0000                     fsr0	equ	4
+    35  0000                     c	equ	1
+    36  0000                     z	equ	0
+    37                           # 20 "C:\Nerd Stuff\uC\microbot\easytrans.c"
+    38                           	psect config,class=CONFIG,delta=2 ;#
+    39                           # 20 "C:\Nerd Stuff\uC\microbot\easytrans.c"
+    40  FFF  FEA                	dw 0xFEF & 0xFFB & 0xFFF & 0xFFE ;#
+    41                           global __tempreg
+    42  0000                     __tempreg	set	7
+    43                           global __Lrdata_0, __Hrdata_0
+    44  0000                     __Lrdata_0	equ	0x0
+    45  0000                     __Hrdata_0	equ	0x1
+    46                           global __Lramdata, __Lrdata_0, __Hramdata, __Hr
+                                 data_0
+    47  0000                     __Lramdata	set	__Lrdata_0
+    48  0000                     __Hramdata	set	__Hrdata_0
+    49                           	GLOBAL	__databank
+    50  0000                     __databank	EQU	0
+    51                           ;Data sizes: Strings 0, constant 0, data 0, bss
+                                  0, persistent 0 stack 2
+    52                           	global	_main
+    53                           	global	??_main
+    54                           	global	?_main
+    55                           
+    56                           ; *************** function _main **************
+                                 *
+    57                           ; Defined at:
+    58                           ;		line 23 in file "C:\Nerd Stuff\uC\microbot\e
+                                 asytrans.c"
+    59                           ; Parameters:
+    60                           ;		None
+    61                           ; Auto variables:
+    62                           ;		time        	       	type: unsigned char 
+    63                           ;		flag        	       	type: unsigned char 
+    64                           ;		i           	       	type: unsigned char 
+    65                           ; Return value:
+    66                           ;		type: void 
+    67                           ;		size: 0
+    68                           ; Registers used:
+    69                           ;		wreg, fsr0l, fsr0h, status,2, status,0, btem
+                                 p+0, btemp+1
+    70                           ; Tracked objects:
+    71                           ;		On entry : BFF/0
+    72                           ;		On exit  : 0/0
+    73                           ;		Unchanged: 0/0
+    74                           ; Data sizes:
+    75                           ;		Autos:    0
+    76                           ;		Params:   0
+    77                           ;		Temp:     2
+    78                           ;		Total:    2
+    79                           ; This function calls:
+    80                           ;		Nothing
+    81                           ; This function is called by:
+    82                           ;		Startup code after reset
+    83                           ; This function uses a non-reentrant model
+    84                           ; 
+    85                           	psect	maintext,class=CODE,delta=2
+    86                           	file	"C:\Nerd Stuff\uC\microbot\easytrans.c"
+    87                           	line	23
+    88                           	psect	maintext
+    89                           ;easytrans.c: 20: asm("\tpsect config,class=CON
+                                 FIG,delta=2"); asm("\tdw ""0xFEF & 0xFFB & 0xFF
+                                 F & 0xFFE");
+    90                           ;easytrans.c: 22: void main()
+    91                           ;easytrans.c: 23: {
+    92                           	
+    93  0C9                     _main:	
+    94                           	opt stack 2
+    95                           ; Regs used in _main: [wreg-fsr0h+status,2-btem
+                                 p+1]
+    96                           ; _main_flag allocated to btemp+0
+    97                           	line	24
+    98                           ;easytrans.c: 24: unsigned char flag = 0;
+    99  0C9  403                	clrc
+   100  0CA  C00                	movlw	0
+   101  0CB  603                	btfsc	status,0
+   102  0CC  C01                	movlw	1
+   103  0CD  02C                	movwf	btemp+0
+   104                           	line	28
+   105                           ;easytrans.c: 25: unsigned char time;
+   106                           ;easytrans.c: 26: unsigned char i;
+   107                           ;easytrans.c: 28: TRIS = 0b111101;
+   108  0CE  C3D                	movlw	(03Dh)
+   109  0CF  006                	tris	0x6
+   110                           	line	34
+   111                           ;easytrans.c: 34: OPTION = 0b00010000;
+   112  0D0  C10                	movlw	(010h)
+   113  0D1  002                	option
+   114                           	line	36
+   115                           ;easytrans.c: 36: while(GP3 == 0 || GP0 == 0)
+   116  0D2  BC7                	goto	l2
+   117                           	
+   118  0D3                     l3:	
+   119                           	line	38
+   120                           ;easytrans.c: 37: {
+   121                           ;easytrans.c: 38: TMR0 = 0;
+   122  0D3  403                	clrc
+   123                           	
+   124  0D4  C00                	movlw	0
+   125  0D5  603                	btfsc	status,0
+   126  0D6  C01                	movlw	1
+   127  0D7  021                	movwf	(1)	;volatile
+   128                           	line	42
+   129                           ;easytrans.c: 42: if(GP3 == 0 && GP0 == 1)
+   130  0D8  666                	btfsc	(51/8),(51)&7
+   131  0D9  ADB                	goto	u1341
+   132  0DA  ADC                	goto	u1340
+   133  0DB                     u1341:
+   134  0DB  B28                	goto	l5
+   135  0DC                     u1340:
+   136  0DC  706                	btfss	(48/8),(48)&7
+   137  0DD  ADF                	goto	u1351
+   138  0DE  AE0                	goto	u1350
+   139  0DF                     u1351:
+   140  0DF  B28                	goto	l5
+   141  0E0                     u1350:
+   142                           	line	45
+   143                           ;easytrans.c: 43: {
+   144                           ;easytrans.c: 45: TMR0 = 0;
+   145  0E0  403                	clrc
+   146                           	
+   147  0E1  C00                	movlw	0
+   148  0E2  603                	btfsc	status,0
+   149  0E3  C01                	movlw	1
+   150  0E4  021                	movwf	(1)	;volatile
+   151                           ; _main_i allocated to btemp+1
+   152                           	line	46
+   153                           ;easytrans.c: 46: for(i=0; i< 15; i++)
+   154  0E5  403                	clrc
+   155  0E6  C00                	movlw	0
+   156  0E7  603                	btfsc	status,0
+   157  0E8  C01                	movlw	1
+   158  0E9  02D                	movwf	btemp+1
+   159  0EA  AEB                	goto	l6
+   160                           	line	47
+   161                           	
+   162  0EB                     l6:	
+   163                           	line	48
+   164                           ;easytrans.c: 47: {
+   165                           ;easytrans.c: 48: TMR0 = 0;
+   166  0EB  403                	clrc
+   167                           	
+   168  0EC  C00                	movlw	0
+   169  0ED  603                	btfsc	status,0
+   170  0EE  C01                	movlw	1
+   171  0EF  021                	movwf	(1)	;volatile
+   172                           	line	49
+   173                           ;easytrans.c: 49: GP1 = 1;
+   174  0F0  526                	bsf	(49/8),(49)&7
+   175                           	line	50
+   176                           ;easytrans.c: 50: while(TMR0 < 3);
+   177  0F1  AF2                	goto	l9
+   178                           	
+   179  0F2                     l9:	
+   180  0F2  C03                	movlw	(03h)
+   181                           	
+   182  0F3  081                	subwf	(1),w	;volatile
+   183  0F4  703                	skipc
+   184  0F5  AF7                	goto	u1371
+   185  0F6  AF8                	goto	u1370
+   186  0F7                     u1371:
+   187  0F7  AF2                	goto	l9
+   188  0F8                     u1370:
+   189                           	
+   190  0F8                     l11:	
+   191                           	line	51
+   192                           ;easytrans.c: 51: GP1 = 0;
+   193  0F8  426                	bcf	(49/8),(49)&7
+   194                           	line	52
+   195                           ;easytrans.c: 52: while(TMR0 < 7);
+   196  0F9  AFA                	goto	l12
+   197                           	
+   198  0FA                     l12:	
+   199  0FA  C07                	movlw	(07h)
+   200                           	
+   201  0FB  081                	subwf	(1),w	;volatile
+   202  0FC  703                	skipc
+   203  0FD  AFF                	goto	u1381
+   204  0FE  B00                	goto	u1380
+   205  0FF                     u1381:
+   206  0FF  AFA                	goto	l12
+   207  100                     u1380:
+   208                           	
+   209  100                     l14:	
+   210                           	line	46
+   211  100  C01                	movlw	(01h)
+   212  101  027                	movwf	(??_main+0+0)
+   213  102  207                	movf	(??_main+0+0),w
+   214  103  1ED                	addwf	btemp+1,f
+   215  104  C0F                	movlw	(0Fh)
+   216+ 105  08D                	subwf	btemp+1,w
+   217+ 106  703                	skipc
+   218+ 107  B09                	goto	u1391
+   219+ 108  B0A                	goto	u1390
+   220+ 109                     u1391:
+   221+ 109  AEB                	goto	l6
+   222+ 10A                     u1390:
+   223+                          	
+   224+ 10A                     l7:	
+   225+                          	line	54
+   226+                          ;easytrans.c: 53: }
+   227+                          ;easytrans.c: 54: for(i=0; i< 100; i++)
+   228+ 10A  403                	clrc
+   229+ 10B  C00                	movlw	0
+   230+ 10C  603                	btfsc	status,0
+   231+ 10D  C01                	movlw	1
+   232+ 10E  02D                	movwf	btemp+1
+   233+ 10F  B10                	goto	l15
+   234+                          	line	55
+   235+                          	
+   236+ 110                     l15:	
+   237+                          	line	56
+   238+                          ;easytrans.c: 55: {
+   239+                          ;easytrans.c: 56: TMR0 = 0;
+   240+ 110  403                	clrc
+   241+                          	
+   242+ 111  C00                	movlw	0
+   243+ 112  603                	btfsc	status,0
+   244+ 113  C01                	movlw	1
+   245+ 114  021                	movwf	(1)	;volatile
+   246+                          	line	57
+   247+                          ;easytrans.c: 57: GP1 = 0;
+   248+ 115  426                	bcf	(49/8),(49)&7
+   249+                          	line	58
+   250+                          ;easytrans.c: 58: while(TMR0 < 21);
+   251+ 116  B17                	goto	l18
+   252+                          	
+   253+ 117                     l18:	
+   254+ 117  C15                	movlw	(015h)
+   255+                          	
+   256+ 118  081                	subwf	(1),w	;volatile
+   257+ 119  703                	skipc
+   258+ 11A  B1C                	goto	u1411
+   259+ 11B  B1D                	goto	u1410
+   260+ 11C                     u1411:
+   261+ 11C  B17                	goto	l18
+   262+ 11D                     u1410:
+   263+                          	
+   264+ 11D                     l20:	
+   265+                          	line	54
+   266+ 11D  C01                	movlw	(01h)
+   267+ 11E  027                	movwf	(??_main+0+0)
+   268+ 11F  207                	movf	(??_main+0+0),w
+   269+ 120  1ED                	addwf	btemp+1,f
+   270+ 121  C64                	movlw	(064h)
+   271+ 122  08D                	subwf	btemp+1,w
+   272+ 123  703                	skipc
+   273+ 124  B26                	goto	u1421
+   274+ 125  B27                	goto	u1420
+   275+ 126                     u1421:
+   276+ 126  B10                	goto	l15
+   277+ 127                     u1420:
+   278+                          	
+   279+ 127                     l16:	
+   280+                          	line	60
+   281+                          ;easytrans.c: 59: }
+   282+                          ;easytrans.c: 60: }
+   283+ 127  BC7                	goto	l2
+   284+                          	line	61
+   285+                          	
+   286+ 128                     l5:	
+   287+                          ;easytrans.c: 61: else if(GP3 == 1 && GP0 == 0)
+   288+ 128  766                	btfss	(51/8),(51)&7
+   289+ 129  B2B                	goto	u1431
+   290+ 12A  B2C                	goto	u1430
+   291+ 12B                     u1431:
+   292+ 12B  B78                	goto	l22
+   293+ 12C                     u1430:
+   294+ 12C  606                	btfsc	(48/8),(48)&7
+   295+ 12D  B2F                	goto	u1441
+   296  12E  B30                	goto	u1440
+   297+ 12F                     u1441:
+   298+ 12F  B78                	goto	l22
+   299+ 130                     u1440:
+   300+                          	line	64
+   301+                          ;easytrans.c: 62: {
+   302+                          ;easytrans.c: 64: TMR0 = 0;
+   303+ 130  403                	clrc
+   304+                          	
+   305+ 131  C00                	movlw	0
+   306+ 132  603                	btfsc	status,0
+   307+ 133  C01                	movlw	1
+   308+ 134  021                	movwf	(1)	;volatile
+   309+                          ; _main_i allocated to btemp+0
+   310+                          	line	65
+   311+                          ;easytrans.c: 65: for(i=0; i< 27; i++)
+   312+ 135  403                	clrc
+   313+ 136  C00                	movlw	0
+   314+ 137  603                	btfsc	status,0
+   315+ 138  C01                	movlw	1
+   316+ 139  02C                	movwf	btemp+0
+   317+ 13A  B3B                	goto	l23
+   318+                          	line	66
+   319+                          	
+   320+ 13B                     l23:	
+   321+                          	line	67
+   322+                          ;easytrans.c: 66: {
+   323+                          ;easytrans.c: 67: TMR0 = 0;
+   324+ 13B  403                	clrc
+   325+                          	
+   326+ 13C  C00                	movlw	0
+   327+ 13D  603                	btfsc	status,0
+   328+ 13E  C01                	movlw	1
+   329+ 13F  021                	movwf	(1)	;volatile
+   330                           	line	68
+   331                           ;easytrans.c: 68: GP1 = 1;
+   332  140  526                	bsf	(49/8),(49)&7
+   333+                          	line	69
+   334+                          ;easytrans.c: 69: while(TMR0 < 3);
+   335+ 141  B42                	goto	l26
+   336+                          	
+   337+ 142                     l26:	
+   338+ 142  C03                	movlw	(03h)
+   339+                          	
+   340+ 143  081                	subwf	(1),w	;volatile
+   341+ 144  703                	skipc
+   342+ 145  B47                	goto	u1461
+   343  146  B48                	goto	u1460
+   344+ 147                     u1461:
+   345+ 147  B42                	goto	l26
+   346+ 148                     u1460:
+   347+                          	
+   348+ 148                     l28:	
+   349+                          	line	70
+   350+                          ;easytrans.c: 70: GP1 = 0;
+   351+ 148  426                	bcf	(49/8),(49)&7
+   352+                          	line	71
+   353+                          ;easytrans.c: 71: while(TMR0 < 7);
+   354+ 149  B4A                	goto	l29
+   355                           	
+   356  14A                     l29:	
+   357+ 14A  C07                	movlw	(07h)
+   358+                          	
+   359+ 14B  081                	subwf	(1),w	;volatile
+   360+ 14C  703                	skipc
+   361+ 14D  B4F                	goto	u1471
+   362+ 14E  B50                	goto	u1470
+   363+ 14F                     u1471:
+   364  14F  B4A                	goto	l29
+   365+ 150                     u1470:
+   366+                          	
+   367+ 150                     l31:	
+   368+                          	line	65
+   369+ 150  C01                	movlw	(01h)
+   370  151  027                	movwf	(??_main+0+0)
+   371+ 152  207                	movf	(??_main+0+0),w
+   372+ 153  1EC                	addwf	btemp+0,f
+   373  154  C1B                	movlw	(01Bh)
+   374+ 155  08C                	subwf	btemp+0,w
+   375+ 156  703                	skipc
+   376+ 157  B59                	goto	u1481
+   377+ 158  B5A                	goto	u1480
+   378+ 159                     u1481:
+   379+ 159  B3B                	goto	l23
+   380  15A                     u1480:
+   381+                          	
+   382+ 15A                     l24:	
+   383+                          ; _main_i allocated to btemp+1
+   384+                          	line	73
+   385+                          ;easytrans.c: 72: }
+   386+                          ;easytrans.c: 73: for(i=0; i< 100; i++)
+   387+ 15A  403                	clrc
+   388+ 15B  C00                	movlw	0
+   389  15C  603                	btfsc	status,0
+   390+ 15D  C01                	movlw	1
+   391+ 15E  02D                	movwf	btemp+1
+   392  15F  B60                	goto	l32
+   393+                          	line	74
+   394+                          	
+   395+ 160                     l32:	
+   396+                          	line	75
+   397+                          ;easytrans.c: 74: {
+   398+                          ;easytrans.c: 75: TMR0 = 0;
+   399+ 160  403                	clrc
+   400+                          	
+   401+ 161  C00                	movlw	0
+   402+ 162  603                	btfsc	status,0
+   403+ 163  C01                	movlw	1
+   404+ 164  021                	movwf	(1)	;volatile
+   405+                          	line	76
+   406+                          ;easytrans.c: 76: GP1 = 0;
+   407+ 165  426                	bcf	(49/8),(49)&7
+   408+                          	line	77
+   409+                          ;easytrans.c: 77: while(TMR0 < 21);
+   410+ 166  B67                	goto	l35
+   411+                          	
+   412+ 167                     l35:	
+   413+ 167  C15                	movlw	(015h)
+   414+                          	
+   415+ 168  081                	subwf	(1),w	;volatile
+   416+ 169  703                	skipc
+   417+ 16A  B6C                	goto	u1501
+   418+ 16B  B6D                	goto	u1500
+   419+ 16C                     u1501:
+   420+ 16C  B67                	goto	l35
+   421+ 16D                     u1500:
+   422+                          	
+   423+ 16D                     l37:	
+   424+                          	line	73
+   425+ 16D  C01                	movlw	(01h)
+   426+ 16E  027                	movwf	(??_main+0+0)
+   427  16F  207                	movf	(??_main+0+0),w
+   428+ 170  1ED                	addwf	btemp+1,f
+   429+ 171  C64                	movlw	(064h)
+   430+ 172  08D                	subwf	btemp+1,w
+   431+ 173  703                	skipc
+   432+ 174  B76                	goto	u1511
+   433+ 175  B77                	goto	u1510
+   434+ 176                     u1511:
+   435+ 176  B60                	goto	l32
+   436+ 177                     u1510:
+   437+                          	
+   438+ 177                     l33:	
+   439+                          	line	79
+   440+                          ;easytrans.c: 78: }
+   441+                          ;easytrans.c: 79: }
+   442+ 177  BC7                	goto	l2
+   443+                          	line	80
+   444+                          	
+   445+ 178                     l22:	
+   446+                          ;easytrans.c: 80: else if(GP3 == 0 && GP0 == 0)
+   447+ 178  666                	btfsc	(51/8),(51)&7
+   448+ 179  B7B                	goto	u1521
+   449+ 17A  B7C                	goto	u1520
+   450+ 17B                     u1521:
+   451+ 17B  BC7                	goto	l2
+   452+ 17C                     u1520:
+   453+ 17C  606                	btfsc	(48/8),(48)&7
+   454+ 17D  B7F                	goto	u1531
+   455  17E  B80                	goto	u1530
+   456+ 17F                     u1531:
+   457+ 17F  BC7                	goto	l2
+   458+ 180                     u1530:
+   459+                          	line	83
+   460+                          ;easytrans.c: 81: {
+   461+                          ;easytrans.c: 83: TMR0 = 0;
+   462+ 180  403                	clrc
+   463+                          	
+   464+ 181  C00                	movlw	0
+   465+ 182  603                	btfsc	status,0
+   466+ 183  C01                	movlw	1
+   467+ 184  021                	movwf	(1)	;volatile
+   468+                          ; _main_i allocated to btemp+0
+   469+                          	line	84
+   470+                          ;easytrans.c: 84: for(i=0; i< 39; i++)
+   471+ 185  403                	clrc
+   472+ 186  C00                	movlw	0
+   473+ 187  603                	btfsc	status,0
+   474+ 188  C01                	movlw	1
+   475+ 189  02C                	movwf	btemp+0
+   476+ 18A  B8B                	goto	l40
+   477+                          	line	85
+   478+                          	
+   479+ 18B                     l40:	
+   480+                          	line	86
+   481+                          ;easytrans.c: 85: {
+   482+                          ;easytrans.c: 86: TMR0 = 0;
+   483+ 18B  403                	clrc
+   484+                          	
+   485+ 18C  C00                	movlw	0
+   486+ 18D  603                	btfsc	status,0
+   487+ 18E  C01                	movlw	1
+   488+ 18F  021                	movwf	(1)	;volatile
+   489+                          	line	87
+   490+                          ;easytrans.c: 87: GP1 = 1;
+   491+ 190  526                	bsf	(49/8),(49)&7
+   492+                          	line	88
+   493+                          ;easytrans.c: 88: while(TMR0 < 3);
+   494+ 191  B92                	goto	l43
+   495+                          	
+   496+ 192                     l43:	
+   497+ 192  C03                	movlw	(03h)
+   498+                          	
+   499+ 193  081                	subwf	(1),w	;volatile
+   500+ 194  703                	skipc
+   501+ 195  B97                	goto	u1551
+   502+ 196  B98                	goto	u1550
+   503+ 197                     u1551:
+   504+ 197  B92                	goto	l43
+   505+ 198                     u1550:
+   506+                          	
+   507+ 198                     l45:	
+   508+                          	line	89
+   509+                          ;easytrans.c: 89: GP1 = 0;
+   510+ 198  426                	bcf	(49/8),(49)&7
+   511+                          	line	90
+   512+                          ;easytrans.c: 90: while(TMR0 < 7);
+   513+ 199  B9A                	goto	l46
+   514+                          	
+   515+ 19A                     l46:	
+   516+ 19A  C07                	movlw	(07h)
+   517+                          	
+   518+ 19B  081                	subwf	(1),w	;volatile
+   519+ 19C  703                	skipc
+   520+ 19D  B9F                	goto	u1561
+   521  19E  BA0                	goto	u1560
+   522  19F                     u1561:
+   523  19F  B9A                	goto	l46
+   524  1A0                     u1560:
+   525                           	
+   526  1A0                     l48:	
+   527                           	line	84
+   528  1A0  C01                	movlw	(01h)
+   529  1A1  027                	movwf	(??_main+0+0)
+   530  1A2  207                	movf	(??_main+0+0),w
+   531  1A3  1EC                	addwf	btemp+0,f
+   532  1A4  C27                	movlw	(027h)
+   533  1A5  08C                	subwf	btemp+0,w
+   534  1A6  703                	skipc
+   535  1A7  BA9                	goto	u1571
+   536  1A8  BAA                	goto	u1570
+   537  1A9                     u1571:
+   538  1A9  B8B                	goto	l40
+   539  1AA                     u1570:
+   540                           	
+   541  1AA                     l41:	
+   542                           	line	92
+   543                           ;easytrans.c: 91: }
+   544                           ;easytrans.c: 92: for(i=0; i< 100; i++)
+   545  1AA  403                	clrc
+   546  1AB  C00                	movlw	0
+   547  1AC  603                	btfsc	status,0
+   548  1AD  C01                	movlw	1
+   549  1AE  02C                	movwf	btemp+0
+   550  1AF  BB0                	goto	l49
+   551                           	line	93
+   552                           	
+   553  1B0                     l49:	
+   554                           	line	94
+   555                           ;easytrans.c: 93: {
+   556                           ;easytrans.c: 94: TMR0 = 0;
+   557  1B0  403                	clrc
+   558                           	
+   559  1B1  C00                	movlw	0
+   560  1B2  603                	btfsc	status,0
+   561  1B3  C01                	movlw	1
+   562  1B4  021                	movwf	(1)	;volatile
+   563                           	line	95
+   564                           ;easytrans.c: 95: GP1 = 0;
+   565  1B5  426                	bcf	(49/8),(49)&7
+   566                           	line	96
+   567                           ;easytrans.c: 96: while(TMR0 < 21);
+   568  1B6  BB7                	goto	l52
+   569                           	
+   570  1B7                     l52:	
+   571  1B7  C15                	movlw	(015h)
+   572                           	
+   573  1B8  081                	subwf	(1),w	;volatile
+   574  1B9  703                	skipc
+   575  1BA  BBC                	goto	u1591
+   576  1BB  BBD                	goto	u1590
+   577  1BC                     u1591:
+   578  1BC  BB7                	goto	l52
+   579  1BD                     u1590:
+   580                           	
+   581  1BD                     l54:	
+   582                           	line	92
+   583  1BD  C01                	movlw	(01h)
+   584  1BE  027                	movwf	(??_main+0+0)
+   585  1BF  207                	movf	(??_main+0+0),w
+   586  1C0  1EC                	addwf	btemp+0,f
+   587  1C1  C64                	movlw	(064h)
+   588  1C2  08C                	subwf	btemp+0,w
+   589  1C3  703                	skipc
+   590  1C4  BC6                	goto	u1601
+   591  1C5  BC7                	goto	u1600
+   592  1C6                     u1601:
+   593  1C6  BB0                	goto	l49
+   594  1C7                     u1600:
+   595                           	
+   596  1C7                     l50:	
+   597                           	line	98
+   598                           	
+   599  1C7                     l39:	
+   600                           	line	104
+   601                           	
+   602  1C7                     l38:	
+   603                           	
+   604  1C7                     l21:	
+   605                           	
+   606  1C7                     l2:	
+   607                           	line	36
+   608  1C7  766                	btfss	(51/8),(51)&7
+   609  1C8  BCA                	goto	u1611
+   610  1C9  BCB                	goto	u1610
+   611  1CA                     u1611:
+   612  1CA  AD3                	goto	l3
+   613  1CB                     u1610:
+   614  1CB  706                	btfss	(48/8),(48)&7
+   615  1CC  BCE                	goto	u1621
+   616  1CD  BCF                	goto	u1620
+   617  1CE                     u1621:
+   618  1CE  AD3                	goto	l3
+   619  1CF                     u1620:
+   620                           	
+   621  1CF                     l4:	
+   622                           	line	105
+   623                           ;easytrans.c: 97: }
+   624                           ;easytrans.c: 98: }
+   625                           ;easytrans.c: 104: }
+   626                           ;easytrans.c: 105: TMR0 = 0;
+   627  1CF  403                	clrc
+   628                           	
+   629  1D0  C00                	movlw	0
+   630  1D1  603                	btfsc	status,0
+   631  1D2  C01                	movlw	1
+   632  1D3  021                	movwf	(1)	;volatile
+   633                           	line	106
+   634                           ;easytrans.c: 106: GP1 = 0;
+   635  1D4  426                	bcf	(49/8),(49)&7
+   636                           	line	107
+   637                           ;easytrans.c: 107: while(TMR0 < 21);
+   638  1D5  BD6                	goto	l55
+   639                           	
+   640  1D6                     l55:	
+   641  1D6  C15                	movlw	(015h)
+   642                           	
+   643  1D7  081                	subwf	(1),w	;volatile
+   644  1D8  703                	skipc
+   645  1D9  BDB                	goto	u1631
+   646  1DA  BDC                	goto	u1630
+   647  1DB                     u1631:
+   648  1DB  BD6                	goto	l55
+   649  1DC                     u1630:
+   650                           	
+   651  1DC                     l57:	
+   652                           	line	108
+   653                           ;easytrans.c: 108: flag = GP3<<1||GP0;
+   654  1DC  06C                	clrf	btemp+0
+   655  1DD  503                	bsf	status,0
+   656  1DE  36C                	rlf	btemp+0,f
+   657  1DF  403                	clrc
+   658  1E0  666                	btfsc	(51/8),(51)&7
+   659  1E1  503                	setc
+   660  1E2  C00                	movlw	0
+   661  1E3  603                	skipnc
+   662  1E4  C01                	movlw	1
+   663                           
+   664  1E5  027                	movwf	(??_main+0+0)
+   665  1E6  068                	clrf	(??_main+0+0+1)
+   666  1E7  C01                	movlw	01h
+   667  1E8  024                	movwf	fsr0
+   668  1E9                     u1645:
+   669  1E9  403                	clrc
+   670  1EA  367                	rlf	(??_main+0+0),f
+   671  1EB  368                	rlf	(??_main+0+1),f
+   672  1EC  2E4                	decfsz	fsr0,f
+   673  1ED  BE9                	goto	u1645
+   674  1EE  208                	movf	1+(??_main+0+0),w
+   675  1EF  107                	iorwf	0+(??_main+0+0),w
+   676  1F0  743                	skipz
+   677  1F1  BF3                	goto	u1651
+   678  1F2  BF4                	goto	u1650
+   679  1F3                     u1651:
+   680  1F3  BFD                	goto	l300000163
+   681  1F4                     u1650:
+   682  1F4  606                	btfsc	(48/8),(48)&7
+   683  1F5  BF7                	goto	u1661
+   684  1F6  BF8                	goto	u1660
+   685  1F7                     u1661:
+   686  1F7  BFD                	goto	l300000163
+   687  1F8                     u1660:
+   688                           ; _main_flag allocated to btemp+1
+   689  1F8  403                	clrc
+   690  1F9  C00                	movlw	0
+   691  1FA  603                	btfsc	status,0
+   692  1FB  C01                	movlw	1
+   693  1FC  02D                	movwf	btemp+1
+   694                           	
+   695  1FD                     l300000163:	
+   696                           	line	109
+   697                           # 109 "C:\Nerd Stuff\uC\microbot\easytrans.c"
+   698  1FD  003                sleep ;#
+   699                           	psect	maintext
+   700                           	line	110
+   701                           ;easytrans.c: 109: asm("sleep");
+   702                           ;easytrans.c: 110: }
+   703  1FE                     l1:	
+   704                           	global	start
+   705  1FE  4A3  A02           	ljmp	start
+   706                           	psect	maintext
+   707                           	opt stack 0
+   708                           ; =============== function _main ends =========
+                                 ======
+   709                           
+   710                           GLOBAL __end_of_main
+   711  200                     	__end_of_main:
+   712                           	FNSIZE	_main,2,0
+   713                           	signat	_main,88
+   714                           	FNROOT	_main
+   715                           	psect	strings12,class=ENTRY,delta=2
+   716                           	global	_FSR
+   717                           	global	_FSR
+   718  0000                     	_FSR	set	0x4
+   719                           
+   720                           	global	_GPIO
+   721                           	global	_GPIO
+   722  0000                     	_GPIO	set	0x6
+   723                           
+   724                           	global	_INDF
+   725                           	global	_INDF
+   726  0000                     	_INDF	set	0x0
+   727                           
+   728                           	global	_OPTION
+   729  0000                     	_OPTION	set	0x0
+   730                           
+   731                           	global	_OSCCAL
+   732                           	global	_OSCCAL
+   733  0000                     	_OSCCAL	set	0x5
+   734                           
+   735                           	global	_PCL
+   736                           	global	_PCL
+   737  0000                     	_PCL	set	0x2
+   738                           
+   739                           	global	_RTCC
+   740                           	global	_RTCC
+   741  0000                     	_RTCC	set	0x1
+   742                           
+   743                           	global	_STATUS
+   744                           	global	_STATUS
+   745  0000                     	_STATUS	set	0x3
+   746                           
+   747                           	global	_TMR0
+   748  0000                     	_TMR0	set	0x1
+   749                           
+   750                           	global	_TRIS
+   751  0000                     	_TRIS	set	0x6
+   752                           
+   753                           	global	_CAL0
+   754                           	global	_CAL0
+   755  0000                     	_CAL0	set	0x29	;byte address: 0x5
+   756                           
+   757                           	global	_CAL1
+   758                           	global	_CAL1
+   759  0000                     	_CAL1	set	0x2A	;byte address: 0x5
+   760                           
+   761                           	global	_CAL2
+   762                           	global	_CAL2
+   763  0000                     	_CAL2	set	0x2B	;byte address: 0x5
+   764                           
+   765                           	global	_CAL3
+   766                           	global	_CAL3
+   767  0000                     	_CAL3	set	0x2C	;byte address: 0x5
+   768                           
+   769                           	global	_CAL4
+   770                           	global	_CAL4
+   771  0000                     	_CAL4	set	0x2D	;byte address: 0x5
+   772                           
+   773                           	global	_CAL5
+   774                           	global	_CAL5
+   775  0000                     	_CAL5	set	0x2E	;byte address: 0x5
+   776                           
+   777                           	global	_CAL6
+   778                           	global	_CAL6
+   779  0000                     	_CAL6	set	0x2F	;byte address: 0x5
+   780                           
+   781                           	global	_CARRY
+   782                           	global	_CARRY
+   783  0000                     	_CARRY	set	0x18	;byte address: 0x3
+   784                           
+   785                           	global	_DC
+   786                           	global	_DC
+   787  0000                     	_DC	set	0x19	;byte address: 0x3
+   788                           
+   789                           	global	_GP0
+   790  0000                     	_GP0	set	0x30	;byte address: 0x6
+   791                           
+   792                           	global	_GP1
+   793  0000                     	_GP1	set	0x31	;byte address: 0x6
+   794                           
+   795                           	global	_GP2
+   796                           	global	_GP2
+   797  0000                     	_GP2	set	0x32	;byte address: 0x6
+   798                           
+   799                           	global	_GP3
+   800  0000                     	_GP3	set	0x33	;byte address: 0x6
+   801                           
+   802                           	global	_GP4
+   803                           	global	_GP4
+   804  0000                     	_GP4	set	0x34	;byte address: 0x6
+   805                           
+   806                           	global	_GP5
+   807                           	global	_GP5
+   808  0000                     	_GP5	set	0x35	;byte address: 0x6
+   809                           
+   810                           	global	_GPWUF
+   811                           	global	_GPWUF
+   812  0000                     	_GPWUF	set	0x1F	;byte address: 0x3
+   813                           
+   814                           	global	_PA0
+   815                           	global	_PA0
+   816  0000                     	_PA0	set	0x1D	;byte address: 0x3
+   817                           
+   818                           	global	_PD
+   819                           	global	_PD
+   820  0000                     	_PD	set	0x1B	;byte address: 0x3
+   821                           
+   822                           	global	_TO
+   823                           	global	_TO
+   824  0000                     	_TO	set	0x1C	;byte address: 0x3
+   825                           
+   826                           	global	_ZERO
+   827                           	global	_ZERO
+   828  0000                     	_ZERO	set	0x1A	;byte address: 0x3
+   829                           
+   830                           	PSECT	fnautoc,class=COMMON,space=1
+   831                           	FNCONF	fnautoc,??,?
+   832                           
+   833                           	DABS	1,12,4	;btemp
+   834                           	global	btemp
+   835  0000                     	btemp set 0Ch
+   836                           	global	wtemp0
+   837  0000                     	wtemp0 set btemp
+   838                           	global	wtemp1
+   839  0000                     	wtemp1 set btemp+2
+   840                           	global	ttemp0
+   841  0000                     	ttemp0 set btemp
+   842                           	global	ltemp0
+   843  0000                     	ltemp0 set btemp
+   844                           apbank macro
+   845                           	; no bank selection necessary for common memor
+                                 y
+   846  007                     	endm
+
+
+HI-TECH Software PICC Macro Assembler V9.65 build 4410 
+Symbol Table                                          Sun Aug 16 11:04:30 2009
+
+           l1 01FE             l2 01C7             l3 00D3  
+           l4 01CF             l5 0128             l6 00EB  
+           l7 010A             l9 00F2     __Lrdata_0 0000  
+   __Lramdata 0000            l11 00F8            l20 011D  
+          l12 00FA            l21 01C7            l22 0178  
+          l14 0100            _DC 0019            l31 0150  
+          l23 013B            l15 0110            l40 018B  
+          l32 0160            l24 015A            l16 0127  
+          l41 01AA            l33 0177            l50 01C7  
+          l26 0142            l18 0117            l43 0192  
+          l35 0167            l52 01B7            l28 0148  
+          l45 0198            l37 016D            l29 014A  
+          l38 01C7            l54 01BD            l46 019A  
+          l55 01D6            l39 01C7            l48 01A0  
+          l57 01DC            l49 01B0     l300000163 01FD  
+          _PD 001B            _TO 001C           _GP0 0030  
+         _GP1 0031           _GP2 0032           _GP3 0033  
+         _GP4 0034           _GP5 0035           _PA0 001D  
+         _FSR 0004           _PCL 0002           fsr0 0004  
+        _CAL0 0029          _CAL1 002A          _CAL2 002B  
+        _CAL3 002C          _CAL4 002D          _CAL5 002E  
+        _CAL6 002F      __tempreg 0007          u1410 011D  
+        u1411 011C          u1500 016D          u1420 0127  
+        u1340 00DC          u1501 016C          u1421 0126  
+        u1341 00DB          _INDF 0000          u1510 0177  
+        u1430 012C          u1350 00E0          u1511 0176  
+        u1431 012B          u1351 00DF          u1600 01C7  
+        u1520 017C          u1440 0130          u1601 01C6  
+        u1521 017B          u1441 012F          u1610 01CB  
+        u1530 0180          u1370 00F8          u1611 01CA  
+        u1531 017F          u1371 00F7          u1620 01CF  
+        u1460 0148          u1380 0100          u1621 01CE  
+        u1461 0147          u1381 00FF          u1630 01DC  
+        u1550 0198          u1470 0150          u1390 010A  
+        u1631 01DB          u1551 0197          u1471 014F  
+        u1391 0109          u1560 01A0          u1480 015A  
+        _GPIO 0006          u1561 019F          u1481 0159  
+        u1650 01F4          u1570 01AA          u1651 01F3  
+        u1571 01A9          u1660 01F8          u1661 01F7  
+        u1645 01E9          u1590 01BD          u1591 01BC  
+        _TMR0 0001          _RTCC 0001     __databank 0000  
+        _TRIS 0006          _ZERO 001A          _main 00C9  
+        btemp 000C          start 0002         ?_main 0007  
+       _CARRY 0018         _GPWUF 001F         ltemp0 000C  
+       ttemp0 000C         status 0003         wtemp0 000C  
+       wtemp1 000E        ??_main 0007  __end_of_main 0200  
+      _OSCCAL 0005        _OPTION 0000        _STATUS 0003  
+   __Hrdata_0 0001     __Hramdata 0001  

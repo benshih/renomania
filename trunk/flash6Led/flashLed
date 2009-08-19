@@ -1,0 +1,19 @@
+goto 0100
+
+bcf status, rp0
+bcf status, rp1
+clrf porta
+bsf status, rp0
+clrw
+movwf trisa
+bcf status, rp0
+
+bsf porta, 0
+clrwdt
+nop
+
+bcf porta, 0
+clrwdt
+nop
+
+goto 0107

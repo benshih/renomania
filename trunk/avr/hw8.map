@@ -1,0 +1,6 @@
+
+AVRASM ver. 2.1.12  C:\Nerd Stuff\uC\avr\hw8.asm Tue Apr 07 03:03:58 2009
+
+
+CSEG main         00000000
+CSEG loop         00000002

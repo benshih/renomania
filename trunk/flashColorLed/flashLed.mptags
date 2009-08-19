@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+INTERRUPT	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	104;"	l	line:104
+count	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	86;"	v	line:86
+flag	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	83;"	v	line:83
+main	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	142;"	l	line:142
+pclath_temp	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	73;"	v	line:73
+pt1	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	153;"	l	line:153
+pt2	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	156;"	l	line:156
+pt3	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	166;"	l	line:166
+pt4	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	177;"	l	line:177
+pt5	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	180;"	l	line:180
+pt6	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	190;"	l	line:190
+pt7	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	200;"	l	line:200
+pt8	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	203;"	l	line:203
+start	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	123;"	l	line:123
+status_temp	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	72;"	v	line:72
+temp_count	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	77;"	v	line:77
+w_temp	C:\Users\freefood\Documents\flashColorLed\16F877ATMPO.ASM	71;"	v	line:71

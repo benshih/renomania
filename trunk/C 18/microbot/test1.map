@@ -1,0 +1,210 @@
+HI-TECH Software C Compiler 
+
+Linker command line:
+
+--edf=C:\Program Files\HI-TECH Software\PICC\PRO\9.65\dat\en_msgs.txt -cs \
+  -h+test1.sym -z -Q12F509 -ol.obj -Mtest1.map -E1 \
+  -ACODE=00h-01FFh,0200h-03FEh -AENTRY=00h-0FFh-01FFh,0200h-02FFh-03FEh \
+  -ARAM=010h-01Fh,030h-03Fh -AABS1=07h-01Fh,030h-03Fh -ABANK0=07h-01Fh \
+  -ABANK1=030h-03Fh -ACOMMON=07h-0Fh -preset_wrap=0h \
+  -pinit=reset_wrap,init23,end_init,clrtext,jmp_tab,strings12 \
+  -ppowerup=CODE -pfnautoc=COMMON -pfnauto0=BANK0 -pfnauto1=BANK1 \
+  -ptemp=-COMMON -pcommon=-COMMON \
+  -prbit_0=BANK0,rbss_0=BANK0,rdata_0=BANK0,idata_0=BANK0 -pnvram=BANK0 \
+  -prbit_1=BANK1,rbss_1=BANK1,rdata_1=BANK1,idata_1=BANK1 \
+  -pnvram_1=BANK1,nvbit_1=BANK1 -pidata12=ENTRY -preset_vec=03FFh \
+  -AIDLOC=0400h-0403h -ACONFIG=0FFFh-0FFFh -pconfig=CONFIG -DCONFIG=2 \
+  -pidloc=IDLOC -DIDLOC=2 -DENTRY=2 \
+  -pfloat_text0=ENTRY,float_text1=ENTRY,float_text2=ENTRY \
+  -pfloat_text3=ENTRY,float_text4=ENTRY -DCODE=2 startup.obj test1.obj 
+
+Object code version is 3.10
+
+Machine type is 12F509
+
+Call graph: (short form)
+
+
+
+
+                Name          Link     Load   Length Selector   Space       Scale
+startup.obj     end_init         2        2        2       4     0
+                reset_wra        0        0        2       0     0
+test1.obj       config         FFF      FFF        1    1FFE     0
+                maintext        C9       C9      137     192     0
+
+COMMON          fnautoc          7        7        2       7     1
+
+TOTAL           Name          Link     Load   Length     Space
+        CLASS   CODE           
+                reset_wra        0        0        2     0
+                maintext        C9       C9      137     0
+
+        CLASS   ENTRY          
+                end_init         2        2        2     0
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1           C        C        4     1
+
+        CLASS   BANK0          
+
+        CLASS   BANK1          
+
+        CLASS   COMMON         
+                fnautoc          7        7        2     1
+
+        CLASS   IDLOC          
+
+        CLASS   CONFIG         
+                config         FFF      FFF        1     0
+
+        CLASS   BANK4          
+
+        CLASS   BANK5          
+
+        CLASS   BANK6          
+
+        CLASS   BANK7          
+
+        CLASS   BANK2          
+
+        CLASS   BANK3          
+
+
+
+SEGMENTS        Name            Load    Length   Top    Selector    Space      Class      Delta
+
+                reset_wrap      000000  000002  000002         0       0  CODE        2
+                init            000002  000002  000004         4       0  CODE        2
+                fnautoc         000007  000002  000009         7       1  COMMON      1
+                maintext        0000C9  000137  000200       192       0  CODE        2
+                config          000FFF  000001  001000      1FFE       0  CONFIG      2
+
+
+UNUSED ADDRESS RANGES
+
+        BANK0            0009-000B     1
+                         0010-001F
+        BANK1            0030-003F     1
+        CODE             0004-00C8     2
+                         0200-03FE
+        COMMON           0009-000B     1
+        ENTRY            0004-00C8     2
+                         0200-02FF+00FF
+        IDLOC            0400-0403     2
+        RAM              0010-001F     1
+                         0030-003F
+
+                                  Symbol Table
+
+??_main        fnautoc     0007  ?_main         fnautoc     0007
+_CAL0          (abs)       0029  _CAL1          (abs)       002A
+_CAL2          (abs)       002B  _CAL3          (abs)       002C
+_CAL4          (abs)       002D  _CAL5          (abs)       002E
+_CAL6          (abs)       002F  _CARRY         (abs)       0018
+_DC            (abs)       0019  _FSR           (abs)       0004
+_GP0           (abs)       0030  _GP1           (abs)       0031
+_GP2           (abs)       0032  _GP3           (abs)       0033
+_GP4           (abs)       0034  _GP5           (abs)       0035
+_GPIO          (abs)       0006  _GPWUF         (abs)       001F
+_INDF          (abs)       0000  _OPTION        (abs)       0000
+_OSCCAL        (abs)       0005  _PA0           (abs)       001D
+_PCL           (abs)       0002  _PD            (abs)       001B
+_RTCC          (abs)       0001  _STATUS        (abs)       0003
+_TMR0          (abs)       0001  _TO            (abs)       001C
+_TRIS          (abs)       0006  _ZERO          (abs)       001A
+__Bnvbit_0     nvbit_0     0008  __Bnvbit_1     nvbit_1     0030
+__Bnvbit_2     nvbit_2     0008  __Bnvbit_3     nvbit_3     0008
+__Bnvbit_4     nvbit_4     0008  __Bnvbit_5     nvbit_5     0008
+__Bnvbit_6     nvbit_6     0008  __Bnvbit_7     nvbit_7     0008
+__Bptbit_0     ptbit_0     0008  __Brbit_0      rbit_0      0010
+__Brbit_1      rbit_1      0030  __Brbit_2      rbit_2      0008
+__Brbit_3      rbit_3      0008  __Brbit_4      rbit_4      0008
+__Brbit_5      rbit_5      0008  __Brbit_6      rbit_6      0008
+__Brbit_7      rbit_7      0008  __Hclrtext     clrtext     0004
+__Hcode        code        0008  __Hcommon      common      0009
+__Hconfig      config      1000  __Hend_init    end_init    0004
+__Hfloat_text0 float_text0 0004  __Hfloat_text1 float_text1 0004
+__Hfloat_text2 float_text2 0004  __Hfloat_text3 float_text3 0004
+__Hfloat_text4 float_text4 0004  __Hfnauto0     fnauto0     0010
+__Hfnauto1     fnauto1     0030  __Hfnautoc     fnautoc     0009
+__Hidata12     idata12     0004  __Hidata_0     idata_0     0008
+__Hidata_1     idata_1     0018  __Hidata_2     idata_2     0008
+__Hidata_3     idata_3     0008  __Hidata_4     idata_4     0008
+__Hidata_5     idata_5     0008  __Hidata_6     idata_6     0008
+__Hidata_7     idata_7     0008  __Hidloc       idloc       0400
+__Hinit        init        0002  __Hinit23      init23      0002
+__Hjmp_tab     jmp_tab     0004  __Hmaintext    maintext    0008
+__Hnvbit_0     nvbit_0     0040  __Hnvbit_1     nvbit_1     0180
+__Hnvbit_2     nvbit_2     0040  __Hnvbit_3     nvbit_3     0040
+__Hnvbit_4     nvbit_4     0040  __Hnvbit_5     nvbit_5     0040
+__Hnvbit_6     nvbit_6     0040  __Hnvbit_7     nvbit_7     0040
+__Hnvram       nvram       0010  __Hnvram_1     nvram_1     0030
+__Hnvram_2     nvram_2     0008  __Hnvram_3     nvram_3     0008
+__Hnvram_4     nvram_4     0008  __Hnvram_5     nvram_5     0008
+__Hnvram_6     nvram_6     0008  __Hnvram_7     nvram_7     0008
+__Hpowerup     powerup     0004  __Hpstrings    pstrings    0008
+__Hptbit_0     ptbit_0     0040  __Hramdata     (abs)       0001
+__Hrbit_0      rbit_0      0080  __Hrbit_1      rbit_1      0180
+__Hrbit_2      rbit_2      0040  __Hrbit_3      rbit_3      0040
+__Hrbit_4      rbit_4      0040  __Hrbit_5      rbit_5      0040
+__Hrbit_6      rbit_6      0040  __Hrbit_7      rbit_7      0040
+__Hrbss_0      rbss_0      0010  __Hrbss_1      rbss_1      0030
+__Hrbss_2      rbss_2      0008  __Hrbss_3      rbss_3      0008
+__Hrbss_4      rbss_4      0008  __Hrbss_5      rbss_5      0008
+__Hrbss_6      rbss_6      0008  __Hrbss_7      rbss_7      0008
+__Hrdata_0     (abs)       0001  __Hrdata_1     rdata_1     0030
+__Hrdata_2     rdata_2     0008  __Hrdata_3     rdata_3     0008
+__Hrdata_4     rdata_4     0008  __Hrdata_5     rdata_5     0008
+__Hrdata_6     rdata_6     0008  __Hrdata_7     rdata_7     0008
+__Hreset_vec   reset_vec   03FF  __Hreset_wrap  reset_wrap  0002
+__Hstrings12   strings12   0004  __Hstruct      struct      0010
+__Htemp        temp        0009  __Htext        text        0008
+__Lclrtext     clrtext     0004  __Lcode        code        0008
+__Lcommon      common      0009  __Lconfig      config      0FFF
+__Lend_init    end_init    0002  __Lfloat_text0 float_text0 0004
+__Lfloat_text1 float_text1 0004  __Lfloat_text2 float_text2 0004
+__Lfloat_text3 float_text3 0004  __Lfloat_text4 float_text4 0004
+__Lfnauto0     fnauto0     0010  __Lfnauto1     fnauto1     0030
+__Lfnautoc     fnautoc     0007  __Lidata12     idata12     0004
+__Lidata_0     idata_0     0008  __Lidata_1     idata_1     0018
+__Lidata_2     idata_2     0008  __Lidata_3     idata_3     0008
+__Lidata_4     idata_4     0008  __Lidata_5     idata_5     0008
+__Lidata_6     idata_6     0008  __Lidata_7     idata_7     0008
+__Lidloc       idloc       0400  __Linit        init        0002
+__Linit23      init23      0002  __Ljmp_tab     jmp_tab     0004
+__Lmaintext    maintext    0008  __Lnvbit_0     nvbit_0     0040
+__Lnvbit_1     nvbit_1     0180  __Lnvbit_2     nvbit_2     0040
+__Lnvbit_3     nvbit_3     0040  __Lnvbit_4     nvbit_4     0040
+__Lnvbit_5     nvbit_5     0040  __Lnvbit_6     nvbit_6     0040
+__Lnvbit_7     nvbit_7     0040  __Lnvram       nvram       0010
+__Lnvram_1     nvram_1     0030  __Lnvram_2     nvram_2     0008
+__Lnvram_3     nvram_3     0008  __Lnvram_4     nvram_4     0008
+__Lnvram_5     nvram_5     0008  __Lnvram_6     nvram_6     0008
+__Lnvram_7     nvram_7     0008  __Lpowerup     powerup     0004
+__Lpstrings    pstrings    0008  __Lptbit_0     ptbit_0     0040
+__Lramdata     (abs)       0000  __Lrbit_0      rbit_0      0080
+__Lrbit_1      rbit_1      0180  __Lrbit_2      rbit_2      0040
+__Lrbit_3      rbit_3      0040  __Lrbit_4      rbit_4      0040
+__Lrbit_5      rbit_5      0040  __Lrbit_6      rbit_6      0040
+__Lrbit_7      rbit_7      0040  __Lrbss_0      rbss_0      0010
+__Lrbss_1      rbss_1      0030  __Lrbss_2      rbss_2      0008
+__Lrbss_3      rbss_3      0008  __Lrbss_4      rbss_4      0008
+__Lrbss_5      rbss_5      0008  __Lrbss_6      rbss_6      0008
+__Lrbss_7      rbss_7      0008  __Lrdata_0     (abs)       0000
+__Lrdata_1     rdata_1     0030  __Lrdata_2     rdata_2     0008
+__Lrdata_3     rdata_3     0008  __Lrdata_4     rdata_4     0008
+__Lrdata_5     rdata_5     0008  __Lrdata_6     rdata_6     0008
+__Lrdata_7     rdata_7     0008  __Lreset_vec   reset_vec   03FF
+__Lreset_wrap  reset_wrap  0000  __Lstrings12   strings12   0004
+__Lstruct      struct      0010  __Ltemp        temp        0009
+__Ltext        text        0008  __S0           (abs)       1000
+__S1           (abs)       0030  __databank     (abs)       0000
+__end_of_main  maintext    0200  __tempreg      (abs)       0007
+_exit          init        0002  _main          maintext    00C9
+btemp          (abs)       000C  ltemp0         (abs)       000C
+reset_vec      reset_vec   03FF  start          init        0002
+ttemp0         (abs)       000C  wtemp0         (abs)       000C
+wtemp1         (abs)       000E  
