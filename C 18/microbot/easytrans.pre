@@ -1,0 +1,138 @@
+
+# 1 "C:\Nerd Stuff\uC\microbot\easytrans.c"
+
+# 22 "C:\Program Files\HI-TECH Software\PICC\PRO\9.65\include\pic125xx.h"
+volatile unsigned char INDF @ 0x00;
+volatile unsigned char RTCC @ 0x01;
+volatile unsigned char TMR0 @ 0x01;
+volatile unsigned char PCL @ 0x02;
+volatile unsigned char STATUS @ 0x03;
+unsigned char FSR @ 0x04;
+volatile unsigned char OSCCAL @ 0x05;
+volatile unsigned char GPIO @ 0x06;
+
+unsigned char control OPTION @ 0x00;
+volatile unsigned char control TRIS @ 0x06;
+
+
+bit GPWUF @ (unsigned)&STATUS*8+7;
+bit PA0 @ (unsigned)&STATUS*8+5;
+bit TO @ (unsigned)&STATUS*8+4;
+bit PD @ (unsigned)&STATUS*8+3;
+bit ZERO @ (unsigned)&STATUS*8+2;
+bit DC @ (unsigned)&STATUS*8+1;
+volatile bit CARRY @ (unsigned)&STATUS*8+0;
+
+# 70
+volatile bit CAL6 @ (unsigned)&OSCCAL*8+7;
+volatile bit CAL5 @ (unsigned)&OSCCAL*8+6;
+volatile bit CAL4 @ (unsigned)&OSCCAL*8+5;
+volatile bit CAL3 @ (unsigned)&OSCCAL*8+4;
+volatile bit CAL2 @ (unsigned)&OSCCAL*8+3;
+volatile bit CAL1 @ (unsigned)&OSCCAL*8+2;
+volatile bit CAL0 @ (unsigned)&OSCCAL*8+1;
+
+# 84
+volatile bit GP5 @ (unsigned)&GPIO*8+5;
+volatile bit GP4 @ (unsigned)&GPIO*8+4;
+volatile bit GP3 @ (unsigned)&GPIO*8+3;
+volatile bit GP2 @ (unsigned)&GPIO*8+2;
+volatile bit GP1 @ (unsigned)&GPIO*8+1;
+volatile bit GP0 @ (unsigned)&GPIO*8+0;
+
+
+# 380 "C:\Program Files\HI-TECH Software\PICC\PRO\9.65\include\pic.h"
+#pragma inline(_delay)
+extern void _delay(unsigned long);
+
+# 430
+extern bit __timeout, __powerdown;
+extern unsigned char __resetbits;
+
+# 20 "C:\Nerd Stuff\uC\microbot\easytrans.c"
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFEF & 0xFFB & 0xFFF & 0xFFE");
+
+void main()
+{
+unsigned char flag = 0;
+unsigned char time;
+unsigned char i;
+
+TRIS = 0b111101;
+
+# 34
+OPTION = 0b00010000;
+
+while(GP3 == 0 || GP0 == 0)
+{
+TMR0 = 0;
+
+
+
+if(GP3 == 0 && GP0 == 1)
+{
+
+TMR0 = 0;
+for(i=0; i< 15; i++)
+{
+TMR0 = 0;
+GP1 = 1;
+while(TMR0 < 3);
+GP1 = 0;
+while(TMR0 < 7);
+}
+for(i=0; i< 100; i++)
+{
+TMR0 = 0;
+GP1 = 0;
+while(TMR0 < 21);
+}
+}
+else if(GP3 == 1 && GP0 == 0)
+{
+
+TMR0 = 0;
+for(i=0; i< 27; i++)
+{
+TMR0 = 0;
+GP1 = 1;
+while(TMR0 < 3);
+GP1 = 0;
+while(TMR0 < 7);
+}
+for(i=0; i< 100; i++)
+{
+TMR0 = 0;
+GP1 = 0;
+while(TMR0 < 21);
+}
+}
+else if(GP3 == 0 && GP0 == 0)
+{
+
+TMR0 = 0;
+for(i=0; i< 39; i++)
+{
+TMR0 = 0;
+GP1 = 1;
+while(TMR0 < 3);
+GP1 = 0;
+while(TMR0 < 7);
+}
+for(i=0; i< 100; i++)
+{
+TMR0 = 0;
+GP1 = 0;
+while(TMR0 < 21);
+}
+}
+
+# 104
+}
+TMR0 = 0;
+GP1 = 0;
+while(TMR0 < 21);
+flag = GP3<<1||GP0;
+asm("sleep");
+}
+

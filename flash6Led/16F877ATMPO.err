@@ -1,0 +1,3 @@
+Message[302] C:\NERD STUFF\UC\FLASH6LED\16F877ATMPO.ASM 15 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\NERD STUFF\UC\FLASH6LED\16F877ATMPO.ASM 17 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\NERD STUFF\UC\FLASH6LED\16F877ATMPO.ASM 26 : Using default destination of 1 (file).
