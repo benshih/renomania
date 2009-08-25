@@ -48,29 +48,25 @@ void ccp1_isr(){
 	{
 		ServoPos = 1550;
 		forward = 1;
-		//wait = 3;
 	}
 	else if(wait==0 && ADCres0 < thres0 && ADCres1 < thres1)	
 	{
 		ServoPos = 1550;
 	
 		PORTBbits.RB0 = 0;
-				PORTBbits.RB1 = 1;
+		PORTBbits.RB1 = 1;
 		forward = 0;
-			//wait = 3;
 	}	
  	else if(wait==0 && ADCres0 > thres0 && ADCres1<thres1)//thres && ADCres0 < thres)//PORTAbits.RA4==1
 	{
 
 		ServoPos = 1850;	//left
 		forward = 1;
-			//wait = 3;
 	}
 	else if(wait==0 && ADCres0 < thres0 && ADCres1>thres1)//ADCres1 < thres && ADCres0 > thres)
 	{
 		ServoPos = 1200;	//right	
 		forward = 1;
-			//wait = 3;
 	}
 	if(ServoPin==1){            //will be 1 if we are at end of pulse
         ServoPin=0;             //turn off servo output
@@ -103,13 +99,13 @@ void init(void)
     ServoPin=0;                 //Servo output off
     CCP1CON=0b00001011;         //Special event trigger
     T1CON=0b10010001;           //Timer 1 on with Pre=2
-    //ServoPos=1500;              //set servo to mid position
     CCPR1=ServoPos;             //set CCP initial value   
     PIE1bits.CCP1IE=1;          //enable CCP1 interrupt
     INTCONbits.PEIE=1;          //enable peripheral interrupts
     INTCONbits.GIE=1;           //enable glogal interrupts
     INTCON2bits.RBPU=0;         //enable port b week pullups
 }	
+
 void main(void)
 {
 	int white0, white1, black0, black1;
@@ -136,38 +132,4 @@ void main(void)
 			thres1 = (white1+black1)/2;	
 		}
 	}
-//    while(1)
-//	{
-//		/*SetChanADC(ADC_CH0);
-//		ConvertADC();						
-//		while(BusyADC());			
-//		ADCres0 = ReadADC()/2; //right sensor
-//		SetChanADC(ADC_CH1);
-//		ConvertADC();						
-//		while(BusyADC());			
-//		ADCres1 = ReadADC()/2; //left sensor
-//		*/
-//		//ServoPos = 1500;
-//		//PORTBbits.RB1 = 0;
-//		//PORTBbits.RB0 = 1;
-//		if(PORTAbits.RA2==1)//ADCres1 > thres && ADCres0 < thres)
-//		{
-//			ServoPos = 1600;	//left
-//		}
-//		else if(PORTAbits.RA4==1)//ADCres1 < thres && ADCres0 > thres)
-//		{
-//			ServoPos = 1400;	//right	
-//		}	
-//		else if(ADCres1 < thres && ADCres0 < thres)
-//		{
-//			//PORTBbits.RB0 = 0;
-//			//PORTBbits.RB1 = 1;
-//		}
-//		
-//      if(PORTAbits.RA4==1)
-//		{
-//			INTCON2bits.RBPU=1;         //disable port b week pullups
-//			break;
-//		}
-//    }
 }

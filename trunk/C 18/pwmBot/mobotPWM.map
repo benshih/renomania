@@ -1,5 +1,5 @@
 MPLINK 4.1, Linker
-Linker Map File - Created Sat Apr 25 14:34:51 2009
+Linker Map File - Created Tue Aug 25 19:35:01 2009
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -67,24 +67,24 @@ Linker Map File - Created Sat Apr 25 14:34:51 2009
        ___return_lbl00000   0x00001c    program     static                          
        ___return_lbl00001   0x00062c    program     static                          
        ___return_lbl00002   0x0004c2    program     static                          
-               __config_0   0x300001    program     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-               __config_1   0x300003    program     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-               __config_2   0x300006    program     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+               __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+               __config_1   0x300003    program     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+               __config_2   0x300006    program     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                    __init   0x000642    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
                 _do_cinit   0x000426    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
                  _startup   0x000612    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                 ccp1_isr   0x000038    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                 ccp1_isr   0x000038    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                 copy_loop   0x000498    program     static                          
             copy_one_byte   0x00049e    program     static                          
                      done   0x0004c2    program     static                          
              done_copying   0x0004ac    program     static                          
                   endloop   0x00060c    program     static                          
-                     init   0x0002a8    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                     init   0x0002a8    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                      loop   0x0005f0    program     static                          
                      loop   0x000622    program     static                          
-            low_interrupt   0x000018    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                     main   0x0002d2    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+            low_interrupt   0x000018    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                     main   0x0002d2    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                      test   0x000440    program     static                          
                    ADCON0   0x000fc2       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
@@ -92,8 +92,8 @@ Linker Map File - Created Sat Apr 25 14:34:51 2009
                ADCON1bits   0x000fc1       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                    ADCON2   0x000fc0       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                ADCON2bits   0x000fc0       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
-                  ADCres0   0x0000c0       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                  ADCres1   0x0000c2       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                  ADCres0   0x0000c0       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                  ADCres1   0x0000c2       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                     ADRES   0x000fc3       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                    ADRESH   0x000fc4       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                    ADRESL   0x000fc3       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
@@ -194,7 +194,7 @@ Linker Map File - Created Sat Apr 25 14:34:51 2009
                STATUSbits   0x000fd8       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                    STKPTR   0x000ffc       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                STKPTRbits   0x000ffc       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
-                 ServoPos   0x0000c8       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                 ServoPos   0x0000c8       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                     T0CON   0x000fd5       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                 T0CONbits   0x000fd5       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                     T1CON   0x000fcd       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
@@ -252,16 +252,16 @@ Linker Map File - Created Sat Apr 25 14:34:51 2009
                   __REMB3   0x000002       data     extern C:\MCC18\SRC\TRADIT~1\MATH\aarg.asm
                   __tmp_0   0x000010       data     static C:\MCC18\src\TRADIT~1\pmc\ADC\adcsetch.c
                   __tmp_0   0x000010       data     static C:\MCC18\src\TRADIT~1\pmc\ADC\adcread.c
-                  __tmp_0   0x000010       data     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                     buff   0x0000ca       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                  __tmp_0   0x000010       data     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                     buff   0x0000ca       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                 curr_byte   0x0000ce       data     static C:\MCC18\src\traditional\startup\c018i.c
                curr_entry   0x0000d0       data     static C:\MCC18\src\traditional\startup\c018i.c
                  data_ptr   0x0000d2       data     static C:\MCC18\src\traditional\startup\c018i.c
-                  forward   0x0000d7       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                  forward   0x0000d7       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                      prom   0x0000cb       data     static C:\MCC18\src\traditional\startup\c018i.c
-                   thres0   0x0000c4       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                   thres1   0x0000c6       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                     wait   0x0000d5       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                   thres0   0x0000c4       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                   thres1   0x0000c6       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                     wait   0x0000d5       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
 
 
 
@@ -270,11 +270,11 @@ Linker Map File - Created Sat Apr 25 14:34:51 2009
                 ---------  ---------  ---------  --------- ---------                
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
        ___return_lbl00000   0x000004    program     static                          
-            low_interrupt   0x000018    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+            low_interrupt   0x000018    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
        ___return_lbl00000   0x00001c    program     static                          
-                 ccp1_isr   0x000038    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                     init   0x0002a8    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                     main   0x0002d2    program     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                 ccp1_isr   0x000038    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                     init   0x0002a8    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                     main   0x0002d2    program     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                 _do_cinit   0x000426    program     extern C:\MCC18\src\traditional\startup\c018i.c
                      test   0x000440    program     static                          
                 copy_loop   0x000498    program     static                          
@@ -302,9 +302,9 @@ Linker Map File - Created Sat Apr 25 14:34:51 2009
                  CloseADC   0x000638    program     extern C:\MCC18\src\TRADIT~1\pmc\ADC\adcclose.c
                ConvertADC   0x00063e    program     extern C:\MCC18\src\TRADIT~1\pmc\ADC\adcconv.c
                    __init   0x000642    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
-               __config_0   0x300001    program     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-               __config_1   0x300003    program     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-               __config_2   0x300006    program     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+               __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+               __config_1   0x300003    program     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+               __config_2   0x300006    program     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                      SIGN   0x000000       data     extern C:\MCC18\SRC\TRADIT~1\MATH\cmath18.asm
                 __FPFLAGS   0x000001       data     extern C:\MCC18\SRC\TRADIT~1\MATH\cmath18.asm
             __FPFLAGSbits   0x000001       data     extern C:\MCC18\SRC\TRADIT~1\MATH\cmath18.asm
@@ -327,20 +327,20 @@ Linker Map File - Created Sat Apr 25 14:34:51 2009
                  __BARGB0   0x00000e       data     extern C:\MCC18\SRC\TRADIT~1\MATH\barg.asm
                    __BEXP   0x00000f       data     extern C:\MCC18\SRC\TRADIT~1\MATH\barg.asm
                   __tmp_0   0x000010       data     static C:\MCC18\src\TRADIT~1\pmc\ADC\adcread.c
-                  __tmp_0   0x000010       data     static C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                  __tmp_0   0x000010       data     static C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                   __tmp_0   0x000010       data     static C:\MCC18\src\TRADIT~1\pmc\ADC\adcsetch.c
-                  ADCres0   0x0000c0       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                  ADCres1   0x0000c2       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                   thres0   0x0000c4       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                   thres1   0x0000c6       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                 ServoPos   0x0000c8       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                     buff   0x0000ca       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                  ADCres0   0x0000c0       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                  ADCres1   0x0000c2       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                   thres0   0x0000c4       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                   thres1   0x0000c6       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                 ServoPos   0x0000c8       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                     buff   0x0000ca       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                      prom   0x0000cb       data     static C:\MCC18\src\traditional\startup\c018i.c
                 curr_byte   0x0000ce       data     static C:\MCC18\src\traditional\startup\c018i.c
                curr_entry   0x0000d0       data     static C:\MCC18\src\traditional\startup\c018i.c
                  data_ptr   0x0000d2       data     static C:\MCC18\src\traditional\startup\c018i.c
-                     wait   0x0000d5       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
-                  forward   0x0000d7       data     extern C:\Nerd Stuff\uC\pwmBot\pwmBot.c
+                     wait   0x0000d5       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
+                  forward   0x0000d7       data     extern C:\Nerd Stuff\uC\C 18\pwmBot\pwmBot.c
                     PORTA   0x000f80       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                 PORTAbits   0x000f80       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
                 PORTBbits   0x000f81       data     extern C:\MCC18\SRC\TRADIT~1\PROC\p18f1220.asm
