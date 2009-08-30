@@ -1,5 +1,5 @@
 MPLINK 4.1, Linker
-Linker Map File - Created Sun Aug 30 17:28:51 2009
+Linker Map File - Created Sun Aug 30 17:56:27 2009
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -7,24 +7,24 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                _entry_scn       code   0x000000    program   0x000006
                    .cinit    romdata   0x00002a    program   0x000002
          .code_vfprintf.o       code   0x00002c    program   0x000c22
-             .code_main.o       code   0x000c4e    program   0x00018a
-           .code_RenLCD.o       code   0x000dd8    program   0x0000f6
-          .code_sprintf.o       code   0x000ece    program   0x0000ac
-               _cinit_scn       code   0x000f7a    program   0x00009e
-             .code_putc.o       code   0x001018    program   0x000084
-          .code_fxm3232.o       code   0x00109c    program   0x000070
-                   STRING       code   0x00110c    program   0x000066
-                     PROG       code   0x001172    program   0x00005a
-         .code_fxd3232u.o       code   0x0011cc    program   0x000048
-             D10KTCYXCODE       code   0x001214    program   0x00002e
-                    CTYPE       code   0x001242    program   0x000024
-              D1KTCYXCODE       code   0x001266    program   0x000020
-             _startup_scn       code   0x001286    program   0x00001c
-                    STDIO       code   0x0012a2    program   0x00001c
-      .romdata_vfprintf.o    romdata   0x0012be    program   0x000011
-             .stringtable    romdata   0x0012cf    program   0x000004
-       .code__user_putc.o       code   0x0012d4    program   0x000002
-           .code___init.o       code   0x0012d6    program   0x000002
+             .code_main.o       code   0x000c4e    program   0x00013c
+           .code_RenLCD.o       code   0x000d8a    program   0x000104
+          .code_sprintf.o       code   0x000e8e    program   0x0000ac
+               _cinit_scn       code   0x000f3a    program   0x00009e
+             .code_putc.o       code   0x000fd8    program   0x000084
+          .code_fxm3232.o       code   0x00105c    program   0x000070
+                   STRING       code   0x0010cc    program   0x000066
+                     PROG       code   0x001132    program   0x00005a
+         .code_fxd3232u.o       code   0x00118c    program   0x000048
+             D10KTCYXCODE       code   0x0011d4    program   0x00002e
+                    CTYPE       code   0x001202    program   0x000024
+              D1KTCYXCODE       code   0x001226    program   0x000020
+             _startup_scn       code   0x001246    program   0x00001c
+                    STDIO       code   0x001262    program   0x00001c
+      .romdata_vfprintf.o    romdata   0x00127e    program   0x000011
+             .stringtable    romdata   0x00128f    program   0x000006
+       .code__user_putc.o       code   0x001296    program   0x000002
+           .code___init.o       code   0x001298    program   0x000002
     .config_300001_main.o    romdata   0x300001    program   0x000001
     .config_300006_main.o    romdata   0x300006    program   0x000001
                 MATH_DATA      udata   0x000000       data   0x000014
@@ -41,50 +41,54 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000005      
-                            0x00002a    0x0012d2      
-                            0x0012d4    0x0012d7      
+                            0x00002a    0x001294      
+                            0x001296    0x001299      
                             0x300001    0x300001      
                             0x300006    0x300006      
-            4789 out of 33048 program addresses used, program memory utilization is 14%
+            4727 out of 33048 program addresses used, program memory utilization is 14%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                 ClearLCD   0x000ec4    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-               CommandLCD   0x000e90    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                   D10K_1   0x001220    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-                    D10Kl   0x00122c    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-                    D10Kx   0x00121e    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-                    D1K_1   0x001272    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-                     D1Kx   0x001270    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-             Delay10KTCYx   0x001214    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-              Delay1KTCYx   0x001266    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-                 FXD3232U   0x0011cc    program     extern C:\MCC18\src\TRADIT~1\math\fxd3232u.c
-                 FXM1616S   0x001172    program     extern C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
-                  FXM3232   0x00109c    program     extern C:\MCC18\src\TRADIT~1\math\fxm3232.c
-            InitializeLCD   0x000dd8    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                 ClearLCD   0x000e7a    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+               CommandLCD   0x000e46    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                   D10K_1   0x0011e0    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+                    D10Kl   0x0011ec    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+                    D10Kx   0x0011de    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+                    D1K_1   0x001232    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+                     D1Kx   0x001230    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+             Delay10KTCYx   0x0011d4    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+              Delay1KTCYx   0x001226    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+                 FXD3232U   0x00118c    program     extern C:\MCC18\src\TRADIT~1\math\fxd3232u.c
+                 FXM1616S   0x001132    program     extern C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
+                  FXM3232   0x00105c    program     extern C:\MCC18\src\TRADIT~1\math\fxm3232.c
+            InitializeLCD   0x000d8a    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
            InitializeUART   0x000c4e    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
                  SendUART   0x000c64    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
              SendUARTchar   0x000ce0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-                 SetLine1   0x000eb0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                 SetLine2   0x000eba    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-               TSIGN1616A   0x0011be    program     static C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
-                 WriteLCD   0x000e1e    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                   _2jEnd   0x00115c    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-       _D10KTCYXCODE_0010   0x001224    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x001230    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-        _D1KTCYXCODE_0010   0x001276    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00127c    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-       ___return_lbl00000   0x00110a    program     static                          
-       ___return_lbl00000   0x001212    program     static                          
+                 SetLine1   0x000e66    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                 SetLine2   0x000e70    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+               TSIGN1616A   0x00117e    program     static C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
+                 WriteLCD   0x000dd0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                   _2jEnd   0x00111c    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+       _D10KTCYXCODE_0010   0x0011e4    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x0011f0    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+        _D1KTCYXCODE_0010   0x001236    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00123c    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+          ___for_lbl00002   0x000e28    program     static                          
+          ___for_lbl00003   0x000e32    program     static                          
+          ___for_lbl00004   0x000de8    program     static                          
+       ___return_lbl00000   0x0010ca    program     static                          
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00001   0x0012a0    program     static                          
-       ___return_lbl00002   0x001016    program     static                          
+       ___return_lbl00000   0x0011d2    program     static                          
+       ___return_lbl00001   0x001260    program     static                          
+       ___return_lbl00001   0x000e32    program     static                          
+       ___return_lbl00002   0x000fd6    program     static                          
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
-                   __init   0x0012d6    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
+                   __init   0x001298    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
                    __pa_0   0x00096c    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                    __pa_1   0x000974    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __pa_10   0x000a28    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
@@ -132,39 +136,39 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                    __pa_7   0x0009da    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                    __pa_8   0x0009e6    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                    __pa_9   0x000a08    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
-               __string_0   0x0012cf    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+               __string_0   0x00128f    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
               __tmplbl_42   0x000b02    program     static                          
               __tmplbl_43   0x00094a    program     static                          
               __tmplbl_44   0x000930    program     static                          
               __tmplbl_85   0x000082    program     static                          
-                _do_cinit   0x000f7a    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                _do_cinit   0x000f3a    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                   _false   0x00120e    program     static                          
-                 _startup   0x001286    program     extern C:\MCC18\src\traditional\startup\c018i.c
-              _usart_putc   0x0012a2    program     extern C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
-               _user_putc   0x0012d4    program     extern C:\MCC18\src\TRADIT~1\stdclib\_user_putc.c
-                copy_loop   0x000fec    program     static                          
-            copy_one_byte   0x000ff2    program     static                          
-                     done   0x001016    program     static                          
-             done_copying   0x001000    program     static                          
-                  isdigit   0x001242    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
-                     jEnd   0x00115e    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-                     jEnd   0x001126    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
-                    jLoop   0x00111c    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
-                    jLoop   0x001146    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-                   jMatch   0x001262    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
-                 jNoMatch   0x001264    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
-                     loop   0x001296    program     static                          
-                     loop   0x0011da    program     static                          
-                     loop   0x0012b2    program     static C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
+                   _false   0x0011ce    program     static                          
+                 _startup   0x001246    program     extern C:\MCC18\src\traditional\startup\c018i.c
+              _usart_putc   0x001262    program     extern C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
+               _user_putc   0x001296    program     extern C:\MCC18\src\TRADIT~1\stdclib\_user_putc.c
+                copy_loop   0x000fac    program     static                          
+            copy_one_byte   0x000fb2    program     static                          
+                     done   0x000fd6    program     static                          
+             done_copying   0x000fc0    program     static                          
+                  isdigit   0x001202    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
+                     jEnd   0x00111e    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+                     jEnd   0x0010e6    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
+                    jLoop   0x0010dc    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
+                    jLoop   0x001106    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+                   jMatch   0x001222    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
+                 jNoMatch   0x001224    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
+                     loop   0x001256    program     static                          
+                     loop   0x00119a    program     static                          
+                     loop   0x001272    program     static C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
                      main   0x000d00    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-                     putc   0x001018    program     extern C:\MCC18\src\TRADIT~1\stdclib\putc.c
-                 s_digits   0x0012be    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
+                     putc   0x000fd8    program     extern C:\MCC18\src\TRADIT~1\stdclib\putc.c
+                 s_digits   0x00127e    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
             s_put_n_chars   0x00002c    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
-                  sprintf   0x000ece    program     extern C:\MCC18\src\TRADIT~1\stdclib\sprintf.c
-                   strlen   0x00110c    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
-                strlenpgm   0x001128    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-                     test   0x000f94    program     static                          
+                  sprintf   0x000e8e    program     extern C:\MCC18\src\TRADIT~1\stdclib\sprintf.c
+                   strlen   0x0010cc    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
+                strlenpgm   0x0010e8    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+                     test   0x000f54    program     static                          
                  vfprintf   0x000058    program     extern C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18f25k20.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18f25k20.asm
@@ -429,8 +433,8 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                   __pa_19   0x000ad2    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __pa_20   0x000ae2    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __pa_21   0x000af2    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
-              __tmplbl_42   0x000b02    program     static                          
                   __pa_22   0x000b02    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
+              __tmplbl_42   0x000b02    program     static                          
                   __pa_23   0x000b0e    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __pa_24   0x000b1c    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __pa_25   0x000b24    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
@@ -459,59 +463,63 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                  SendUART   0x000c64    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
              SendUARTchar   0x000ce0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
                      main   0x000d00    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-            InitializeLCD   0x000dd8    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                 WriteLCD   0x000e1e    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-               CommandLCD   0x000e90    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                 SetLine1   0x000eb0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                 SetLine2   0x000eba    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                 ClearLCD   0x000ec4    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                  sprintf   0x000ece    program     extern C:\MCC18\src\TRADIT~1\stdclib\sprintf.c
-                _do_cinit   0x000f7a    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x000f94    program     static                          
-                copy_loop   0x000fec    program     static                          
-            copy_one_byte   0x000ff2    program     static                          
-             done_copying   0x001000    program     static                          
-       ___return_lbl00002   0x001016    program     static                          
-                     done   0x001016    program     static                          
-                     putc   0x001018    program     extern C:\MCC18\src\TRADIT~1\stdclib\putc.c
-                  FXM3232   0x00109c    program     extern C:\MCC18\src\TRADIT~1\math\fxm3232.c
-       ___return_lbl00000   0x00110a    program     static                          
-                   strlen   0x00110c    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
-                    jLoop   0x00111c    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
-                     jEnd   0x001126    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
-                strlenpgm   0x001128    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-                    jLoop   0x001146    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-                   _2jEnd   0x00115c    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-                     jEnd   0x00115e    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
-                 FXM1616S   0x001172    program     extern C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
-               TSIGN1616A   0x0011be    program     static C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
-                 FXD3232U   0x0011cc    program     extern C:\MCC18\src\TRADIT~1\math\fxd3232u.c
-                     loop   0x0011da    program     static                          
-                   _false   0x00120e    program     static                          
-       ___return_lbl00000   0x001212    program     static                          
-             Delay10KTCYx   0x001214    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-                    D10Kx   0x00121e    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-                   D10K_1   0x001220    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-       _D10KTCYXCODE_0010   0x001224    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-                    D10Kl   0x00122c    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x001230    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
-                  isdigit   0x001242    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
-                   jMatch   0x001262    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
-                 jNoMatch   0x001264    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
-              Delay1KTCYx   0x001266    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-                     D1Kx   0x001270    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-                    D1K_1   0x001272    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-        _D1KTCYXCODE_0010   0x001276    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00127c    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
-                 _startup   0x001286    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x001296    program     static                          
-       ___return_lbl00001   0x0012a0    program     static                          
-              _usart_putc   0x0012a2    program     extern C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
-                     loop   0x0012b2    program     static C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
-                 s_digits   0x0012be    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
-               __string_0   0x0012cf    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
-               _user_putc   0x0012d4    program     extern C:\MCC18\src\TRADIT~1\stdclib\_user_putc.c
-                   __init   0x0012d6    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
+            InitializeLCD   0x000d8a    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                 WriteLCD   0x000dd0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+          ___for_lbl00004   0x000de8    program     static                          
+          ___for_lbl00002   0x000e28    program     static                          
+       ___return_lbl00001   0x000e32    program     static                          
+          ___for_lbl00003   0x000e32    program     static                          
+               CommandLCD   0x000e46    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                 SetLine1   0x000e66    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                 SetLine2   0x000e70    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                 ClearLCD   0x000e7a    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
+                  sprintf   0x000e8e    program     extern C:\MCC18\src\TRADIT~1\stdclib\sprintf.c
+                _do_cinit   0x000f3a    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x000f54    program     static                          
+                copy_loop   0x000fac    program     static                          
+            copy_one_byte   0x000fb2    program     static                          
+             done_copying   0x000fc0    program     static                          
+                     done   0x000fd6    program     static                          
+       ___return_lbl00002   0x000fd6    program     static                          
+                     putc   0x000fd8    program     extern C:\MCC18\src\TRADIT~1\stdclib\putc.c
+                  FXM3232   0x00105c    program     extern C:\MCC18\src\TRADIT~1\math\fxm3232.c
+       ___return_lbl00000   0x0010ca    program     static                          
+                   strlen   0x0010cc    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
+                    jLoop   0x0010dc    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
+                     jEnd   0x0010e6    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\strlen.asm
+                strlenpgm   0x0010e8    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+                    jLoop   0x001106    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+                   _2jEnd   0x00111c    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+                     jEnd   0x00111e    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\slenpgm.asm
+                 FXM1616S   0x001132    program     extern C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
+               TSIGN1616A   0x00117e    program     static C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
+                 FXD3232U   0x00118c    program     extern C:\MCC18\src\TRADIT~1\math\fxd3232u.c
+                     loop   0x00119a    program     static                          
+                   _false   0x0011ce    program     static                          
+       ___return_lbl00000   0x0011d2    program     static                          
+             Delay10KTCYx   0x0011d4    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+                    D10Kx   0x0011de    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+                   D10K_1   0x0011e0    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+       _D10KTCYXCODE_0010   0x0011e4    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+                    D10Kl   0x0011ec    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x0011f0    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d10ktcyx.asm
+                  isdigit   0x001202    program     extern C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
+                   jMatch   0x001222    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
+                 jNoMatch   0x001224    program     static C:\MCC18\SRC\TRADIT~1\STDCLIB\isdigit.asm
+              Delay1KTCYx   0x001226    program     extern C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+                     D1Kx   0x001230    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+                    D1K_1   0x001232    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+        _D1KTCYXCODE_0010   0x001236    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00123c    program     static C:\MCC18\SRC\TRADIT~1\DELAYS\d1ktcyx.asm
+                 _startup   0x001246    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x001256    program     static                          
+       ___return_lbl00001   0x001260    program     static                          
+              _usart_putc   0x001262    program     extern C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
+                     loop   0x001272    program     static C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
+                 s_digits   0x00127e    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
+               __string_0   0x00128f    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+               _user_putc   0x001296    program     extern C:\MCC18\src\TRADIT~1\stdclib\_user_putc.c
+                   __init   0x001298    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
                      SIGN   0x000000       data     extern C:\MCC18\SRC\TRADIT~1\MATH\cmath18.asm

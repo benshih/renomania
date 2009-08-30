@@ -63,15 +63,11 @@ void main(void)
 	InitializeUART();
 	InitializeLCD();
 	
-	for( j = 300; j >= 0; j-- )
-	{
-		SetLine2();
+	CommandLCD(0x01);
+	SetLine2();
+	sprintf(str,"Ready");
+	WriteLCD(str);
 
-		sprintf(str,"%4d",j);
-		WriteLCD(str);
-		Delay1KTCYx(1);	
-		SendUART(str);
-	}
 	while( 1 );
 }
 

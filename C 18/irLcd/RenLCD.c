@@ -2,7 +2,7 @@
 
 void InitializeLCD()
 {
-	Delay1KTCYx(20);		//20ms
+	Delay1KTCYx(50);		//50ms
 	PORTB = 0x00;
 
 	//Function set
@@ -26,6 +26,8 @@ void WriteLCD(char *c)		//Writes Characters to LCD
 		PORTB = c[i];
 		PORTAbits.RA2 = 1;
 		PORTAbits.RA2 = 0;
+		Nop();
+		Nop();
 	}
 }
 
@@ -52,4 +54,5 @@ void SetLine2()				//Set cursor to beginning of second line
 void ClearLCD()				//clear the whole screen
 {
 	CommandLCD(0x01);
+	Delay1KTCYx(1);		//1ms
 }
