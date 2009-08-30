@@ -1,0 +1,4 @@
+Warning[2058] C:\Nerd Stuff\uC\C 18\lcd\lcd_counter.c 32 : call of function without prototype
+Warning[2058] C:\Nerd Stuff\uC\C 18\lcd\lcd_counter.c 93 : call of function without prototype
+Warning[2058] C:\Nerd Stuff\uC\C 18\lcd\lcd_counter.c 105 : call of function without prototype
+Warning[2066] C:\Nerd Stuff\uC\C 18\lcd\lcd_counter.c 107 : type qualifier mismatch in assignment
