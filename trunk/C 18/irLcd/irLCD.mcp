@@ -39,9 +39,9 @@ file_001=no
 file_002=no
 file_003=no
 [FILE_INFO]
-file_000=lcd_counter.c
-file_001=C:\mcc18\h\delays.h
-file_002=C:\mcc18\h\p18f25k20.h
+file_000=main.c
+file_001=RenLCD.c
+file_002=RenLCD.h
 file_003=C:\mcc18\lkr\18f25k20.lkr
 [SUITE_INFO]
 suite_guid={5B7D72DD-9861-47BD-9F60-2BE967BF8416}

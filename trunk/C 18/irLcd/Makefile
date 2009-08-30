@@ -1,6 +1,6 @@
 # MPLAB IDE generated this makefile for use with GNU make.
 # Project: irLCD.mcp
-# Date: Sun Aug 30 02:04:06 2009
+# Date: Sun Aug 30 16:10:23 2009
 
 AS = MPASMWIN.exe
 CC = mcc18.exe
@@ -11,8 +11,8 @@ RM = rm
 irLCD.cof : lcd_counter.o
 	$(LD) /l"C:\mcc18\lib" /k"C:\mcc18\lkr" "..\..\..\..\mcc18\lkr\18f25k20.lkr" "lcd_counter.o" /o"irLCD.cof" /M"irLCD.map" /W
 
-lcd_counter.o : ../lcd/lcd_counter.c ../../../../mcc18/h/delays.h ../../../../mcc18/h/stdio.h ../../../../mcc18/h/stdlib.h ../lcd/lcd_counter.c ../../../../mcc18/h/p18f25k20.h ../../../../mcc18/h/p18cxxx.h ../../../../mcc18/h/stdarg.h ../../../../mcc18/h/stddef.h
-	$(CC) -p=18F25K20 /i"C:\mcc18\h" "C:\Nerd Stuff\uC\C 18\lcd\lcd_counter.c" -fo="lcd_counter.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+lcd_counter.o : lcd_counter.c ../../../../mcc18/h/delays.h ../../../../mcc18/h/stdio.h ../../../../mcc18/h/stdlib.h lcd_counter.c ../../../../mcc18/h/p18f25k20.h ../../../../mcc18/h/p18cxxx.h ../../../../mcc18/h/stdarg.h ../../../../mcc18/h/stddef.h
+	$(CC) -p=18F25K20 /i"C:\mcc18\h" "lcd_counter.c" -fo="lcd_counter.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 
 clean : 
 	$(RM) "lcd_counter.o" "irLCD.cof" "irLCD.hex"
