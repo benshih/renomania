@@ -1,5 +1,5 @@
 MPLINK 4.1, Linker
-Linker Map File - Created Sun Aug 30 17:28:51 2009
+Linker Map File - Created Sun Aug 30 17:30:08 2009
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -65,9 +65,9 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                  FXM1616S   0x001172    program     extern C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
                   FXM3232   0x00109c    program     extern C:\MCC18\src\TRADIT~1\math\fxm3232.c
             InitializeLCD   0x000dd8    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-           InitializeUART   0x000c4e    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-                 SendUART   0x000c64    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-             SendUARTchar   0x000ce0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
+           InitializeUART   0x000c4e    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
+                 SendUART   0x000c64    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
+             SendUARTchar   0x000ce0    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
                  SetLine1   0x000eb0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
                  SetLine2   0x000eba    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
                TSIGN1616A   0x0011be    program     static C:\MCC18\SRC\TRADIT~1\MATH\fxm1616s.asm
@@ -82,8 +82,8 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00001   0x0012a0    program     static                          
        ___return_lbl00002   0x001016    program     static                          
-               __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
-               __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+               __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
+               __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
                    __init   0x0012d6    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
                    __pa_0   0x00096c    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                    __pa_1   0x000974    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
@@ -132,7 +132,7 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                    __pa_7   0x0009da    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                    __pa_8   0x0009e6    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                    __pa_9   0x000a08    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
-               __string_0   0x0012cf    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+               __string_0   0x0012cf    program     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
               __tmplbl_42   0x000b02    program     static                          
               __tmplbl_43   0x00094a    program     static                          
               __tmplbl_44   0x000930    program     static                          
@@ -157,7 +157,7 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                      loop   0x001296    program     static                          
                      loop   0x0011da    program     static                          
                      loop   0x0012b2    program     static C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
-                     main   0x000d00    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
+                     main   0x000d00    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
                      putc   0x001018    program     extern C:\MCC18\src\TRADIT~1\stdclib\putc.c
                  s_digits   0x0012be    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
             s_put_n_chars   0x00002c    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
@@ -389,7 +389,7 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                   __tmp_0   0x000014       data     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __tmp_0   0x000014       data     static C:\MCC18\src\TRADIT~1\stdclib\sprintf.c
                   __tmp_0   0x000014       data     static C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
-                  __tmp_0   0x000014       data     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+                  __tmp_0   0x000014       data     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
                 curr_byte   0x000063       data     static C:\MCC18\src\traditional\startup\c018i.c
                curr_entry   0x000065       data     static C:\MCC18\src\traditional\startup\c018i.c
                  data_ptr   0x000067       data     static C:\MCC18\src\traditional\startup\c018i.c
@@ -455,10 +455,10 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                   __pa_44   0x000c2e    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __pa_45   0x000c38    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
                   __pa_46   0x000c44    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
-           InitializeUART   0x000c4e    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-                 SendUART   0x000c64    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-             SendUARTchar   0x000ce0    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
-                     main   0x000d00    program     extern C:\Nerd Stuff\uC\C 18\irLcd\main.c
+           InitializeUART   0x000c4e    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
+                 SendUART   0x000c64    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
+             SendUARTchar   0x000ce0    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
+                     main   0x000d00    program     extern C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
             InitializeLCD   0x000dd8    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
                  WriteLCD   0x000e1e    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
                CommandLCD   0x000e90    program     extern C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
@@ -509,11 +509,11 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
               _usart_putc   0x0012a2    program     extern C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
                      loop   0x0012b2    program     static C:\MCC18\src\traditional\pmc\USART\_usartpc.asm
                  s_digits   0x0012be    program     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
-               __string_0   0x0012cf    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+               __string_0   0x0012cf    program     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
                _user_putc   0x0012d4    program     extern C:\MCC18\src\TRADIT~1\stdclib\_user_putc.c
                    __init   0x0012d6    program     extern C:\MCC18\src\TRADIT~1\stdclib\__init.c
-               __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
-               __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+               __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
+               __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
                      SIGN   0x000000       data     extern C:\MCC18\SRC\TRADIT~1\MATH\cmath18.asm
             __FPFLAGSbits   0x000001       data     extern C:\MCC18\SRC\TRADIT~1\MATH\cmath18.asm
                 __FPFLAGS   0x000001       data     extern C:\MCC18\SRC\TRADIT~1\MATH\cmath18.asm
@@ -540,7 +540,7 @@ Linker Map File - Created Sun Aug 30 17:28:51 2009
                  __TEMPB1   0x000012       data     extern C:\MCC18\SRC\TRADIT~1\MATH\temparg.asm
                  __TEMPB0   0x000013       data     extern C:\MCC18\SRC\TRADIT~1\MATH\temparg.asm
                    __TEMP   0x000013       data     extern C:\MCC18\SRC\TRADIT~1\MATH\temparg.asm
-                  __tmp_0   0x000014       data     static C:\Nerd Stuff\uC\C 18\irLcd\main.c
+                  __tmp_0   0x000014       data     static C:\Nerd Stuff\uC\C 18\lcdFinal\main.c
                   __tmp_0   0x000014       data     static C:\Nerd Stuff\uC\C 18\irLcd\RenLCD.c
                   __tmp_0   0x000014       data     static C:\MCC18\src\TRADIT~1\stdclib\putc.c
                   __tmp_0   0x000014       data     static C:\MCC18\src\TRADIT~1\stdclib\vfprintf.c
