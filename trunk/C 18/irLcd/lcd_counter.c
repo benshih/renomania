@@ -24,7 +24,7 @@ void SendUARTchar(char c)
 	Delay1KTCYx(5);
 }
 
-void WriteLCD(char *c)
+void WriteLCD(char *c)	//Writes Characters to LCD
 {
 	int i = 0;
 	PORTAbits.RA7 = 1;
@@ -37,7 +37,7 @@ void WriteLCD(char *c)
 	}
 }
 
-void CommandLCD(char c)
+void CommandLCD(char c)	//Sends Commands to LCD
 {
 	PORTB=c;				//Line2
 	PORTAbits.RA7 = 0;		//
@@ -46,17 +46,18 @@ void CommandLCD(char c)
 	PORTAbits.RA2 = 0;
 	PORTB = 0x00;
 }
-void SetLine1()
+
+void SetLine1()		//Set cursor to beginning of first line
 {
 	CommandLCD(0x80);
 }
 
-void SetLine2()
+void SetLine2()		//Set cursor to beginning of second line
 {
 	CommandLCD(0xC0);
 }
 
-void ClearLCD()
+void ClearLCD()		//clear the whole screen
 {
 	CommandLCD(0x01);
 }
@@ -86,6 +87,7 @@ void main(void)
 
 	//Function set
 	CommandLCD(0x38);		//8-bit Data Line, 2-lines, 5x8 dots
+
 	Delay1KTCYx(20);		//20ms
 
 	ClearLCD();
