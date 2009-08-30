@@ -20,16 +20,51 @@ void SendUART(char *c)
 
 void SendUARTchar(char c)
 {
-		TXREG = c;
-		Delay1KTCYx(5);
+	TXREG = c;
+	Delay1KTCYx(5);
+}
+
+void WriteLCD(char *c)
+{
+	int i = 0;
+	PORTAbits.RA7 = 1;
+	PORTAbits.RA1 = 0;
+	for( i = 0; i < strlen(c); i++ )
+	{
+		PORTB = c[i];
+		PORTAbits.RA2 = 1;
+		PORTAbits.RA2 = 0;
+	}
+}
+
+void CommandLCD(char c)
+{
+	PORTB=c;				//Line2
+	PORTAbits.RA7 = 0;		//
+	PORTAbits.RA1 = 0;
+	PORTAbits.RA2 = 1;
+	PORTAbits.RA2 = 0;
+	PORTB = 0x00;
+}
+void SetLine1()
+{
+	CommandLCD(0x80);
+}
+
+void SetLine2()
+{
+	CommandLCD(0xC0);
+}
+
+void ClearLCD()
+{
+	CommandLCD(0x01);
 }
 
 void main(void)
 {
 	char str[16];
 	int i = 0; int j = 0;
-	str[0] = 't'; str[1] = 'e'; str[2] = 's'; str[3] = 't';
-    str[4] = 's'; str[5] = 't'; str[6] = 'r'; str[7] = ' ';
 
 	OSCCONbits.IRCF0 = 1;	//4MHz internal oscillator
 	OSCCONbits.IRCF1 = 0;	//T = 1ms 
@@ -48,75 +83,28 @@ void main(void)
 
 	Delay1KTCYx(20);		//20ms
 	PORTB = 0x00;
-	PORTAbits.RA7 = 1;		//Write on
-	PORTAbits.RA4 = 1;
-	PORTAbits.RA3 = 0;
+
+	//Function set
+	CommandLCD(0x38);		//8-bit Data Line, 2-lines, 5x8 dots
 	Delay1KTCYx(20);		//20ms
 
-	PORTB=0x38;				//Function set
-	PORTAbits.RA7 = 0; 		// RA7 - RS
-	PORTAbits.RA1 = 0; 		// RA1 - R/W
-	PORTAbits.RA2 = 1; 		// RA2 - E
-	PORTAbits.RA2 = 0;
-	PORTB = 0x00;
+	ClearLCD();
 	Delay1KTCYx(20);		//20ms
 
-	PORTB=0x01;				//CLEAR DISPLAY
-	PORTAbits.RA7 = 0;
-	PORTAbits.RA1 = 0;
-	PORTAbits.RA2 = 1;
-	PORTAbits.RA2 = 0;
-	PORTB = 0x00;
+	//Entry Mode Set
+	CommandLCD(0x06);		//Cursor right, Shift OFF
 	Delay1KTCYx(20);		//20ms
-
-	PORTB=0x06;				//ENTRY MODE SET
-	PORTAbits.RA7 = 0;
-	PORTAbits.RA1 = 0;
-	PORTAbits.RA2 = 1;
-	PORTAbits.RA2 = 0;
-	PORTB = 0x00;
-	Delay1KTCYx(20);		//20ms
-
-
-	PORTB=0x0C;				//DISPLAY ON
-	PORTAbits.RA7 = 0;		//No Cursor
-	PORTAbits.RA1 = 0;
-	PORTAbits.RA2 = 1;
-	PORTAbits.RA2 = 0;
-	PORTB = 0x00;
 
 	Delay10KTCYx(100);		//1s		
-
-    PORTAbits.RA7 = 1;
-	PORTAbits.RA1 = 0;
-
-	for( j = 1000; j >= 0; j-- )
+	CommandLCD(0x0C);		//Display ON, Cursor OFF
+	
+	for( j = 300; j >= 0; j-- )
 	{
-		PORTAbits.RA7 = 1;
+		SetLine2();
+
 		sprintf(str,"%4d",j);
-		for( i = 0; i < strlen(str); i++ )
-		{
-			PORTB = str[i];
-
-			PORTAbits.RA2 = 1;
-			PORTAbits.RA2 = 0;
-		}
-		Delay1KTCYx(1);
-
-		PORTB=0x02;				// return to home
-		PORTAbits.RA7 = 0;
-		PORTAbits.RA1 = 0;
-		PORTAbits.RA2 = 1;
-		PORTAbits.RA2 = 0;
-		PORTB = 0x00;	
-	
-		PORTB=0x01;				//CLEAR DISPLAY
-		PORTAbits.RA7 = 0;
-		PORTAbits.RA1 = 0;
-		PORTAbits.RA2 = 1;
-		PORTAbits.RA2 = 0;
-		PORTB = 0x00;
-	
+		WriteLCD(str);
+		Delay1KTCYx(1);	
 		SendUART(str);
 	}
 	while( 1 );
