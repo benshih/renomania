@@ -1,6 +1,6 @@
 # MPLAB IDE generated this makefile for use with Microsoft `nmake'.
 # Project: irLCD.mcp
-# Date: Sun Aug 30 16:10:23 2009
+# Date: Mon Aug 31 16:22:18 2009
 
 AS = MPASMWIN.exe
 CC = mcc18.exe
@@ -8,12 +8,15 @@ LD = mplink.exe
 AR = mplib.exe
 RM = del
 
-"irLCD.cof" : "lcd_counter.o"
-	$(LD) /l"C:\mcc18\lib" /k"C:\mcc18\lkr" "..\..\..\..\mcc18\lkr\18f25k20.lkr" "lcd_counter.o" /o"irLCD.cof" /M"irLCD.map" /W
+"irLCD.cof" : "main.o" "RenLCD.o"
+	$(LD) /l"C:\mcc18\lib" /k"C:\mcc18\lkr" "..\..\..\..\mcc18\lkr\18f25k20.lkr" "main.o" "RenLCD.o" /o"irLCD.cof" /M"irLCD.map" /W
 
-"lcd_counter.o" : "lcd_counter.c" "..\..\..\..\mcc18\h\delays.h" "..\..\..\..\mcc18\h\stdio.h" "..\..\..\..\mcc18\h\stdlib.h" "lcd_counter.c" "..\..\..\..\mcc18\h\p18f25k20.h" "..\..\..\..\mcc18\h\p18cxxx.h" "..\..\..\..\mcc18\h\stdarg.h" "..\..\..\..\mcc18\h\stddef.h"
-	$(CC) -p=18F25K20 /i"C:\mcc18\h" "lcd_counter.c" -fo="lcd_counter.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+"main.o" : "main.c" "..\..\..\..\mcc18\h\stdlib.h" "..\..\..\..\mcc18\h\stdio.h" "..\..\..\..\mcc18\h\delays.h" "RenLCD.h" "main.c" "..\..\..\..\mcc18\h\p18f25k20.h" "..\..\..\..\mcc18\h\stdarg.h" "..\..\..\..\mcc18\h\stddef.h" "..\..\..\..\mcc18\h\p18cxxx.h"
+	$(CC) -p=18F25K20 /i"C:\mcc18\h" "main.c" -fo="main.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
+
+"RenLCD.o" : "RenLCD.c" "..\..\..\..\mcc18\h\stdlib.h" "..\..\..\..\mcc18\h\stdio.h" "..\..\..\..\mcc18\h\delays.h" "RenLCD.h" "RenLCD.c" "..\..\..\..\mcc18\h\p18f25k20.h" "..\..\..\..\mcc18\h\stdarg.h" "..\..\..\..\mcc18\h\stddef.h" "..\..\..\..\mcc18\h\p18cxxx.h"
+	$(CC) -p=18F25K20 /i"C:\mcc18\h" "RenLCD.c" -fo="RenLCD.o" -D__DEBUG -Ou- -Ot- -Ob- -Op- -Or- -Od- -Opa-
 
 "clean" : 
-	$(RM) "lcd_counter.o" "irLCD.cof" "irLCD.hex"
+	$(RM) "main.o" "RenLCD.o" "irLCD.cof" "irLCD.hex"
 

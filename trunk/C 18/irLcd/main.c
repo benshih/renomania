@@ -17,14 +17,14 @@ void SendUARTchar(char);
 
 void InitializeUART()
 {
-	SPBRG = 25;				//Baud Rate 9600 for 4MHz
+	SPBRG = 12;				//Baud Rate 19200 for 4MHz
 	TRISC = TRISC | 0xC0;	//RX & TX TRIS controls to 1
 	TXSTAbits.SYNC = 0;		//asynchronous operation
 	RCSTAbits.SPEN = 1;		//TX/CK I/O pins as output
 	TXSTAbits.TX9 = 0;		//8-bit transmission
 	BAUDCONbits.CKTXP = 0;	//no data polarity
+	BAUDCONbits.BRG16 = 1;	//16-bit Baud Rate Generator
 	TXSTAbits.TXEN = 1;		//enables transmitter circuitry
-
 }
 void SendUART(char *c)
 {
@@ -59,7 +59,8 @@ void main(void)
 
 	TRISA = 0x00;			//PORTA output
 	TRISB = 0x00;			//PORTB output
-
+	TRISC = TRISC | 0x01;	//RC0 input
+	
 	InitializeUART();
 	InitializeLCD();
 	
@@ -67,7 +68,22 @@ void main(void)
 	SetLine2();
 	sprintf(str,"Ready");
 	WriteLCD(str);
+	SendUART(str);
 
-	while( 1 );
+	SetLine1();
+	SetLine1();
+	PORTAbits.RA6 = 1;
+	while( 1 )
+	{
+		if(PORTCbits.RC0 == 1)
+		{
+			sprintf(str,"1");
+		}
+		else if(PORTCbits.RC0 ==0)
+		{
+			sprintf(str,"0");
+		}
+		SendUART(str);	
+	}
 }
 
