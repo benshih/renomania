@@ -1,4 +1,5 @@
 #include <p18f25k20.h>
+#include <timers.h>
 #include "RenLCD.h"
 
 #pragma config FOSC = INTIO67, LVP = OFF
@@ -7,6 +8,7 @@
 //		FUNCTION PROTOTYPES
 //*****************************
 
+void InitializeTimers (void);
 void InitializeUART(void);
 void SendUART(char*);
 void SendUARTchar(char);
@@ -15,6 +17,14 @@ void SendUARTchar(char);
 //		FUNCTIONS
 //*****************************
 
+void InitializeTimers()
+{
+	OpenTimer0(	TIMER_INT_OFF &
+				T0_16BIT &
+				T0_SOURCE_INT &
+				T0_PS_1_1);	
+//	CloseTimer2();
+}	
 void InitializeUART()
 {
 	SPBRG = 12;				//Baud Rate 19200 for 4MHz
@@ -52,6 +62,9 @@ void main(void)
 {
 	char str[16];
 	int i = 0; int j = 0;
+	unsigned char ir0, ir1;
+	ir0 = ir1 = 0x00;
+	
 
 	OSCCONbits.IRCF0 = 1;	//4MHz internal oscillator
 	OSCCONbits.IRCF1 = 0;	//T = 1ms 
@@ -75,14 +88,26 @@ void main(void)
 	PORTAbits.RA6 = 1;
 	while( 1 )
 	{
-		if(PORTCbits.RC0 == 1)
-		{
-			sprintf(str,"1");
-		}
-		else if(PORTCbits.RC0 ==0)
-		{
-			sprintf(str,"0");
-		}
+		ir0 = ir1 = 0x00;
+		while(PORTCbits.RC0 == 1);
+		Delay1KTCYx(9);	//9ms
+		Delay10TCYx(29);//290us
+		if(PORTCbits.RC0 == 0)
+			ir0 = ir0 | 0x80;
+		Delay10TCYx(29);//290us
+		
+		
+	//	Delay
+		
+		
+//		if(PORTCbits.RC0 == 1)
+//		{
+//			sprintf(str,"1");
+//		}
+//		else if(PORTCbits.RC0 ==0)
+//		{
+			sprintf(str,"%d ",ir0);
+//		}
 		SendUART(str);	
 	}
 }
