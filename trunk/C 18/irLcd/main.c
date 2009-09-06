@@ -61,10 +61,8 @@ void SendUARTchar(char c)
 void main(void)
 {
 	char str[16];
-	int i = 0; int j = 0;
-	unsigned char ir0, ir1;
-	ir0 = ir1 = 0x00;
-	
+	int i = 0; int j = 0; int k = 0;
+	unsigned char ir[16];
 
 	OSCCONbits.IRCF0 = 1;	//4MHz internal oscillator
 	OSCCONbits.IRCF1 = 0;	//T = 1ms 
@@ -76,6 +74,7 @@ void main(void)
 	
 	InitializeUART();
 	InitializeLCD();
+	InitializeTimers();
 	
 	CommandLCD(0x01);
 	SetLine2();
@@ -86,29 +85,30 @@ void main(void)
 	SetLine1();
 	SetLine1();
 	PORTAbits.RA6 = 1;
-	while( 1 )
+	while(PORTCbits.RC0 == 1);
+	while(PORTCbits.RC0 == 0);
+	while(PORTCbits.RC0 == 1);
+	while(k<4)
 	{
-		ir0 = ir1 = 0x00;
-		while(PORTCbits.RC0 == 1);
-		Delay1KTCYx(9);	//9ms
-		Delay10TCYx(29);//290us
-		if(PORTCbits.RC0 == 0)
-			ir0 = ir0 | 0x80;
-		Delay10TCYx(29);//290us
+		for(j=0;j<8;j++)
+		{
+			while(PORTCbits.RC0 == 0);
+			WriteTimer0(0);
+			while(PORTCbits.RC0 == 1);	
+			i = ReadTimer0();
 		
-		
-	//	Delay
-		
-		
-//		if(PORTCbits.RC0 == 1)
-//		{
-//			sprintf(str,"1");
-//		}
-//		else if(PORTCbits.RC0 ==0)
-//		{
-			sprintf(str,"%d ",ir0);
-//		}
+			ir[k] = ir[k] << 1;
+			if(i<900)
+				ir[k] = ir[k] | 0x01;			
+		}
+		k++;
+	}
+	k--;
+	while(k>=0)
+	{
+		sprintf(str,"%x",ir[3-k]);
 		SendUART(str);	
+		k--;
 	}
 }
 
