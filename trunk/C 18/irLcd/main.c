@@ -85,30 +85,38 @@ void main(void)
 	SetLine1();
 	SetLine1();
 	PORTAbits.RA6 = 1;
-	while(PORTCbits.RC0 == 1);
-	while(PORTCbits.RC0 == 0);
-	while(PORTCbits.RC0 == 1);
-	while(k<4)
+	while(1)
 	{
-		for(j=0;j<8;j++)
+		i = 0;
+		while(i<4000)
 		{
-			while(PORTCbits.RC0 == 0);
+			while(PORTCbits.RC0 == 1);
 			WriteTimer0(0);
-			while(PORTCbits.RC0 == 1);	
+			while(PORTCbits.RC0 == 0);
 			i = ReadTimer0();
-		
-			ir[k] = ir[k] << 1;
-			if(i<900)
-				ir[k] = ir[k] | 0x01;			
 		}
-		k++;
-	}
-	k--;
-	while(k>=0)
-	{
-		sprintf(str,"%x",ir[3-k]);
-		SendUART(str);	
+		while(PORTCbits.RC0 == 1);
+		for(k=0;k<4;k++)
+		{
+			for(j=0;j<8;j++)
+			{
+				while(PORTCbits.RC0 == 0);
+				WriteTimer0(0);
+				while(PORTCbits.RC0 == 1);	
+				i = ReadTimer0();
+			
+				ir[k] = ir[k] << 1;
+				if(i<900)
+					ir[k] = ir[k] | 0x01;			
+			}
+		}
 		k--;
+		while(k>=0)
+		{
+			sprintf(str,"%x",ir[3-k]);
+			SendUART(str);	
+			k--;
+		}
 	}
 }
 
