@@ -7,39 +7,30 @@
 #define ServoTris TRISBbits.TRISB3
 //less than 1500: right
 
-//////////////////////////////////////////////////////////////////
-///
-///				INTERRUPT CODE
-///
-//////////////////////////////////////////////////////////////////
-
-void ccp1_isr();                    
+void ccp1_isr(void);  
+void init(void);
+void getSensorValues(void);                  
 int ADCres0, ADCres1, thres0, thres1;
 volatile int ServoPos;          //used to hold the servo position
 int wait = 0;
 int forward = 0;
 unsigned char buff;
 
-#pragma code low_vector=0x18    //setup the ISR vector
-void low_interrupt (){
-  _asm GOTO ccp1_isr _endasm    //jump to interrupt handler
-}
-#pragma code
+//////////////////////////////////////////////////////////////////
+///
+///				INTERRUPT
+///
+//////////////////////////////////////////////////////////////////
 
+#pragma code low_vector=0x18    //setup the ISR vector
+void low_interrupt(){_asm GOTO ccp1_isr _endasm}//jump to interrupt handler
+
+#pragma code
 #pragma interruptlow ccp1_isr   //the ISR
-void ccp1_isr(){
-	OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH0 & ADC_INT_OFF & ADC_VREFPLUS_EXT & ADC_VREFMINUS_VSS, 0);
-	SetChanADC(ADC_CH0);
-	ConvertADC();						
-	while(BusyADC());			
-	ADCres0 = ReadADC(); //right sensor
-	SetChanADC(ADC_CH1);
-	ConvertADC();						
-	while(BusyADC());			
-	ADCres1 = ReadADC(); //left sensor
-	CloseADC();
-	//ServoPos = 1550;
-	
+void ccp1_isr()
+{
+	getSensorValues();
+
 	PORTBbits.RB1 = 0;
 	PORTBbits.RB0 = 1;	
 	if(wait<0 || wait>3)
@@ -83,10 +74,10 @@ void ccp1_isr(){
 
 /////////////////////////////////////////////////////////////////
 ///
-///				MAIN CODE
+///				FUNCTIONS
 ///
 /////////////////////////////////////////////////////////////////
-void init(void)
+void init()
 {
 	TRISA = 0xff;	//PORTA is an input
 	TRISB = 0x00;	//PORTB is an output
@@ -106,7 +97,32 @@ void init(void)
     INTCON2bits.RBPU=0;         //enable port b week pullups
 }	
 
-void main(void)
+void getSensorValues()
+{
+	OpenADC(ADC_FOSC_32 & 
+			ADC_RIGHT_JUST,
+			ADC_CH0 &
+			ADC_INT_OFF & 
+			ADC_VREFPLUS_EXT & 
+			ADC_VREFMINUS_VSS, 
+			0);
+	SetChanADC(ADC_CH0);
+	ConvertADC();						
+	while(BusyADC());			
+	ADCres0 = ReadADC(); //right sensor
+	SetChanADC(ADC_CH1);
+	ConvertADC();						
+	while(BusyADC());			
+	ADCres1 = ReadADC(); //left sensor
+	CloseADC();
+}	
+
+/////////////////////////////////////////////////////////////////
+///
+///				MAIN
+///
+/////////////////////////////////////////////////////////////////
+void main()
 {
 	int white0, white1, black0, black1;
 	init();
