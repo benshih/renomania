@@ -75,15 +75,11 @@ void main(void)
 	InitializeUART();
 	InitializeLCD();
 	InitializeTimers();
-	
-	CommandLCD(0x01);
-	SetLine2();
+	//SetLine1();
 	sprintf(str,"Ready");
 	WriteLCD(str);
 	SendUART(str);
 
-	SetLine1();
-	SetLine1();
 	PORTAbits.RA6 = 1;
 	while(1)
 	{
