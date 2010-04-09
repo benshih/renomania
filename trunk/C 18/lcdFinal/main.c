@@ -50,7 +50,7 @@ void SendUARTchar(char c)
 
 void main(void)
 {
-	char str[16];
+	char str[25];
 	int i = 0; int j = 0;
 
 	OSCCONbits.IRCF0 = 1;	//4MHz internal oscillator
@@ -61,15 +61,15 @@ void main(void)
 	TRISB = 0x00;			//PORTB output
 
 	InitializeUART();
-	InitializeLCD();
+	//InitializeLCD();
 	
 	for( j = 300; j >= 0; j-- )
 	{
-		SetLine2();
+		//SetLine2();
 
 		sprintf(str,"%4d",j);
-		WriteLCD(str);
-		Delay1KTCYx(1);	
+		//WriteLCD(str);
+		Delay1KTCYx(10);	
 		SendUART(str);
 	}
 	while( 1 );
