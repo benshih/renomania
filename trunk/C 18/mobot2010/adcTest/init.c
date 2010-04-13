@@ -2,6 +2,10 @@
 #include <p18f25k20.h>
 #include "init.h"
 
+void initCLK(unsigned char freq){
+	OSCCON = (OSCCON&0x8F) | (freq<<4);
+}
+	
 void initTMR0(void){
 	T0CON = 0x03;	//Internal Clk,		INC on Low->High
 					//8-bit Control,	Use 1:16 prescaler
