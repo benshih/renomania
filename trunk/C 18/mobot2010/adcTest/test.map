@@ -1,5 +1,5 @@
 MPLINK 4.33, Linker
-Linker Map File - Created Tue Apr 13 16:10:27 2010
+Linker Map File - Created Tue Apr 13 16:38:06 2010
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -9,32 +9,35 @@ Linker Map File - Created Tue Apr 13 16:10:27 2010
               high_vector       code   0x000008    program   0x000006
           .code_adcbusy.o       code   0x00000e    program   0x00000a
                low_vector       code   0x000018    program   0x000006
-             .code_main.o       code   0x00001e    program   0x0001e4
-               _cinit_scn       code   0x000202    program   0x00009e
-          .code_adcopen.o       code   0x0002a0    program   0x00007e
-         .code_adcsetch.o       code   0x00031e    program   0x00002e
-             _startup_scn       code   0x00034c    program   0x00001c
-          .code_adcread.o       code   0x000368    program   0x000012
-                    .code       code   0x00037a    program   0x00000e
-          .code_adcconv.o       code   0x000388    program   0x000004
-           .code___init.o       code   0x00038c    program   0x000002
-        .romdata___init.o    romdata   0x00038e    program   0x000000
-        .idata___init.o_i    romdata   0x00038e    program   0x000000
-         .idata_c018i.o_i    romdata   0x00038e    program   0x000000
-      .romdata_adcsetch.o    romdata   0x00038e    program   0x000000
-      .idata_adcsetch.o_i    romdata   0x00038e    program   0x000000
-       .romdata_adcread.o    romdata   0x00038e    program   0x000000
-       .idata_adcread.o_i    romdata   0x00038e    program   0x000000
-       .romdata_adcopen.o    romdata   0x00038e    program   0x000000
-       .idata_adcopen.o_i    romdata   0x00038e    program   0x000000
-       .romdata_adcconv.o    romdata   0x00038e    program   0x000000
-       .idata_adcconv.o_i    romdata   0x00038e    program   0x000000
-         .romdata_c018i.o    romdata   0x00038e    program   0x000000
-       .romdata_adcbusy.o    romdata   0x00038e    program   0x000000
-       .idata_adcbusy.o_i    romdata   0x00038e    program   0x000000
-            .code_c018i.o       code   0x00038e    program   0x000000
-          .romdata_main.o    romdata   0x00038e    program   0x000000
-          .idata_main.o_i    romdata   0x00038e    program   0x000000
+             .code_init.o       code   0x00001e    program   0x000128
+             .code_main.o       code   0x000146    program   0x0000c2
+               _cinit_scn       code   0x000208    program   0x00009e
+          .code_adcopen.o       code   0x0002a6    program   0x00007e
+         .code_adcsetch.o       code   0x000324    program   0x00002e
+             _startup_scn       code   0x000352    program   0x00001c
+          .code_adcread.o       code   0x00036e    program   0x000012
+                    .code       code   0x000380    program   0x00000e
+          .code_adcconv.o       code   0x00038e    program   0x000004
+           .code___init.o       code   0x000392    program   0x000002
+       .romdata_adcread.o    romdata   0x000394    program   0x000000
+      .idata_adcsetch.o_i    romdata   0x000394    program   0x000000
+      .romdata_adcsetch.o    romdata   0x000394    program   0x000000
+       .idata_adcread.o_i    romdata   0x000394    program   0x000000
+        .idata___init.o_i    romdata   0x000394    program   0x000000
+        .romdata___init.o    romdata   0x000394    program   0x000000
+       .romdata_adcopen.o    romdata   0x000394    program   0x000000
+       .idata_adcopen.o_i    romdata   0x000394    program   0x000000
+       .romdata_adcconv.o    romdata   0x000394    program   0x000000
+       .idata_adcconv.o_i    romdata   0x000394    program   0x000000
+       .romdata_adcbusy.o    romdata   0x000394    program   0x000000
+       .idata_adcbusy.o_i    romdata   0x000394    program   0x000000
+          .romdata_init.o    romdata   0x000394    program   0x000000
+          .idata_init.o_i    romdata   0x000394    program   0x000000
+          .romdata_main.o    romdata   0x000394    program   0x000000
+          .idata_main.o_i    romdata   0x000394    program   0x000000
+            .code_c018i.o       code   0x000394    program   0x000000
+         .romdata_c018i.o    romdata   0x000394    program   0x000000
+         .idata_c018i.o_i    romdata   0x000394    program   0x000000
     .config_300001_main.o    romdata   0x300001    program   0x000001
     .config_300006_main.o    romdata   0x300006    program   0x000001
                  .tmpdata      udata   0x000000       data   0x000004
@@ -53,6 +56,8 @@ Linker Map File - Created Tue Apr 13 16:10:27 2010
          .udata_adcconv.o      udata   0x00006f       data   0x000000
          .idata_adcbusy.o      idata   0x00006f       data   0x000000
          .udata_adcbusy.o      udata   0x00006f       data   0x000000
+            .idata_init.o      idata   0x00006f       data   0x000000
+            .udata_init.o      udata   0x00006f       data   0x000000
             .idata_main.o      idata   0x00006f       data   0x000000
            .idata_c018i.o      idata   0x00006f       data   0x000000
                    .stack      udata   0x000500       data   0x000100
@@ -63,10 +68,10 @@ Linker Map File - Created Tue Apr 13 16:10:27 2010
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x00038d      
+                            0x000000    0x000393      
                             0x300001    0x300001      
                             0x300006    0x300006      
-            912 out of 33048 program addresses used, program memory utilization is 2%
+            918 out of 33048 program addresses used, program memory utilization is 2%
 
 
 
@@ -74,37 +79,37 @@ Linker Map File - Created Tue Apr 13 16:10:27 2010
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
                   BusyADC   0x00000e    program     extern C:\MCC18\src\pmc_common\ADC\adcbusy.c
-               ConvertADC   0x000388    program     extern C:\MCC18\src\pmc_common\ADC\adcconv.c
-                  OpenADC   0x0002a0    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
-                  ReadADC   0x000368    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
-               SetChanADC   0x00031e    program     extern C:\MCC18\src\pmc_common\ADC\adcsetch.c
+               ConvertADC   0x00038e    program     extern C:\MCC18\src\pmc_common\ADC\adcconv.c
+                  OpenADC   0x0002a6    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
+                  ReadADC   0x00036e    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
+               SetChanADC   0x000324    program     extern C:\MCC18\src\pmc_common\ADC\adcsetch.c
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00001   0x000366    program     static                          
-       ___return_lbl00002   0x00029e    program     static                          
+       ___return_lbl00001   0x00036c    program     static                          
+       ___return_lbl00002   0x0002a4    program     static                          
        ___return_lbl00004   0x00001c    program     static                          
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                   __init   0x00038c    program     extern C:\MCC18\src\traditional\stdclib\__init.c
-            __zero_memory   0x00037a    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                _do_cinit   0x000202    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                   __init   0x000392    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+            __zero_memory   0x000380    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                _do_cinit   0x000208    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                 _startup   0x00034c    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               clear_loop   0x000380    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
-                copy_loop   0x000274    program     static                          
-            copy_one_byte   0x00027a    program     static                          
-                     done   0x00029e    program     static                          
-             done_copying   0x000288    program     static                          
-                 high_isr   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                  initADC   0x0000fc    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                initPORTS   0x0000ee    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                 initTMR0   0x0000da    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
+                 _startup   0x000352    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               clear_loop   0x000386    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                copy_loop   0x00027a    program     static                          
+            copy_one_byte   0x000280    program     static                          
+                     done   0x0002a4    program     static                          
+             done_copying   0x00028e    program     static                          
+                 high_isr   0x000146    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
+                  initADC   0x000040    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\init.c
+                initPORTS   0x000032    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\init.c
+                 initTMR0   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\init.c
  interrupt_at_high_vector   0x000008    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
   interrupt_at_low_vector   0x000018    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                     loop   0x00035c    program     static                          
-                  low_isr   0x000048    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                     main   0x000086    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                     test   0x00021c    program     static                          
+                     loop   0x000362    program     static                          
+                  low_isr   0x000170    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
+                     main   0x0001ae    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
+                     test   0x000222    program     static                          
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -323,29 +328,29 @@ Linker Map File - Created Tue Apr 13 16:10:27 2010
                   BusyADC   0x00000e    program     extern C:\MCC18\src\pmc_common\ADC\adcbusy.c
   interrupt_at_low_vector   0x000018    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
        ___return_lbl00004   0x00001c    program     static                          
-                 high_isr   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                  low_isr   0x000048    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                     main   0x000086    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                 initTMR0   0x0000da    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                initPORTS   0x0000ee    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                  initADC   0x0000fc    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
-                _do_cinit   0x000202    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x00021c    program     static                          
-                copy_loop   0x000274    program     static                          
-            copy_one_byte   0x00027a    program     static                          
-             done_copying   0x000288    program     static                          
-                     done   0x00029e    program     static                          
-       ___return_lbl00002   0x00029e    program     static                          
-                  OpenADC   0x0002a0    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
-               SetChanADC   0x00031e    program     extern C:\MCC18\src\pmc_common\ADC\adcsetch.c
-                 _startup   0x00034c    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x00035c    program     static                          
-       ___return_lbl00001   0x000366    program     static                          
-                  ReadADC   0x000368    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
-            __zero_memory   0x00037a    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-               clear_loop   0x000380    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
-               ConvertADC   0x000388    program     extern C:\MCC18\src\pmc_common\ADC\adcconv.c
-                   __init   0x00038c    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+                 initTMR0   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\init.c
+                initPORTS   0x000032    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\init.c
+                  initADC   0x000040    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\init.c
+                 high_isr   0x000146    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
+                  low_isr   0x000170    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
+                     main   0x0001ae    program     extern C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
+                _do_cinit   0x000208    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x000222    program     static                          
+                copy_loop   0x00027a    program     static                          
+            copy_one_byte   0x000280    program     static                          
+             done_copying   0x00028e    program     static                          
+                     done   0x0002a4    program     static                          
+       ___return_lbl00002   0x0002a4    program     static                          
+                  OpenADC   0x0002a6    program     extern C:\MCC18\src\pmc_common\ADC\adcopen.c
+               SetChanADC   0x000324    program     extern C:\MCC18\src\pmc_common\ADC\adcsetch.c
+                 _startup   0x000352    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x000362    program     static                          
+       ___return_lbl00001   0x00036c    program     static                          
+                  ReadADC   0x00036e    program     extern C:\MCC18\src\pmc_common\ADC\adcread.c
+            __zero_memory   0x000380    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+               clear_loop   0x000386    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+               ConvertADC   0x00038e    program     extern C:\MCC18\src\pmc_common\ADC\adcconv.c
+                   __init   0x000392    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\mobot2010\adcTest\main.c
                   __tmp_0   0x000000       data     static C:\MCC18\src\pmc_common\ADC\adcsetch.c
