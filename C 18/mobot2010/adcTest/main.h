@@ -12,8 +12,5 @@
 
 void low_isr(void);
 void high_isr(void);
-void initTMR0(void);
-void initPORTS(void);
-void initADC(void);
 
 #endif
