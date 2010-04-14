@@ -4,6 +4,7 @@
 void initCLK(unsigned char freq);
 void initTMR0(void);
 void initPORTS(void);
+void initUART(void);
 void initADC(void);
 
 #endif 
