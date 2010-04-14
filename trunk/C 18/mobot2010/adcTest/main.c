@@ -5,7 +5,7 @@
 //		Global Variables
 //*****************************
 char ran1, ran2;
-char flag;
+char str[16];
 //Initialize
 unsigned short int black[10]	= {0,0,0,0,0,0,0,0,0,0};
 unsigned short int white[10] 	= {0,0,0,0,0,0,0,0,0,0};
@@ -51,11 +51,48 @@ void main(void)
 	initTMR0();
 	initPORTS(); 	
 	initADC();
+	initUART();
 	T0CONbits.TMR0ON = 1;
 while(1){
+		//sprintf(str,"%dhello\n\r",1);
+		//SendUART(str);
  		SetChanADC(ADC_CH1); ConvertADC();
  		while(BusyADC());
- 		if(ReadADC() > thres[0]) line[0] = 1;
-	 	else line[0] = 0;		 		
+ 		sprintf(str,"%d\n\r",ReadADC());
+ 		SendUART(str);
+ 		//if(ReadADC() > thres[0]) line[0] = 1;
+	 	//else line[0] = 0;	
+	 	/*
+	 	SetChanADC(ADC_CH1); ConvertADC();
+ 		while(BusyADC());
+ 		if(ReadADC() > thres[1]) line[1] = 1;
+	 	else line[1] = 0;
+	 	
+	 	SetChanADC(ADC_CH2); ConvertADC();
+ 		while(BusyADC());
+ 		if(ReadADC() > thres[2]) line[2] = 1;
+	 	else line[2] = 0;
+	 	
+	 	SetChanADC(ADC_CH3); ConvertADC();
+ 		while(BusyADC());
+ 		if(ReadADC() > thres[3]) line[3] = 1;
+	 	else line[3] = 0;
+	 	
+	 	SetChanADC(ADC_CH4); ConvertADC();
+ 		while(BusyADC());
+ 		if(ReadADC() > thres[4]) line[4] = 1;
+	 	else line[4] = 0;	 */		
  	}
+}
+
+void SendUART(char *c)
+{
+	char temp;
+	int i = 0;
+
+	do{
+		temp = c[i++];
+		TXREG = temp;
+		Delay1KTCYx(5);
+	} while( c[i] != '\0' );
 }

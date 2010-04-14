@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <timers.h>
 #include <adc.h>
+#include <delays.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define OSC_4MHZ	0x05
 #define OSC_8MHZ 	0x06
@@ -12,5 +15,6 @@
 
 void low_isr(void);
 void high_isr(void);
+void SendUART(char*);
 
 #endif

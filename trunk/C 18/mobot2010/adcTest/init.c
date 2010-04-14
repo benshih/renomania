@@ -26,6 +26,19 @@ void initPORTS(void){
     PORTB = 0x00;
 }    
 
+void initUART()
+{
+	SPBRG = 12;				//Baud Rate 9600 for 4MHz
+	TRISC = TRISC | 0xC0;	//RX & TX TRIS controls to 1
+	TXSTAbits.SYNC = 0;		//asynchronous operation
+	RCSTAbits.SPEN = 1;		//TX/CK I/O pins as output
+	TXSTAbits.TX9 = 0;		//8-bit transmission
+	BAUDCONbits.CKTXP = 0;	//no data polarity
+	BAUDCONbits.BRG16 = 1;	//16-bit Baud Rate Generator
+	TXSTAbits.TXEN = 1;		//enables transmitter circuitry
+
+}
+
 void initADC(void){
 	OpenADC(ADC_FOSC_32	& ADC_RIGHT_JUST,
 			ADC_CH0 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 
