@@ -11,7 +11,10 @@ unsigned short int black[10]	= {0,0,0,0,0,0,0,0,0,0};
 unsigned short int white[10] 	= {0,0,0,0,0,0,0,0,0,0};
 unsigned short int thres[10]	= {0,0,0,0,0,0,0,0,0,0};
 unsigned short int adc[10]		= {0,0,0,0,0,0,0,0,0,0};
-unsigned char line[10]			= {0,0,0,0,0,0,0,0,0,0};
+unsigned short int servosPosH[9]= {0,0,0,0,0,0,0,0,0};
+unsigned short int servosPosL[9]= {0,0,0,0,0,0,0,0,0};
+unsigned short int servosHigh, servosLow;
+
 
 //*****************************
 //		INTERRUPT PROTOTYPES
@@ -33,7 +36,8 @@ void high_isr(void){
 		//TMR0H = 0xFE; TMR0L = 0xA1; //right 1.4
 		//TMR0H = 0xFE; TMR0L = 0xBA; //right 1.3
 		//TMR0H = 0xFE; TMR0L = 0xD3; //right 1.2
-		TMR0H = 0xFE; TMR0L = 0xEC; //right 1.1
+		//TMR0H = 0xFE; TMR0L = 0xEC; //right 1.1
+		WriteTimer0(servosHigh);
 		servo = 1;
 		PORTAbits.RA4 = 1;
 	}
@@ -46,7 +50,8 @@ void high_isr(void){
 		//TMR0H = 0xEE; TMR0L = 0x07; //right 18.4
 		//TMR0H = 0xEE; TMR0L = 0x20; //right 18.3
 		//TMR0H = 0xEE; TMR0L = 0x39; //right 18.2
-		TMR0H = 0xEE; TMR0L = 0x52; //right 18.1
+		//TMR0H = 0xEE; TMR0L = 0x52; //right 18.1
+		WriteTimer0(servosLow);
 		servo = 0;
 		PORTAbits.RA4 = 0;
 	}		
@@ -92,6 +97,8 @@ void main(void)
 				adc[5],adc[6],adc[7],adc[8],adc[9]);
 		SendUART(str);*/
 		
+		/** TRACE THE LINE!! **/
+		lineTrace();
  	}
 }
 void SendUART(char *c)
@@ -110,13 +117,13 @@ void CollectADC(void){
 	SetChanADC(ADC_CH1); ConvertADC(); while(BusyADC()); adc[0] = ReadADC();
  	SetChanADC(ADC_CH1); ConvertADC(); while(BusyADC()); adc[1] = ReadADC();
 	SetChanADC(ADC_CH2); ConvertADC(); while(BusyADC()); adc[2] = ReadADC();
- 	SetChanADC(ADC_CH3); ConvertADC(); while(BusyADC()); adc[3] = ReadADC();
-	SetChanADC(ADC_CH4); ConvertADC(); while(BusyADC()); adc[4] = ReadADC();
-	SetChanADC(ADC_CH8); ConvertADC(); while(BusyADC()); adc[5] = ReadADC();
-	SetChanADC(ADC_CH9); ConvertADC(); while(BusyADC()); adc[6] = ReadADC();
-	SetChanADC(ADC_CH10); ConvertADC();while(BusyADC()); adc[7] = ReadADC();
-	SetChanADC(ADC_CH11); ConvertADC();while(BusyADC()); adc[8] = ReadADC();
-	SetChanADC(ADC_CH12); ConvertADC();while(BusyADC()); adc[9] = ReadADC();
+ 	SetChanADC(ADC_CH3); ConvertADC(); while(BusyADC()); adc[9] = ReadADC();
+	SetChanADC(ADC_CH4); ConvertADC(); while(BusyADC()); adc[3] = ReadADC();
+	SetChanADC(ADC_CH8); ConvertADC(); while(BusyADC()); adc[4] = ReadADC();
+	SetChanADC(ADC_CH9); ConvertADC(); while(BusyADC()); adc[5] = ReadADC();
+	SetChanADC(ADC_CH10); ConvertADC();while(BusyADC()); adc[6] = ReadADC();
+	SetChanADC(ADC_CH11); ConvertADC();while(BusyADC()); adc[7] = ReadADC();
+	SetChanADC(ADC_CH12); ConvertADC();while(BusyADC()); adc[8] = ReadADC();
 }	
 
 void StoreWhite(void){
@@ -142,7 +149,7 @@ void StoreBlack(void){
 }		
 
 void CalcThreshold(void){
-	int i=0;
+	short i=0;
 	for(;i<10;i++){
 		thres[i] = (white[i] + black[i]) >> 1;
 	}
@@ -152,3 +159,45 @@ void CalcThreshold(void){
 	SendUART(str);	
 			
 }	
+
+void CalcServosPos(void) {
+		/** Servos Position for High Values **/
+		servosPosH[0] = 0xFE24; //left 1.9
+		servosPosH[1] = 0xFE3D; //left 1.8
+		servosPosH[2] = 0xFE56; //left 1.7
+		servosPosH[3] = 0xFE6F; //left 1.6
+		servosPosH[4] = 0xFE88; //center 1.5
+		servosPosH[5] = 0xFEA1; //right 1.4
+		servosPosH[6] = 0xFEBA; //right 1.3
+		servosPosH[7] = 0xFED3; //right 1.2
+		servosPosH[8] = 0xFEEC; //right 1.1
+		
+		/** Servos Position for Low Values **/
+		servosPosL[0] = 0xED8A; //left 18.9
+		servosPosL[1] = 0xEDA3; //left 18.8
+		servosPosL[2] = 0xEDBC; //left 18.7
+		servosPosL[3] = 0xEDD5; //left 18.6
+		servosPosL[4] = 0xEDEE; //center
+		servosPosL[5] = 0xEE07; //right 18.4
+		servosPosL[6] = 0xEE20; //right 18.3
+		servosPosL[7] = 0xEE39; //right 18.2
+		servosPosL[8] = 0xEE52; //right 18.1		
+}
+
+void LineTrace(void) {
+	short i=0, j=0, line_thres=0, count=0; 
+	for(;i<9;i++) {
+		if(adc[i] > thres[i]) {
+			line_thres += i;
+			count++;
+		}
+	} 
+
+	//if(line_thres==0) //if something goes wrong 
+	//we still need to determine patch and normal line	
+
+	line_thres = (line_thres)/count; 
+	
+	servosHigh = servosPosH[line_thres];
+	servosLow = servosPosL[line_thres];
+}
