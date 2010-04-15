@@ -16,5 +16,9 @@
 void low_isr(void);
 void high_isr(void);
 void SendUART(char*);
+void CalcThreshold(void);
+void CollectADC(void);
+void StoreBlack(void);
+void StoreWhite(void);
 
 #endif
