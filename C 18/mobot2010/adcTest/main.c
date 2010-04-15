@@ -86,6 +86,7 @@ void main(void)
 			sprintf(str,"Starting Race Mode\n\r");
 			SendUART(str);
 			CalcThreshold();
+			CalcServosPos();
 			T0CONbits.TMR0ON = 1;
 			break;
 		}		 
@@ -98,7 +99,7 @@ void main(void)
 		SendUART(str);*/
 		
 		/** TRACE THE LINE!! **/
-		lineTrace();
+		LineTrace();
  	}
 }
 void SendUART(char *c)

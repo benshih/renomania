@@ -21,6 +21,6 @@ void CalcServosPos(void);
 void CollectADC(void);
 void StoreBlack(void);
 void StoreWhite(void);
-void lineTrace(void);
+void LineTrace(void);
 
 #endif
