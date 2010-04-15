@@ -4,7 +4,7 @@
 //*****************************
 //		Global Variables
 //*****************************
-char ran1, ran2;
+char servo=0;
 char str[16];
 //Initialize
 unsigned short int black[10]	= {0,0,0,0,0,0,0,0,0,0};
@@ -24,9 +24,32 @@ void interrupt_at_high_vector(void)
 #pragma interrupt high_isr      //the high ISR
 void high_isr(void){
 	INTCONbits.TMR0IF = 0;
-	TMR0H = 0x0B; TMR0L = 0xDB;
-   	sprintf(str,"\n\r");
-   	SendUART(str);
+	if(servo==0){
+		//TMR0H = 0xFE; TMR0L = 0x24; //left 1.9
+		//TMR0H = 0xFE; TMR0L = 0x3D; //left 1.8
+		//TMR0H = 0xFE; TMR0L = 0x56; //left 1.7
+		//TMR0H = 0xFE; TMR0L = 0x6F; //left 1.6
+		//TMR0H = 0xFE; TMR0L = 0x88; //center 1.5
+		//TMR0H = 0xFE; TMR0L = 0xA1; //right 1.4
+		//TMR0H = 0xFE; TMR0L = 0xBA; //right 1.3
+		//TMR0H = 0xFE; TMR0L = 0xD3; //right 1.2
+		TMR0H = 0xFE; TMR0L = 0xEC; //right 1.1
+		servo = 1;
+		PORTAbits.RA4 = 1;
+	}
+	else if(servo==1){
+		//TMR0H = 0xED; TMR0L = 0x8A; //left 18.9
+		//TMR0H = 0xED; TMR0L = 0xA3; //left 18.8
+		//TMR0H = 0xED; TMR0L = 0xBC; //left 18.7
+		//TMR0H = 0xED; TMR0L = 0xD5; //left 18.6
+		//TMR0H = 0xED; TMR0L = 0xEE; //center
+		//TMR0H = 0xEE; TMR0L = 0x07; //right 18.4
+		//TMR0H = 0xEE; TMR0L = 0x20; //right 18.3
+		//TMR0H = 0xEE; TMR0L = 0x39; //right 18.2
+		TMR0H = 0xEE; TMR0L = 0x52; //right 18.1
+		servo = 0;
+		PORTAbits.RA4 = 0;
+	}		
 }
 #pragma code low_vector = 0x18	//setup the low ISR vector
 void interrupt_at_low_vector(void) 
@@ -37,8 +60,6 @@ void low_isr(void){
 	PIR1bits.TMR1IF = 0;
 	TMR1H = 0x0B;
 	TMR1L = 0xDB;	
-	if(ran1 == 0) ran1 = 1;
-	else ran1 = 0;
 }
 //*****************************
 //		MAIN FUNCTION
@@ -52,36 +73,25 @@ void main(void)
 	initPORTS(); 	
 	initADC();
 	initUART();
-	while(1){
+	while(1){ //set up loop
 		CollectADC();
-		if(PORTCbits.RC0 == 0){
-			StoreBlack();
-			sprintf(str,"Black: %5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n\r",
-					black[0],black[1],black[2],black[3],black[4],
-					black[5],black[6],black[7],black[8],black[9]);
-			SendUART(str);
-		}	
-		else if(PORTCbits.RC1 == 0){
-			StoreWhite();	
-			sprintf(str,"White: %5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n\r",
-					white[0],white[1],white[2],white[3],white[4],
-					white[5],white[6],white[7],white[8],white[9]);
-			SendUART(str);
-		}	
+		if(PORTCbits.RC0 == 0) StoreBlack(); //stores and prints black values	
+		else if(PORTCbits.RC1 == 0)	StoreWhite(); //stores and prints white values	
 		else if(PORTCbits.RC2 == 0){
-			//T0CONbits.TMR0ON = 1;
 			sprintf(str,"Starting Race Mode\n\r");
 			SendUART(str);
 			CalcThreshold();
+			T0CONbits.TMR0ON = 1;
 			break;
 		}		 
 	}	
-	while(1){
+	while(1){ //race mode loop
 		CollectADC();
-		sprintf(str,"%5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n\r",
+		/*sprintf(str,"%5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n\r",
 				adc[0],adc[1],adc[2],adc[3],adc[4],
 				adc[5],adc[6],adc[7],adc[8],adc[9]);
-		//SendUART(str);
+		SendUART(str);*/
+		
  	}
 }
 void SendUART(char *c)
@@ -113,14 +123,22 @@ void StoreWhite(void){
 	white[0] = adc[0]; white[1] = adc[1]; white[2] = adc[2]; 
 	white[3] = adc[3]; white[4] = adc[4]; white[5] = adc[5]; 
 	white[6] = adc[6]; white[7] = adc[7]; white[8] = adc[8]; 
-	white[9] = adc[9]; 
+	white[9] = adc[9];
+	sprintf(str,"White: %5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n\r",
+			white[0],white[1],white[2],white[3],white[4],
+			white[5],white[6],white[7],white[8],white[9]);
+	SendUART(str); 
 }
 
 void StoreBlack(void){
 	black[0] = adc[0]; black[1] = adc[1]; black[2] = adc[2]; 
 	black[3] = adc[3]; black[4] = adc[4]; black[5] = adc[5]; 
 	black[6] = adc[6]; black[7] = adc[7]; black[8] = adc[8]; 
-	black[9] = adc[9];  
+	black[9] = adc[9]; 
+	sprintf(str,"Black: %5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n\r",
+				black[0],black[1],black[2],black[3],black[4],
+				black[5],black[6],black[7],black[8],black[9]);
+	SendUART(str); 
 }		
 
 void CalcThreshold(void){

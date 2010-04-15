@@ -7,7 +7,7 @@ void initCLK(unsigned char freq){
 }
 	
 void initTMR0(void){
-	T0CON = 0x03;	//Internal Clk,		INC on Low->High
+	T0CON = 0x02;	//Internal Clk,		INC on Low->High
 					//8-bit Control,	Use 1:16 prescaler
 					//Timer0 OFF
 	TMR0H = 0x0B;	//Write 0x0BDB
