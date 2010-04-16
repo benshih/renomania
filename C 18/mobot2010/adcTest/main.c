@@ -15,6 +15,8 @@ unsigned short int servosPosH[9]= {0,0,0,0,0,0,0,0,0};
 unsigned short int servosPosL[9]= {0,0,0,0,0,0,0,0,0};
 unsigned short int servosHigh, servosLow;
 
+unsigned short int prev_line_thres=4;	//stores prev line threshold
+
 
 //*****************************
 //		INTERRUPT PROTOTYPES
@@ -28,29 +30,11 @@ void interrupt_at_high_vector(void)
 void high_isr(void){
 	INTCONbits.TMR0IF = 0;
 	if(servo==0){
-		//TMR0H = 0xFE; TMR0L = 0x24; //left 1.9
-		//TMR0H = 0xFE; TMR0L = 0x3D; //left 1.8
-		//TMR0H = 0xFE; TMR0L = 0x56; //left 1.7
-		//TMR0H = 0xFE; TMR0L = 0x6F; //left 1.6
-		//TMR0H = 0xFE; TMR0L = 0x88; //center 1.5
-		//TMR0H = 0xFE; TMR0L = 0xA1; //right 1.4
-		//TMR0H = 0xFE; TMR0L = 0xBA; //right 1.3
-		//TMR0H = 0xFE; TMR0L = 0xD3; //right 1.2
-		//TMR0H = 0xFE; TMR0L = 0xEC; //right 1.1
 		WriteTimer0(servosHigh);
 		servo = 1;
 		PORTAbits.RA4 = 1;
 	}
 	else if(servo==1){
-		//TMR0H = 0xED; TMR0L = 0x8A; //left 18.9
-		//TMR0H = 0xED; TMR0L = 0xA3; //left 18.8
-		//TMR0H = 0xED; TMR0L = 0xBC; //left 18.7
-		//TMR0H = 0xED; TMR0L = 0xD5; //left 18.6
-		//TMR0H = 0xED; TMR0L = 0xEE; //center
-		//TMR0H = 0xEE; TMR0L = 0x07; //right 18.4
-		//TMR0H = 0xEE; TMR0L = 0x20; //right 18.3
-		//TMR0H = 0xEE; TMR0L = 0x39; //right 18.2
-		//TMR0H = 0xEE; TMR0L = 0x52; //right 18.1
 		WriteTimer0(servosLow);
 		servo = 0;
 		PORTAbits.RA4 = 0;
@@ -78,6 +62,7 @@ void main(void)
 	initPORTS(); 	
 	initADC();
 	initUART();
+//	PORTBbits.RB5=1;
 	while(1){ //set up loop
 		CollectADC();
 		if(PORTCbits.RC0 == 0) StoreBlack(); //stores and prints black values	
@@ -93,7 +78,8 @@ void main(void)
 	}	
 	while(1){ //race mode loop
 		CollectADC();
-		/*sprintf(str,"%5d %5d %5d %5d %5d %5d %5d %5d %5d %5d\n\r",
+	//	PORTBbits.RB5=0;
+		/*sprintf(str,"%5d,%5d,%5d,%5d,%5d,%5d,%5d,%5d,%5d,%5d\n\r",
 				adc[0],adc[1],adc[2],adc[3],adc[4],
 				adc[5],adc[6],adc[7],adc[8],adc[9]);
 		SendUART(str);*/
@@ -174,15 +160,15 @@ void CalcServosPos(void) {
 		servosPosH[8] = 0xFEEC; //right 1.1
 		
 		/** Servos Position for Low Values **/
-		servosPosL[0] = 0xED8A; //left 18.9
-		servosPosL[1] = 0xEDA3; //left 18.8
-		servosPosL[2] = 0xEDBC; //left 18.7
-		servosPosL[3] = 0xEDD5; //left 18.6
+		servosPosL[8] = 0xED8A; //left 18.9
+		servosPosL[7] = 0xEDA3; //left 18.8
+		servosPosL[6] = 0xEDBC; //left 18.7
+		servosPosL[5] = 0xEDD5; //left 18.6
 		servosPosL[4] = 0xEDEE; //center
-		servosPosL[5] = 0xEE07; //right 18.4
-		servosPosL[6] = 0xEE20; //right 18.3
-		servosPosL[7] = 0xEE39; //right 18.2
-		servosPosL[8] = 0xEE52; //right 18.1		
+		servosPosL[3] = 0xEE07; //right 18.4
+		servosPosL[2] = 0xEE20; //right 18.3
+		servosPosL[1] = 0xEE39; //right 18.2
+		servosPosL[0] = 0xEE52; //right 18.1		
 }
 
 void LineTrace(void) {
@@ -194,11 +180,24 @@ void LineTrace(void) {
 		}
 	} 
 
-	//if(line_thres==0) //if something goes wrong 
 	//we still need to determine patch and normal line	
 
-	line_thres = (line_thres)/count; 
-	
+	if(count==0) {
+		line_thres = prev_line_thres;
+	}
+	else {	
+		line_thres = (line_thres)/count;
+	} 
+	/**
+	//If steers off course
+	if(line_thres==-1) {
+		servosHigh = servosPosH[prev_line_thres];
+		servosLow = servosPosL[prev_line_thres];	
+	}
+	**/
 	servosHigh = servosPosH[line_thres];
 	servosLow = servosPosL[line_thres];
+	prev_line_thres = line_thres;
+	sprintf(str,"%d\n\r",line_thres);
+	SendUART(str);
 }
