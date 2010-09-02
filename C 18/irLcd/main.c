@@ -75,7 +75,7 @@ void main(void)
 	InitializeUART();
 	InitializeLCD();
 	InitializeTimers();
-	//SetLine1();
+	SetLine1();
 	sprintf(str,"Ready");
 	WriteLCD(str);
 	SendUART(str);

@@ -4,6 +4,7 @@ void InitializeLCD()
 {
 	Delay1KTCYx(50);		//50ms
 	PORTB = 0x00;
+	PORTC = 0x00;
 
 	//Function set
 	CommandLCD(0x38);		//8-bit Data Line, 2-lines, 5x8 dots
@@ -19,13 +20,17 @@ void InitializeLCD()
 void WriteLCD(char *c)		//Writes Characters to LCD
 {
 	int i = 0;
-	PORTAbits.RA7 = 1;
-	PORTAbits.RA1 = 0;
+	//PORTAbits.RA7 = 1;
+	PORTCbits.RC3 = 1;
+	//PORTAbits.RA1 = 0;
+	PORTCbits.RC2 = 0;
 	for( i = 0; c[i] != '\0'/*i < strlen(c)*/; i++ )
 	{
 		PORTB = c[i];
-		PORTAbits.RA2 = 1;
-		PORTAbits.RA2 = 0;
+		//PORTAbits.RA2 = 1;
+		PORTCbits.RC1 = 1;
+		//PORTAbits.RA2 = 0;
+		PORTCbits.RC1 = 0;
 		Nop();
 		Nop();
 	}
@@ -34,10 +39,14 @@ void WriteLCD(char *c)		//Writes Characters to LCD
 void CommandLCD(char c)		//Sends Commands to LCD
 {
 	PORTB=c;				//Line2
-	PORTAbits.RA7 = 0;		//
-	PORTAbits.RA1 = 0;
-	PORTAbits.RA2 = 1;
-	PORTAbits.RA2 = 0;
+	//PORTAbits.RA7 = 0;		//
+	PORTCbits.RC3 = 0;
+	//PORTAbits.RA1 = 0;
+	PORTCbits.RC2 = 0;
+	//PORTAbits.RA2 = 1;
+	PORTCbits.RC1 = 1;
+	//PORTAbits.RA2 = 0;
+	PORTCbits.RC1 = 0;
 	PORTB = 0x00;
 }
 

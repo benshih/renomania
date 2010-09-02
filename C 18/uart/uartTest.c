@@ -5,6 +5,7 @@
 #include <p18f25k20.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #pragma config FOSC = INTIO67, LVP = OFF
 
