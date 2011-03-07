@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <delays.h>
+#include <timers.h>
 
 void InitializeLCD(void);
 void WriteLCD(char*);

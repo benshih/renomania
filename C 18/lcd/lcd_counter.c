@@ -55,17 +55,17 @@ void SendUARTchar(char c)
 
 void InitializeLCD()
 {
-	Delay1KTCYx(20);		//20ms
+	Delay1KTCYx(30);		//20ms
 	PORTB = 0x00;
 
 	//Function set
 	CommandLCD(0x38);		//8-bit Data Line, 2-lines, 5x8 dots
-	Delay1KTCYx(20);		//20ms
+	Delay1KTCYx(30);		//20ms
 	ClearLCD();
-	Delay1KTCYx(20);		//20ms
+	Delay1KTCYx(30);		//20ms
 	//Entry Mode Set
 	CommandLCD(0x06);		//Cursor right, Shift OFF
-	Delay10KTCYx(100);		//1s		
+	Delay10KTCYx(50);		//.5s		
 	CommandLCD(0x0C);		//Display ON, Cursor OFF
 }
 void WriteLCD(char *c)		//Writes Characters to LCD
