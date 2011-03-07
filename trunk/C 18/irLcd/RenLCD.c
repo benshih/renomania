@@ -1,52 +1,44 @@
 #include "RenLCD.h"
 
+#define LCD_RS PORTCbits.RC3
+#define LCD_RW PORTCbits.RC2
+#define LCD_EN PORTCbits.RC1
+
 void InitializeLCD()
 {
-	Delay1KTCYx(50);		//50ms
-	PORTB = 0x00;
-	PORTC = 0x00;
-
 	//Function set
+	Delay10KTCYx(2);
 	CommandLCD(0x38);		//8-bit Data Line, 2-lines, 5x8 dots
-	Delay1KTCYx(20);		//20ms
-	ClearLCD();
-	Delay1KTCYx(20);		//20ms
-	//Entry Mode Set
-	CommandLCD(0x06);		//Cursor right, Shift OFF
-	Delay10KTCYx(100);		//1s		
-	CommandLCD(0x0C);		//Display ON, Cursor OFF
+	//Delay10KTCYx(2);
+	CommandLCD(0x0F);
+//	Delay10KTCYx(2);
+	CommandLCD(0x06);
+//	Delay10KTCYx(2);
+	CommandLCD(0x02);
 }
 
 void WriteLCD(char *c)		//Writes Characters to LCD
 {
-	int i = 0;
-	//PORTAbits.RA7 = 1;
-	PORTCbits.RC3 = 1;
-	//PORTAbits.RA1 = 0;
-	PORTCbits.RC2 = 0;
-	for( i = 0; c[i] != '\0'/*i < strlen(c)*/; i++ )
+	unsigned char i = 0;
+	LCD_RS = 1;
+	LCD_RW = 0;
+	LCD_EN=0;
+	for( i = 0; c[i] != '\0'; i++ )
 	{
 		PORTB = c[i];
-		//PORTAbits.RA2 = 1;
-		PORTCbits.RC1 = 1;
-		//PORTAbits.RA2 = 0;
-		PORTCbits.RC1 = 0;
-		Nop();
-		Nop();
+		LCD_EN = 1;
+		LCD_EN = 0;
+		//Nop();
+		//Nop();
 	}
 }
 
 void CommandLCD(char c)		//Sends Commands to LCD
 {
-	PORTB=c;				//Line2
-	//PORTAbits.RA7 = 0;		//
-	PORTCbits.RC3 = 0;
-	//PORTAbits.RA1 = 0;
-	PORTCbits.RC2 = 0;
-	//PORTAbits.RA2 = 1;
-	PORTCbits.RC1 = 1;
-	//PORTAbits.RA2 = 0;
-	PORTCbits.RC1 = 0;
+	PORTB=c;				
+	LCD_RS = LCD_RW = 0;
+	LCD_EN = 1;
+	LCD_EN = 0;
 	PORTB = 0x00;
 }
 

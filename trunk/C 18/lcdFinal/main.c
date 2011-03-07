@@ -60,25 +60,19 @@ void main(void)
 	TRISA = 0x00;			//PORTA output
 	TRISB = 0x00;			//PORTB output
 	TRISC = 0x00;			//PORTC output
-
-	InitializeUART();
+	
+	PORTA = 0;
+	PORTB = 0;
+	PORTC = 0;
+	
+//	InitializeUART();
 	InitializeLCD();
 	
-//	for( j = 300; j >= 0; j-- )
-//	{
-		ClearLCD();
-		SetLine1();
-
-		//sprintf(str,"%4d",j);
-		sprintf(str,"Hi I am dumb");
-		WriteLCD(str);
-		//SetLine2();
-		
-		//sprintf(str,"");
-		//WriteLCD(str);
-		Delay1KTCYx(10);	
-		SendUART(str);
-//	}
+	//ClearLCD();
+	//SetLine1();
+	Delay10KTCYx(50);		//.5s
+	sprintf(str,"Hi");
+	WriteLCD(str);
 	while( 1 );
 }
 
