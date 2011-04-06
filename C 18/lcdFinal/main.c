@@ -68,11 +68,19 @@ void main(void)
 //	InitializeUART();
 	InitializeLCD();
 	
-	//ClearLCD();
-	//SetLine1();
-	Delay10KTCYx(50);		//.5s
-	sprintf(str,"Hi");
-	WriteLCD(str);
+	sprintf(str,"0123456789abcdef");
+	while(1){
+
+		ClearLCD();
+		SetLine1();
+		WriteLCD(str);
+		Delay10KTCYx(20);		
+		ClearLCD();
+		SetLine2();
+		WriteLCD(str);
+		Delay10KTCYx(20);
+	}	
+	
 	while( 1 );
 }
 
