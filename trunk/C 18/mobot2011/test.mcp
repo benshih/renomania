@@ -37,8 +37,8 @@ file_001=no
 file_002=no
 [FILE_INFO]
 file_000=main.c
-file_001=C:\Users\Benjamin Shih\Desktop\Mobot\ben's C18 uC programs\servo-only\RenLCD.c
-file_002=C:\Users\Benjamin Shih\Desktop\Mobot\ben's C18 uC programs\servo-only\RenLCD.h
+file_001=C:\Nerd Stuff\uC\C 18\lcdFinal\RenLCD.c
+file_002=C:\Nerd Stuff\uC\C 18\lcdFinal\RenLCD.h
 [SUITE_INFO]
 suite_guid={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 suite_state=

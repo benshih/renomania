@@ -56,12 +56,14 @@ void low_isr (void)	{
 	
 	if(ran1 == 0){
 		ran1 = 1;
+		PORTCbits.RC0 = 0;
 		if(led[1] > 400)
 			WriteTimer1(invert(servoPos[2]));
 		
 	}	
 	else{
 		ran1 = 0;
+		PORTCbits.RC0 = 1;
 		if(led[1] > 400)
 			WriteTimer1(invert(servoPos[1]));
 		
@@ -182,8 +184,8 @@ void main(void)
 
 
 while(1){
-	//change the motor
-		LATC = (ran2<<2) | (ran1<<1); //not sure about this line of code because of portc/latc being special
+	//change the servo
+	//	LATC = (ran2<<2) | (ran1<<1); //not sure about this line of code because of portc/latc being special
 
 	//read the sensor data
 		//Obtain value for first LED (RA0)
@@ -233,7 +235,7 @@ while(1){
 		SetLine2();
 		WriteLCD(line2);
 
-		Delay10KTCYx(10);
+		//Delay10KTCYx(10);
 
  	}
 }
