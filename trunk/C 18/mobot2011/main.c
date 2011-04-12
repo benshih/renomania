@@ -5,111 +5,57 @@
 #include "RenLCD.h"
 
 #define dur 0xFA23
+#define OSCmask 0b0001111
+#define Fosc 5
+
 #define LED0 PORTAbits.RA4 
 #define LED1 PORTAbits.RA5 
 #define LED2 PORTAbits.RA6 
 #define LED3 PORTAbits.RA7 
 
 //*****************************
-//              GLOBAL VARIABLES
+//      GLOBAL VARIABLES
 //*****************************
 
 int led[4];
 int max;
 int servoPos[4] = {1000, 1100, 1350, 1500};
+char ran1, ran2, flag, adc0;
+int hightime;
 
 //*****************************
-//              FUNCTION PROTOTYPES
+//     FUNCTION PROTOTYPES
 //*****************************
-char ran1, ran2, flag, adc0;
+
+void InitializeUART(void);
+void SendUART(char*);
+void SendUARTchar(char);
+
+unsigned short invert(unsigned short);
+void initTimers (void);
+void init(void);
 void low_isr(void);
 void high_isr(void);
-int hightime;
-unsigned short invert(unsigned short);
-void InitializeTimers (void);
 
 /************************
-       INTERRUPT PROTOTYPES
+       INTERRUPT SETUP
 ************************/
+
 #pragma config FOSC = INTIO67, LVP = OFF
 
-#pragma code high_vector = 0x08         //setup the high ISR vector
-void interrupt_at_high_vector(void) {
-	_asm GOTO high_isr _endasm
-}
+#pragma code high_vector = 0x08  //setup the high ISR vector
+void int_high(void) {_asm GOTO high_isr _endasm}
 #pragma code
 #pragma interrupt high_isr      //the high ISR
-void high_isr (void) {
-	INTCONbits.TMR0IF = 0;
-	//WriteTimer0(0xDB);
-   //	if(ran2 == 0) ran2 = 1;
-   // else ran2 = 0;
-}
 
-#pragma code low_vector = 0x18          //setup the low ISR vector
-void interrupt_at_low_vector(void) {
-     _asm GOTO low_isr _endasm
-}
+#pragma code low_vector = 0x18   //setup the low ISR vector
+void int_low(void) {_asm GOTO low_isr _endasm}
 #pragma code
 #pragma interruptlow low_isr    //the low ISR
-void low_isr (void)	{
-	PIR1bits.TMR1IF = 0;
-	
-	if(ran1 == 0){
-		ran1 = 1;
-		LATCbits.LATC0 = 1;
-		if(led[max] > 400)
-		{
-			WriteTimer1(invert(servoPos[max]));
-		//	WriteTimer1(0xFA27);
-			hightime = servoPos[max];
-		}
-		else
-		{
-			WriteTimer1(0xFB4F);
-		}
-	}	
-	else{
-		ran1 = 0;
-		LATCbits.LATC0 = 0;
-		if(led[max] > 400)
-		{
-			WriteTimer1(invert(20000 - hightime));
-		}
-		else
-		{
-			WriteTimer1(0xB68F);
-		}
-	}
-}
-
-//*****************************
-//             DURATION CALCULATOR
-//*****************************
-
-
-unsigned short invert(unsigned short value)
-{
-	return 0xFFFF - value;
-}
-
-//*****************************
-//              TIMER
-//*****************************
-
-void InitializeTimers()
-{
-	OpenTimer0(	TIMER_INT_OFF &
-				T0_16BIT &
-				T0_SOURCE_INT &
-				T0_PS_1_1);	
-//	CloseTimer2();
-}
 
 //*****************************
 //              MAIN
 //*****************************
-
 
 void main(void)
 {
@@ -119,82 +65,18 @@ void main(void)
 	unsigned char ir[16];
 	int lmax;
 
-    //Initializing Interrupts
-    RCONbits.IPEN = 1;      //Initialize the IP
-       
-    INTCON2bits.TMR0IP = 1; //Set Timer0 to LowP
-    IPR1bits.TMR1IP = 0;            //Set Timer1 to HighP
-
-    //Oscilator Timer
-    OSCCONbits.IRCF0 = 1;   //4MHz internal oscillator
-    OSCCONbits.IRCF1 = 0;   //T = 1ms
-    OSCCONbits.IRCF2 = 1;
-
     ran1 = 1; ran2 = 0;
-    TRISA = 0x00;
-    PORTA = 0x00;
-	TRISB = 0x00;
-	TRISC = 0x00;
 
-          
-    T0CONbits.TMR0ON = 0;
-    T1CONbits.TMR1ON = 0;
-
-    //Initializing Timer 0 settings
-    T0CONbits.T08BIT = 0;
-    T0CONbits.T0CS = 0;
-    T0CONbits.T0SE = 0;
-    T0CONbits.PSA = 0;
-
-    /** 16 bits prescale **/
-    T0CONbits.T0PS0 = 1;
-    T0CONbits.T0PS1 = 1;
-    T0CONbits.T0PS2 = 0;
-
-    //Initializing Timer 1 settings
-    T1CONbits.RD16 = 1;
-    T1CONbits.T1RUN = 0;
-    T1CONbits.T1OSCEN = 0;
-    T1CONbits.TMR1CS = 0;
-
-	/** 8 bits prescale **/
-    T1CONbits.T1CKPS0 = 0;
-    T1CONbits.T1CKPS1 = 0;
-
-	WriteTimer0(dur);
-   	WriteTimer1(invert(dur));
-
-    /** START YOUR ENGINES!! **/
-    //T0CONbits.TMR0ON = 1;
-    T1CONbits.TMR1ON = 1;
-
-   	INTCONbits.TMR0IE = 1;  //Enable TMR0 interrupt
-    PIE1bits.TMR1IE = 1;    //Enable TMR1 interrupt
-    INTCONbits.PEIE = 1;    //Turn on LP interrupts
-    INTCONbits.GIE = 1;     //Turn on HP interrupts
-
+	init();
+	initTimers();
 	Delay10KTCYx(50);
-
-	//TRISA means 00000001 so only RA0 is an input (1 is input) while the rest are output(0 is output)
-	TRISA = 0x0F;			//PORTA output
-	//Precautionary
-	TRISB = 0x00;			//PORTB output
-
-//	InitializeUART();
+	InitializeUART();
 	InitializeLCD();
-	InitializeTimers();
-	
 	CommandLCD(0x01);
-	SetLine2();
-	sprintf(str,"\r\rIR Detector Test\r\n");
-	WriteLCD(str);
 //	SendUART(str);
 	ClearLCD();
-
-
 	SetLine1();
 	SetLine2();
-
 
 while(1){
 	//change the servo
@@ -256,8 +138,130 @@ while(1){
 		WriteLCD(line1);
 		SetLine2();
 		WriteLCD(line2);
-
-		//Delay10KTCYx(10);
-
  	}
+}
+
+void high_isr (void) {
+	INTCONbits.TMR0IF = 0;
+	//WriteTimer0(0xDB);
+   //	if(ran2 == 0) ran2 = 1;
+   // else ran2 = 0;
+}
+
+void low_isr (void)	{
+	PIR1bits.TMR1IF = 0;
+	
+	if(ran1 == 0){
+		ran1 = 1;
+		LATCbits.LATC0 = 1;
+		if(led[max] > 400)
+		{
+			WriteTimer1(invert(servoPos[max]));
+		//	WriteTimer1(0xFA27);
+			hightime = servoPos[max];
+		}
+		else
+		{
+			WriteTimer1(0xFB4F);
+		}
+	}	
+	else{
+		ran1 = 0;
+		LATCbits.LATC0 = 0;
+		if(led[max] > 400)
+		{
+			WriteTimer1(invert(20000 - hightime));
+		}
+		else
+		{
+			WriteTimer1(0xB68F);
+		}
+	}
+}
+
+unsigned short invert(unsigned short value)
+{
+	return 0xFFFF - value;
+}
+
+void init(){
+	//set internal oscillator speed
+	OSCCON = (OSCCON&OSCmask)|(Fosc<<4);   
+
+	//TRISA means 00000001 so only RA0 is an input (1 is input) while the rest are output(0 is output)
+	TRISA = 0x0F;			//PORTA output
+	//Precautionary
+	TRISB = 0x00;			//PORTB output
+	TRISC = 0x00;
+}	
+
+void initTimers()
+{
+	//turn timers off
+	T0CONbits.TMR0ON = 0;
+    T1CONbits.TMR1ON = 0;
+	
+
+	
+	//Initializing Timer 0 settings
+	OpenTimer0(	TIMER_INT_ON 	&
+				T0_16BIT 		&	
+				T0_SOURCE_INT 	&
+				T0_EDGE_RISE	&
+				T0_PS_1_16);	
+    T0CONbits.PSA = 0; //prescale off
+	
+	//Initializing Timer 1 settings
+    OpenTimer1( TIMER_INT_ON	&
+    			T1_16BIT_RW		&
+    			T1_SOURCE_INT	&
+    			T1_PS_1_1		&
+    			T1_OSC1EN_OFF	&
+    			T1_SYNC_EXT_OFF);
+    			
+    //Initializing Interrupts
+    RCONbits.IPEN = 1;      //Initialize the IP
+	INTCON2bits.TMR0IP = 1; //Set Timer0 to LowP
+    IPR1bits.TMR1IP = 0;    //Set Timer1 to HighP
+   	INTCONbits.TMR0IE = 0;  //Disable TMR0 interrupt
+    PIE1bits.TMR1IE = 1;    //Enable TMR1 interrupt    
+    INTCONbits.PEIE = 1;    //Turn on LP interrupts
+    INTCONbits.GIE = 1;     //Turn on HP interrupts
+    
+    WriteTimer0(dur);
+   	WriteTimer1(invert(dur));
+    
+    T0CONbits.TMR0ON = 0;
+    T1CONbits.TMR1ON = 1;
+}
+
+void InitializeUART()
+{
+	SPBRG = 12;				//Baud Rate 19200 for 4MHz
+	TRISC = TRISC | 0xC0;	//RX & TX TRIS controls to 1
+	TXSTAbits.SYNC = 0;		//asynchronous operation
+	RCSTAbits.SPEN = 1;		//TX/CK I/O pins as output
+	TXSTAbits.TX9 = 0;		//8-bit transmission
+	BAUDCONbits.CKTXP = 0;	//no data polarity
+	BAUDCONbits.BRG16 = 1;	//16-bit Baud Rate Generator
+	TXSTAbits.TXEN = 1;		//enables transmitter circuitry
+}
+
+void SendUART(char *c)
+{
+	char temp;
+	int i = 0;
+
+	do
+	{
+		temp = c[i++];
+		TXREG = temp;
+		Delay1KTCYx(5);
+	} while( c[i] != '\0' );
+}
+
+void SendUARTchar(char c)
+{
+	TXREG = c;
+	Delay1KTCYx(5);
 }
