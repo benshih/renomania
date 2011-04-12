@@ -16,7 +16,7 @@
 
 int led[4];
 int max;
-int servoPos[4] = {1300, 1400, 1600, 1700};
+int servoPos[4] = {1000, 1100, 1350, 1500};
 
 //*****************************
 //              FUNCTION PROTOTYPES
@@ -24,6 +24,7 @@ int servoPos[4] = {1300, 1400, 1600, 1700};
 char ran1, ran2, flag, adc0;
 void low_isr(void);
 void high_isr(void);
+int hightime;
 unsigned short invert(unsigned short);
 void InitializeTimers (void);
 
@@ -56,17 +57,29 @@ void low_isr (void)	{
 	
 	if(ran1 == 0){
 		ran1 = 1;
-		PORTCbits.RC0 = 0;
-		if(led[1] > 400)
-			WriteTimer1(invert(servoPos[2]));
-		
+		LATCbits.LATC0 = 1;
+		if(led[max] > 400)
+		{
+			WriteTimer1(invert(servoPos[max]));
+		//	WriteTimer1(0xFA27);
+			hightime = servoPos[max];
+		}
+		else
+		{
+			WriteTimer1(0xFB4F);
+		}
 	}	
 	else{
 		ran1 = 0;
-		PORTCbits.RC0 = 1;
-		if(led[1] > 400)
-			WriteTimer1(invert(servoPos[1]));
-		
+		LATCbits.LATC0 = 0;
+		if(led[max] > 400)
+		{
+			WriteTimer1(invert(20000 - hightime));
+		}
+		else
+		{
+			WriteTimer1(0xB68F);
+		}
 	}
 }
 
@@ -77,7 +90,7 @@ void low_isr (void)	{
 
 unsigned short invert(unsigned short value)
 {
-	return 0x1FFFB - value;
+	return 0xFFFF - value;
 }
 
 //*****************************
@@ -104,7 +117,7 @@ void main(void)
 	char str[16];
 	int i = 0; int j = 0; int k = 0;
 	unsigned char ir[16];
-
+	int lmax;
 
     //Initializing Interrupts
     RCONbits.IPEN = 1;      //Initialize the IP
@@ -227,8 +240,17 @@ while(1){
 		//SendUART(str);
 		led[3] = ReadADC(); // = atoi(str);
 		LED3 = 0;
-
-		sprintf(line1, "%d %d  ", led[0], led[1]);
+		
+		lmax = 0;
+		for(i = 1; i < 4; i++)
+		{
+			if(led[i] > led[lmax])
+			{
+				lmax = i;
+			}
+		}
+		max = lmax;
+		sprintf(line1, "%d %d  ", hightime);
 		sprintf(line2, "%d %d  ", led[2], led[3]);
 		SetLine1();
 		WriteLCD(line1);
