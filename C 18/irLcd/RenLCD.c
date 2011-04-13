@@ -40,8 +40,7 @@ void CommandLCD(char c)		//Sends Commands to LCD
 	LCD_RS = LCD_RW = 0;
 	LCD_EN = 1;
 	LCD_EN = 0;
-	Delay10TCYx(5);
-	//LATB = 0x00;
+	Delay10TCYx(5);			//minimum Texec = 38us
 }
 
 void SetLine1()				//Set cursor to beginning of first line
@@ -57,7 +56,7 @@ void SetLine2()				//Set cursor to beginning of second line
 void ClearLCD()				//clear the whole screen
 {
 	CommandLCD(0x01);
-	Delay1KTCYx(2);			//1.5ms
+	Delay1KTCYx(2);			//Texec = 1.5ms
 }
 
 void LCDon(){
