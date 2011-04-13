@@ -115,7 +115,9 @@ void initTimers()
 }
 
 void initI2C(void){
+	SSPCON1 = (SSPCON1 & 0xF0) | 0x06; //I am a slave
 	SSPADD = ADDR << 1; //enter slave address
+	
 	
 	PIE1bits.SSPIE = 1;	//enable MSSP interrupts
 	IPR1bits.SSPIP = 1; //MSSP are high priority	
