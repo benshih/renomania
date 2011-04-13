@@ -9,6 +9,7 @@
 #define ADDR 0x2 //slave address
 
 unsigned char var;
+char data;
 
 //*****************************
 //     FUNCTION PROTOTYPES
@@ -16,6 +17,7 @@ unsigned char var;
 
 void init(void);
 void initTimers(void);
+void initI2C(void);
 void low_isr(void);
 void high_isr(void);
 
@@ -41,12 +43,11 @@ void int_low(void) {_asm GOTO low_isr _endasm}
 
 void main(){
 	init();
+	initI2C();
 //	initTimers();
 	LED0 = 1; //indicator lamp on
 	while(1){
-//		if(DataRdyI2C()){
-//			var = getcI2C();
-//		}	
+		if(data==0x03) LED0 = 0;
 	}		
 }	
 
@@ -65,7 +66,11 @@ void init(){
 }	
 
 void high_isr (void) {
-	INTCONbits.TMR0IF = 0;
+	//INTCONbits.TMR0IF = 0;
+	PIR1bits.SSPIF = 0;
+	if(DataRdyI2C()){
+		data = getcI2C();
+	}	
 }
 
 void low_isr (void)	{
@@ -100,8 +105,7 @@ void initTimers()
     IPR1bits.TMR1IP = 0;    //Set Timer1 to LowP
    	INTCONbits.TMR0IE = 1;  //Enable TMR0 interrupt
     PIE1bits.TMR1IE = 0;    //Disable TMR1 interrupt    
-    INTCONbits.PEIE = 0;    //Turn off LP interrupts
-    INTCONbits.GIE = 1;     //Turn on HP interrupts
+
     
     WriteTimer0(0x8000);
 //   	WriteTimer1(invert(dur));
@@ -109,3 +113,13 @@ void initTimers()
     T0CONbits.TMR0ON = 1;
     T1CONbits.TMR1ON = 0;
 }
+
+void initI2C(void){
+	SSPADD = ADDR << 1; //enter slave address
+	
+	PIE1bits.SSPIE = 1;	//enable MSSP interrupts
+	IPR1bits.SSPIP = 1; //MSSP are high priority	
+	
+	INTCONbits.PEIE = 0;    //Turn off LP interrupts
+    INTCONbits.GIE = 1;     //Turn on HP interrupts
+}	
