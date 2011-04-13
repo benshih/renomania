@@ -49,13 +49,8 @@ void main(){
 	init();
 	initI2C();
 	//initTimers();
-
-	//data=getcI2C();	
+	
 	while(1){
-		if(DataRdyI2C()){
-			//if(ReadI2C()==3) LED1=0;
-		}	
-		
 	}		
 }	
 
