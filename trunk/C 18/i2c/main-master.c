@@ -65,6 +65,9 @@ void main()
 
 //	while(1)
 //	{
+//	Delay1KTCYx(1000);
+//	while(1)
+//	{
 	IdleI2C();
 
 	//starting  transmission
@@ -87,7 +90,7 @@ void main()
 	//send data
 //	SSPBUF = 0x3;
 	IdleI2C();
-	if(WriteI2C(0x3))
+	if(WriteI2C(0x4))
 	{
 		return;
 	}
@@ -101,8 +104,11 @@ void main()
 	//	WriteI2c(slave_addr);
 	//	if(
 //	}
-	SSPCON2bits.PEN = 1;
-	while(1){};
+//	StopI2C();
+//	SSPCON2bits.PEN = 1;
+//	while(1){};
+	IdleI2C();
+	//Delay1KTCYx(100);
 
 }
 
