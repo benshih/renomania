@@ -3,6 +3,7 @@
 #include <i2c.h>
 
 #define LED0 LATAbits.LATA0
+#define LED1 LATAbits.LATA1
 #define OSCmask 0b10001111
 #define Fosc 5 //4MHz
 
@@ -46,9 +47,8 @@ void main(){
 	initI2C();
 //	initTimers();
 	LED0 = 1; //indicator lamp on
-	while(1){
-		if(data==0x03) LED0 = 0;
-	}		
+	LED1 = 1;
+	while(1);
 }	
 
 /*******************************
@@ -68,9 +68,8 @@ void init(){
 void high_isr (void) {
 	//INTCONbits.TMR0IF = 0;
 	PIR1bits.SSPIF = 0;
-	if(DataRdyI2C()){
-		data = getcI2C();
-	}	
+	LED1=0;
+  	if(getcI2C()==3) LED0 = 0;
 }
 
 void low_isr (void)	{
@@ -103,20 +102,23 @@ void initTimers()
     RCONbits.IPEN = 1;      //Initialize the IP
 	INTCON2bits.TMR0IP = 1; //Set Timer0 to HighP
     IPR1bits.TMR1IP = 0;    //Set Timer1 to LowP
-   	INTCONbits.TMR0IE = 1;  //Enable TMR0 interrupt
+   	INTCONbits.TMR0IE = 0;  //Enable TMR0 interrupt
     PIE1bits.TMR1IE = 0;    //Disable TMR1 interrupt    
 
     
     WriteTimer0(0x8000);
 //   	WriteTimer1(invert(dur));
     
-    T0CONbits.TMR0ON = 1;
+    T0CONbits.TMR0ON = 0;
     T1CONbits.TMR1ON = 0;
 }
 
 void initI2C(void){
-	SSPCON1 = (SSPCON1 & 0xF0) | 0x06; //I am a slave
-	SSPADD = ADDR << 1; //enter slave address
+	SSPCON1bits.SSPM0 = 0; //I am a slave
+	SSPCON1bits.SSPM1 = 1; //I am a slave
+	SSPCON1bits.SSPM2 = 1; //I am a slave
+	SSPCON1bits.SSPM3 = 1; //I am a slave
+	SSPADD = 0xff << 1; //enter slave address
 	
 	
 	PIE1bits.SSPIE = 1;	//enable MSSP interrupts
