@@ -1,5 +1,5 @@
 MPLINK 4.33, Linker
-Linker Map File - Created Wed Apr 13 07:32:46 2011
+Linker Map File - Created Wed Apr 13 07:35:39 2011
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -24,15 +24,15 @@ Linker Map File - Created Wed Apr 13 07:32:46 2011
     .idata_main-slave.o_i    romdata   0x000010    program   0x000000
     .romdata_main-slave.o    romdata   0x000010    program   0x000000
                low_vector       code   0x000018    program   0x000006
-       .code_main-slave.o       code   0x00001e    program   0x000144
-               _cinit_scn       code   0x000162    program   0x00009e
-           .code_t1open.o       code   0x000200    program   0x000042
-          .code_t1write.o       code   0x000242    program   0x000038
-          .code_t0write.o       code   0x00027a    program   0x000038
-              D1KTCYXCODE       code   0x0002b2    program   0x000020
-             _startup_scn       code   0x0002d2    program   0x00001c
-         .code_i2c_read.o       code   0x0002ee    program   0x00001a
-                    .code       code   0x000308    program   0x00000e
+       .code_main-slave.o       code   0x00001e    program   0x000140
+               _cinit_scn       code   0x00015e    program   0x00009e
+           .code_t1open.o       code   0x0001fc    program   0x000042
+          .code_t1write.o       code   0x00023e    program   0x000038
+          .code_t0write.o       code   0x000276    program   0x000038
+              D1KTCYXCODE       code   0x0002ae    program   0x000020
+             _startup_scn       code   0x0002ce    program   0x00001c
+         .code_i2c_read.o       code   0x0002ea    program   0x00001a
+                    .code       code   0x000304    program   0x00000e
 .config_300001_main-slave.o    romdata   0x300001    program   0x000001
 .config_300006_main-slave.o    romdata   0x300006    program   0x000001
                 MATH_DATA      udata   0x000000       data   0x000002
@@ -61,52 +61,52 @@ Linker Map File - Created Wed Apr 13 07:32:46 2011
                                Start         End      
                            ---------   ---------      
                             0x000000    0x00000f      
-                            0x000018    0x000315      
+                            0x000018    0x000311      
                             0x300001    0x300001      
                             0x300006    0x300006      
-            784 out of 33048 program addresses used, program memory utilization is 2%
+            780 out of 33048 program addresses used, program memory utilization is 2%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    D1K_1   0x0002be    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x0002bc    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-              Delay1KTCYx   0x0002b2    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
-               OpenTimer1   0x000200    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
-                  ReadI2C   0x0002ee    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-              WriteTimer0   0x00027a    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
-              WriteTimer1   0x000242    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
-        _D1KTCYXCODE_0010   0x0002c2    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x0002c8    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x0002ba    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x0002b8    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+              Delay1KTCYx   0x0002ae    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
+               OpenTimer1   0x0001fc    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+                  ReadI2C   0x0002ea    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+              WriteTimer0   0x000276    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
+              WriteTimer1   0x00023e    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+        _D1KTCYXCODE_0010   0x0002be    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x0002c4    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
        ___return_lbl00000   0x00000c    program     static                          
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00001   0x0002ec    program     static                          
+       ___return_lbl00001   0x0002e8    program     static                          
        ___return_lbl00001   0x00001c    program     static                          
-       ___return_lbl00002   0x0001fe    program     static                          
+       ___return_lbl00002   0x0001fa    program     static                          
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                    __init   0x00000e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
-            __zero_memory   0x000308    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                _do_cinit   0x000162    program     extern C:\MCC18\src\traditional\startup\c018i.c
+            __zero_memory   0x000304    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                _do_cinit   0x00015e    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                 _startup   0x0002d2    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               clear_loop   0x00030e    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
-                copy_loop   0x0001d4    program     static                          
-            copy_one_byte   0x0001da    program     static                          
-                     done   0x0001fe    program     static                          
-             done_copying   0x0001e8    program     static                          
-                 high_isr   0x000040    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     init   0x00002e    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                  initI2C   0x000140    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-               initTimers   0x000106    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                 _startup   0x0002ce    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               clear_loop   0x00030a    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                copy_loop   0x0001d0    program     static                          
+            copy_one_byte   0x0001d6    program     static                          
+                     done   0x0001fa    program     static                          
+             done_copying   0x0001e4    program     static                          
+                 high_isr   0x00003c    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                     init   0x00002a    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                  initI2C   0x00013c    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+               initTimers   0x000102    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                  int_high   0x000008    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                   int_low   0x000018    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     loop   0x0002e2    program     static                          
-                  low_isr   0x0000de    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                     loop   0x0002de    program     static                          
+                  low_isr   0x0000da    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                      main   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     test   0x00017c    program     static                          
+                     test   0x000178    program     static                          
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -322,32 +322,32 @@ Linker Map File - Created Wed Apr 13 07:32:46 2011
                   int_low   0x000018    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
        ___return_lbl00001   0x00001c    program     static                          
                      main   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     init   0x00002e    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                 high_isr   0x000040    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                  low_isr   0x0000de    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-               initTimers   0x000106    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                  initI2C   0x000140    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                _do_cinit   0x000162    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x00017c    program     static                          
-                copy_loop   0x0001d4    program     static                          
-            copy_one_byte   0x0001da    program     static                          
-             done_copying   0x0001e8    program     static                          
-       ___return_lbl00002   0x0001fe    program     static                          
-                     done   0x0001fe    program     static                          
-               OpenTimer1   0x000200    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
-              WriteTimer1   0x000242    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
-              WriteTimer0   0x00027a    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
-              Delay1KTCYx   0x0002b2    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x0002bc    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                    D1K_1   0x0002be    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0010   0x0002c2    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x0002c8    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                 _startup   0x0002d2    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x0002e2    program     static                          
-       ___return_lbl00001   0x0002ec    program     static                          
-                  ReadI2C   0x0002ee    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-            __zero_memory   0x000308    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-               clear_loop   0x00030e    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     init   0x00002a    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                 high_isr   0x00003c    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                  low_isr   0x0000da    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+               initTimers   0x000102    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                  initI2C   0x00013c    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                _do_cinit   0x00015e    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x000178    program     static                          
+                copy_loop   0x0001d0    program     static                          
+            copy_one_byte   0x0001d6    program     static                          
+             done_copying   0x0001e4    program     static                          
+       ___return_lbl00002   0x0001fa    program     static                          
+                     done   0x0001fa    program     static                          
+               OpenTimer1   0x0001fc    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+              WriteTimer1   0x00023e    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+              WriteTimer0   0x000276    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
+              Delay1KTCYx   0x0002ae    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x0002b8    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x0002ba    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0010   0x0002be    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x0002c4    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                 _startup   0x0002ce    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x0002de    program     static                          
+       ___return_lbl00001   0x0002e8    program     static                          
+                  ReadI2C   0x0002ea    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+            __zero_memory   0x000304    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+               clear_loop   0x00030a    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                      SIGN   0x000000       data     extern C:\MCC18\src\traditional\math\cmath18.asm
