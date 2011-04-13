@@ -1,5 +1,5 @@
 MPLINK 4.33, Linker
-Linker Map File - Created Wed Apr 13 05:28:37 2011
+Linker Map File - Created Wed Apr 13 06:34:02 2011
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -10,41 +10,46 @@ Linker Map File - Created Wed Apr 13 05:28:37 2011
            .code___init.o       code   0x00000e    program   0x000002
         .romdata___init.o    romdata   0x000010    program   0x000000
         .idata___init.o_i    romdata   0x000010    program   0x000000
+       .romdata_t1write.o    romdata   0x000010    program   0x000000
+       .idata_t1write.o_i    romdata   0x000010    program   0x000000
        .romdata_t0write.o    romdata   0x000010    program   0x000000
        .idata_t0write.o_i    romdata   0x000010    program   0x000000
       .romdata_i2c_read.o    romdata   0x000010    program   0x000000
       .idata_i2c_read.o_i    romdata   0x000010    program   0x000000
-        .romdata_t0open.o    romdata   0x000010    program   0x000000
-        .idata_t0open.o_i    romdata   0x000010    program   0x000000
+        .romdata_t1open.o    romdata   0x000010    program   0x000000
+        .idata_t1open.o_i    romdata   0x000010    program   0x000000
     .romdata_main-slave.o    romdata   0x000010    program   0x000000
     .idata_main-slave.o_i    romdata   0x000010    program   0x000000
             .code_c018i.o       code   0x000010    program   0x000000
          .romdata_c018i.o    romdata   0x000010    program   0x000000
          .idata_c018i.o_i    romdata   0x000010    program   0x000000
                low_vector       code   0x000018    program   0x000006
-       .code_main-slave.o       code   0x00001e    program   0x00012a
-               _cinit_scn       code   0x000148    program   0x00009e
-          .code_t0write.o       code   0x0001e6    program   0x000038
-           .code_t0open.o       code   0x00021e    program   0x000038
-             _startup_scn       code   0x000256    program   0x00001c
-         .code_i2c_read.o       code   0x000272    program   0x00001a
-                    .code       code   0x00028c    program   0x00000e
+       .code_main-slave.o       code   0x00001e    program   0x0001e0
+               _cinit_scn       code   0x0001fe    program   0x00009e
+           .code_t1open.o       code   0x00029c    program   0x000042
+          .code_t1write.o       code   0x0002de    program   0x000038
+          .code_t0write.o       code   0x000316    program   0x000038
+             _startup_scn       code   0x00034e    program   0x00001c
+         .code_i2c_read.o       code   0x00036a    program   0x00001a
+                    .code       code   0x000384    program   0x00000e
 .config_300001_main-slave.o    romdata   0x300001    program   0x000001
 .config_300006_main-slave.o    romdata   0x300006    program   0x000001
                 MATH_DATA      udata   0x000000       data   0x000002
                  .tmpdata      udata   0x000002       data   0x000000
            .udata_c018i.o      udata   0x000060       data   0x00000a
       .udata_main-slave.o      udata   0x00006a       data   0x000002
-           .idata_c018i.o      idata   0x00006c       data   0x000000
-      .idata_main-slave.o      idata   0x00006c       data   0x000000
-          .udata_t0open.o      udata   0x00006c       data   0x000000
-          .idata_t0open.o      idata   0x00006c       data   0x000000
-        .udata_i2c_read.o      udata   0x00006c       data   0x000000
-        .idata_i2c_read.o      idata   0x00006c       data   0x000000
-         .udata_t0write.o      udata   0x00006c       data   0x000000
-         .idata_t0write.o      idata   0x00006c       data   0x000000
-          .udata___init.o      udata   0x00006c       data   0x000000
           .idata___init.o      idata   0x00006c       data   0x000000
+          .udata___init.o      udata   0x00006c       data   0x000000
+         .idata_t1write.o      idata   0x00006c       data   0x000000
+         .udata_t1write.o      udata   0x00006c       data   0x000000
+         .idata_t0write.o      idata   0x00006c       data   0x000000
+         .udata_t0write.o      udata   0x00006c       data   0x000000
+        .idata_i2c_read.o      idata   0x00006c       data   0x000000
+        .udata_i2c_read.o      udata   0x00006c       data   0x000000
+          .idata_t1open.o      idata   0x00006c       data   0x000000
+          .udata_t1open.o      udata   0x00006c       data   0x000000
+      .idata_main-slave.o      idata   0x00006c       data   0x000000
+           .idata_c018i.o      idata   0x00006c       data   0x000000
                    .stack      udata   0x000500       data   0x000100
             SFR_UNBANKED0      udata   0x000f77       data   0x000089
 
@@ -54,46 +59,47 @@ Linker Map File - Created Wed Apr 13 05:28:37 2011
                                Start         End      
                            ---------   ---------      
                             0x000000    0x00000f      
-                            0x000018    0x000299      
+                            0x000018    0x000391      
                             0x300001    0x300001      
                             0x300006    0x300006      
-            660 out of 33048 program addresses used, program memory utilization is 1%
+            908 out of 33048 program addresses used, program memory utilization is 2%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-               OpenTimer0   0x00021e    program     extern C:\MCC18\src\pmc_common\Timers\t0open.c
-                  ReadI2C   0x000272    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-              WriteTimer0   0x0001e6    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
+               OpenTimer1   0x00029c    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+                  ReadI2C   0x00036a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+              WriteTimer0   0x000316    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
+              WriteTimer1   0x0002de    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00001   0x000270    program     static                          
+       ___return_lbl00001   0x000368    program     static                          
        ___return_lbl00001   0x00001c    program     static                          
-       ___return_lbl00002   0x0001e4    program     static                          
+       ___return_lbl00002   0x00029a    program     static                          
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                    __init   0x00000e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
-            __zero_memory   0x00028c    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                _do_cinit   0x000148    program     extern C:\MCC18\src\traditional\startup\c018i.c
+            __zero_memory   0x000384    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                _do_cinit   0x0001fe    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                 _startup   0x000256    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               clear_loop   0x000292    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
-                copy_loop   0x0001ba    program     static                          
-            copy_one_byte   0x0001c0    program     static                          
-                     done   0x0001e4    program     static                          
-             done_copying   0x0001ce    program     static                          
-                 high_isr   0x00003c    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     init   0x00002a    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                  initI2C   0x000132    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-               initTimers   0x000104    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                 _startup   0x00034e    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               clear_loop   0x00038a    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                copy_loop   0x000270    program     static                          
+            copy_one_byte   0x000276    program     static                          
+                     done   0x00029a    program     static                          
+             done_copying   0x000284    program     static                          
+                 high_isr   0x000054    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                     init   0x000042    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                  initI2C   0x0001e6    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+               initTimers   0x0001ac    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                  int_high   0x000008    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                   int_low   0x000018    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     loop   0x000266    program     static                          
-                  low_isr   0x0000dc    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                     loop   0x00035e    program     static                          
+                  low_isr   0x0000f2    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                      main   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     test   0x000162    program     static                          
+                     test   0x000218    program     static                          
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -308,26 +314,27 @@ Linker Map File - Created Wed Apr 13 05:28:37 2011
                   int_low   0x000018    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
        ___return_lbl00001   0x00001c    program     static                          
                      main   0x00001e    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                     init   0x00002a    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                 high_isr   0x00003c    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                  low_isr   0x0000dc    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-               initTimers   0x000104    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                  initI2C   0x000132    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
-                _do_cinit   0x000148    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x000162    program     static                          
-                copy_loop   0x0001ba    program     static                          
-            copy_one_byte   0x0001c0    program     static                          
-             done_copying   0x0001ce    program     static                          
-       ___return_lbl00002   0x0001e4    program     static                          
-                     done   0x0001e4    program     static                          
-              WriteTimer0   0x0001e6    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x00021e    program     extern C:\MCC18\src\pmc_common\Timers\t0open.c
-                 _startup   0x000256    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x000266    program     static                          
-       ___return_lbl00001   0x000270    program     static                          
-                  ReadI2C   0x000272    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-            __zero_memory   0x00028c    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-               clear_loop   0x000292    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     init   0x000042    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                 high_isr   0x000054    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                  low_isr   0x0000f2    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+               initTimers   0x0001ac    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                  initI2C   0x0001e6    program     extern C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
+                _do_cinit   0x0001fe    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x000218    program     static                          
+                copy_loop   0x000270    program     static                          
+            copy_one_byte   0x000276    program     static                          
+             done_copying   0x000284    program     static                          
+       ___return_lbl00002   0x00029a    program     static                          
+                     done   0x00029a    program     static                          
+               OpenTimer1   0x00029c    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+              WriteTimer1   0x0002de    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+              WriteTimer0   0x000316    program     extern C:\MCC18\src\pmc_common\Timers\t0write.c
+                 _startup   0x00034e    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x00035e    program     static                          
+       ___return_lbl00001   0x000368    program     static                          
+                  ReadI2C   0x00036a    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+            __zero_memory   0x000384    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+               clear_loop   0x00038a    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
                __config_0   0x300001    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Nerd Stuff\uC\C 18\i2c\main-slave.c
                      SIGN   0x000000       data     extern C:\MCC18\src\traditional\math\cmath18.asm
