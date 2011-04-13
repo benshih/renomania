@@ -1,14 +1,16 @@
 #include <p18f25k20.h>
 #include <i2c.h>
+#include <delays.h>
 
 #define LED0 LATAbits.LATA0
+#define LED1 LATAbits.LATA1
 #define OSCmask 0b10001111
 #define Fosc 5 //4 MHz
 
 #define ADDR 0x2 // slave address
 
 unsigned char var;
-unsigned char slave_addr = 0x2;
+unsigned char slave_addr = 0xff<<1;
 
 //*****************************
 //     FUNCTION PROTOTYPES
@@ -40,13 +42,13 @@ void main()
 {
 	init();
 	LED0 = 1;
-
+	LED1 = 1;
 
 	PIE1bits.SSPIE = 1;	//enable MSSP interrupts
 	IPR1bits.SSPIP = 1; //MSSP are high priority	
 	
 	INTCONbits.PEIE = 0;    //Turn off LP interrupts
-    INTCONbits.GIE = 0;     //Turn on HP interrupts
+    INTCONbits.GIE = 1;     //Turn on HP interrupts
 
 
 	//enabling serial ports
@@ -58,23 +60,40 @@ void main()
 	SSPCON1bits.SSPM1 = 0;
 	SSPCON1bits.SSPM0 = 0;
 	
-	//since Fosc = 4MHz, SCK = 500Khz
+	//since Fosc = 4MHz, SCK = 100Khz
 	SSPADD = 0x9;
 
 //	while(1)
 //	{
+	IdleI2C();
+
 	//starting  transmission
-	SPPCON2bits.SEN = 1;
+	//SSPCON2bits.SEN = 1;
+	StartI2C();
+	IdleI2C();
+//	Delay1KTCYx(10);
+//	while(SSPCON2bits.SEN) {};
 	//loading slave address into buf; BF should be high after
-	SSPBUF = ADDR;
+	if(WriteI2C(slave_addr))
+	{
+		return;
+	}
+	//SSPBUF = slave_addr;
+	//while(SSPSTATbits.BF);
+
 	//wait until the slave acknowledges reciept (ACKSTAT = 0)
-	while(SSPCON2bits.ACKSTAT){};
-		
+//	while(SSPCON2bits.ACKSTAT){};
+//	LED1 = 0;	
 	//send data
-	SSPBUF = 0x3;
-		
+//	SSPBUF = 0x3;
+	IdleI2C();
+	if(WriteI2C(0x3))
+	{
+		return;
+	}
+	
 	//wait until the slave acknowledges reciept (ACKSTAT = 0)
-	while(SSPCON2bits.ACKSTAT){};
+//	while(SSPCON2bits.ACKSTAT){};
 		
 
 	//	OpenI2C(MASTER, SLEW_ON);
@@ -82,7 +101,8 @@ void main()
 	//	WriteI2c(slave_addr);
 	//	if(
 //	}
-
+	SSPCON2bits.PEN = 1;
+	while(1){};
 
 }
 
@@ -98,8 +118,8 @@ void init()
 }	
 
 void high_isr (void) {
-	//INTCONbits.TMR0IF = 0;
 	PIR1bits.SSPIF = 0;
+	LED1 = 0;
 //	if(DataRdyI2C()){
 //		data = getcI2C();
 //	}	
