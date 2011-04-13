@@ -1,5 +1,6 @@
 #include <p18f25k20.h>
 #include <timers.h>
+#include <delays.h>
 #include <i2c.h>
 
 #define LED0 LATAbits.LATA0
@@ -43,15 +44,16 @@ void int_low(void) {_asm GOTO low_isr _endasm}
 //*****************************
 
 void main(){
-	init();
-	initI2C();
-	initTimers();
 	LED0 = 1; //indicator lamp on
 	LED1 = 1;
-	data=getcI2C();	
+	init();
+	initI2C();
+	//initTimers();
+
+	//data=getcI2C();	
 	while(1){
 		if(DataRdyI2C()){
-			if(ReadI2C()==3) LED1=0;
+			//if(ReadI2C()==3) LED1=0;
 		}	
 		
 	}		
@@ -81,9 +83,9 @@ void high_isr (void) {
 
 void low_isr (void)	{
 	PIR1bits.TMR1IF = 0;
-	WriteTimer1(0xf000);
-	SSPCON1bits.SSPEN = !SSPCON1bits.SSPEN;
-	LED1 = !LED1;
+//	WriteTimer1(0xF000);
+//	//SSPCON1bits.SSPEN = !SSPCON1bits.SSPEN;
+//	LED1 = !LED1;
 }
 
 void initTimers()
@@ -124,8 +126,6 @@ void initTimers()
 }
 
 void initI2C(void){
-	SSPCON1bits.SSPEN = 1;
-	
 	SSPCON1bits.SSPM0 = 0; //I am a slave
 	SSPCON1bits.SSPM1 = 1; //I am a slave
 	SSPCON1bits.SSPM2 = 1; //I am a slave
@@ -138,4 +138,7 @@ void initI2C(void){
 	
 	INTCONbits.PEIE = 1;    //Turn off LP interrupts
     INTCONbits.GIE = 1;     //Turn on HP interrupts
+    
+    Delay1KTCYx(500);
+    SSPCON1bits.SSPEN = 1;
 }	
