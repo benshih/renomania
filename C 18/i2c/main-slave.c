@@ -7,6 +7,9 @@
 
 #define LED0 LATAbits.LATA0
 #define LED1 LATAbits.LATA1
+#define LED2 LATAbits.LATA2
+#define LED3 LATAbits.LATA3
+#define LED4 LATAbits.LATA4
 #define OSCmask 0b10001111
 #define Fosc 5 //4MHz
 
@@ -55,7 +58,10 @@ void int_low(void) {_asm GOTO low_isr _endasm}
 void main(){
 	temp = 0;
 	LED0 = 1; //indicator lamp on
-	LED1 = 1;
+	LED1 = 0;
+	LED2 = 0;
+	LED3 = 0;
+	LED4 = 0;
 	init();
 	initI2C();
 	initUART();
@@ -82,12 +88,39 @@ void init(){
 void high_isr (void) {
 	PIR1bits.SSPIF = 0;
 	data=getcI2C();
-  	if(data==4) LED0 = 0;
+	if(data==0) 
+	{
+		LED1 = 1;
+		LED2 = 0;
+		LED3 = 0;
+		LED4 = 0;
+	}
+	else if(data==1)	
+	{
+		LED1 = 0;
+		LED2 = 1;
+		LED3 = 0;
+		LED4 = 0;
+	}
+	else if(data==2)	
+	{
+		LED1 = 0;
+		LED2 = 0;
+		LED3 = 1;
+		LED4 = 0;
+	}
+  	else if(data==3) 	
+	{
+		LED1 = 0;
+		LED2 = 0;
+		LED3 = 0;
+		LED4 = 1;
+	}
 }
 
 void low_isr (void)	{
 	PIR1bits.TMR1IF = 0;
-	LED1 = !LED1;
+	LED0 = !LED0;
 	
 	if(temp){
 		duration = data;
