@@ -1,6 +1,8 @@
 #include <p18f25k20.h>
 #include <timers.h>
 #include <delays.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <i2c.h>
 
 #define LED0 LATAbits.LATA0
@@ -10,12 +12,19 @@
 
 #define ADDR 0x2 //slave address
 
+int duration;
 unsigned char var;
-char data;
+char data, temp;
+char str[16];
+
 
 //*****************************
 //     FUNCTION PROTOTYPES
 //*****************************
+
+void initUART(void);
+void SendUART(char*);
+void SendUARTchar(char);
 
 void init(void);
 void initTimers(void);
@@ -44,11 +53,13 @@ void int_low(void) {_asm GOTO low_isr _endasm}
 //*****************************
 
 void main(){
+	temp = 0;
 	LED0 = 1; //indicator lamp on
 	LED1 = 1;
 	init();
 	initI2C();
-	//initTimers();
+	initUART();
+	initTimers();
 	
 	while(1){
 	}		
@@ -69,35 +80,30 @@ void init(){
 }	
 
 void high_isr (void) {
-	//INTCONbits.TMR0IF = 0;
 	PIR1bits.SSPIF = 0;
-//	LED1=0;
-	//if(SSPCON1bits.SSPOV) LED1=0;
-  	if(getcI2C()==4) LED0 = 0;
+	data=getcI2C();
+  	if(data==4) LED0 = 0;
 }
 
 void low_isr (void)	{
 	PIR1bits.TMR1IF = 0;
-//	WriteTimer1(0xF000);
-//	//SSPCON1bits.SSPEN = !SSPCON1bits.SSPEN;
-//	LED1 = !LED1;
+	LED1 = !LED1;
+	
+	if(temp){
+		duration = data;
+		WriteTimer1(0xFFFF-duration);
+	}	
+	else{
+		WriteTimer1(0xFFFF-(10000-(duration)));
+	}		
+	temp = !temp;
 }
 
 void initTimers()
 {
-	//turn timers off
-	T0CONbits.TMR0ON = 0;
-    T1CONbits.TMR1ON = 0;
-	
-//	//Initializing Timer 0 settings
-//	OpenTimer0(	TIMER_INT_ON 	&
-//				T0_16BIT 		&	
-//				T0_SOURCE_INT 	&
-//				T0_EDGE_RISE	&
-//				T0_PS_1_16);	
-//    T0CONbits.PSA = 0; //prescale off
-	
-//	Initializing Timer 1 settings
+    T1CONbits.TMR1ON = 0; //timer 1 off
+    
+	// Initializing Timer 1 settings
     OpenTimer1( TIMER_INT_ON	&
     			T1_16BIT_RW		&
     			T1_SOURCE_INT	&
@@ -107,17 +113,11 @@ void initTimers()
     			
     //Initializing Interrupts
     RCONbits.IPEN = 1;      //Initialize the IP
-	INTCON2bits.TMR0IP = 1; //Set Timer0 to HighP
     IPR1bits.TMR1IP = 0;    //Set Timer1 to LowP
-   	INTCONbits.TMR0IE = 0;  //Enable TMR0 interrupt
     PIE1bits.TMR1IE = 1;    //Enable TMR1 interrupt    
-
     
-    WriteTimer0(0x8000);
     WriteTimer1(0xf000);
-    
-    T0CONbits.TMR0ON = 0;
-    T1CONbits.TMR1ON = 1;
+    T1CONbits.TMR1ON = 1; //timer 0 on
 }
 
 void initI2C(void){
@@ -137,3 +137,33 @@ void initI2C(void){
     Delay1KTCYx(500);
     SSPCON1bits.SSPEN = 1;
 }	
+
+void initUART()
+{
+	SPBRG = 12;				//Baud Rate 19200 for 4MHz
+	TRISC = TRISC | 0xC0;	//RX & TX TRIS controls to 1
+	TXSTAbits.SYNC = 0;		//asynchronous operation
+	RCSTAbits.SPEN = 1;		//TX/CK I/O pins as output
+	TXSTAbits.TX9 = 0;		//8-bit transmission
+	BAUDCONbits.CKTXP = 0;	//no data polarity
+	BAUDCONbits.BRG16 = 1;	//16-bit Baud Rate Generator
+	TXSTAbits.TXEN = 1;		//enables transmitter circuitry
+
+}
+void SendUART(char *c)
+{
+	char temp;
+	int i = 0;
+
+	do
+	{
+		temp = c[i++];
+		TXREG = temp;
+		Delay1KTCYx(5);
+	} while( c[i] != '\0' );
+}
+void SendUARTchar(char c)
+{
+	TXREG = c;
+	Delay1KTCYx(5);
+}
