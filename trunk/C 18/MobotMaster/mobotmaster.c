@@ -6,7 +6,7 @@
 #include "RenLCD.h"
 
 #define dur 0xFA23
-#define OSCmask 0b0001111
+#define OSCmask 0b10001111
 #define Fosc 5
 
 #define LED0 PORTAbits.RA4 
@@ -20,10 +20,11 @@
 
 int led[4];
 int max;
+char sendMax;
 int servoPos[4] = {1000, 1100, 1350, 1500};
 char ran1, ran2, flag, adc0;
 int hightime;
-unsigned char slave_addr = 0xff << 1;
+unsigned char slave_addr = 0x03 << 1;
 
 //*****************************
 //     FUNCTION PROTOTYPES
@@ -139,8 +140,8 @@ void main(void)
 			}
 		}
 		max = lmax;
-
-		sprintf(line1, "%d %d  ", hightime);
+		sendMax = max + 0x30;
+		sprintf(line1, "%d %c ", hightime, sendMax);
 		sprintf(line2, "%d %d  ", led[2], led[3]);
 		SetLine1();
 		WriteLCD(line1);
@@ -202,7 +203,7 @@ void low_isr (void)
 			return;
 		}
 		IdleI2C();
-		if(WriteI2C(max))			//send index
+		if(WriteI2C(sendMax))			//send index
 		{
 			return;
 		}
