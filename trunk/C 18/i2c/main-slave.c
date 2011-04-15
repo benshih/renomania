@@ -13,13 +13,13 @@
 #define OSCmask 0b10001111
 #define Fosc 5 //4MHz
 
-#define ADDR 0x2 //slave address
+#define ADDR 0x03 //slave address
 
 int duration;
 unsigned char var;
-char data, temp;
+char data, temp, tempData;
 char str[16];
-
+int speeds[4] = {4000, 8000, 8000, 4000};
 
 //*****************************
 //     FUNCTION PROTOTYPES
@@ -56,17 +56,17 @@ void int_low(void) {_asm GOTO low_isr _endasm}
 //*****************************
 
 void main(){
-	temp = 0;
-	LED0 = 1; //indicator lamp on
-	LED1 = 0;
-	LED2 = 0;
-	LED3 = 0;
-	LED4 = 0;
+	temp = 1;
+	LED0 = 0; //indicator lamp on
+	LED1 = 1;
+	LED2 = 1;
+	LED3 = 1;
+	LED4 = 1;
 	init();
-	initI2C();
 	initUART();
+	SendUARTchar('a');
+	initI2C();
 	initTimers();
-	
 	while(1){
 	}		
 }	
@@ -77,7 +77,7 @@ void main(){
 
 void init(){
 	//set internal oscillator speed
-	OSCCON = (OSCCON&OSCmask)|(Fosc<<3);   
+	OSCCON = (OSCCON&OSCmask)|(Fosc<<4);   
 
 	//port directions
 	TRISA = 0x00; //all output
@@ -85,51 +85,37 @@ void init(){
 	TRISC = 0x18; //all but RC3,4 are output
 }	
 
-void high_isr (void) {
+void low_isr (void) {
+
+//	SSPBUF=0;
+//	SSPSTATbits.UA=0;
+//	SSPSTATbits.BF=0;
+//	LED0 = !LED0;
+	tempData=getcI2C();
+	if(tempData == (ADDR << 1))
+		tempData = getcI2C();
+	data = tempData;
+	LED2 = !LED2;
 	PIR1bits.SSPIF = 0;
-	data=getcI2C();
-	if(data==0) 
-	{
-		LED1 = 1;
-		LED2 = 0;
-		LED3 = 0;
-		LED4 = 0;
-	}
-	else if(data==1)	
-	{
-		LED1 = 0;
-		LED2 = 1;
-		LED3 = 0;
-		LED4 = 0;
-	}
-	else if(data==2)	
-	{
-		LED1 = 0;
-		LED2 = 0;
-		LED3 = 1;
-		LED4 = 0;
-	}
-  	else if(data==3) 	
-	{
-		LED1 = 0;
-		LED2 = 0;
-		LED3 = 0;
-		LED4 = 1;
-	}
 }
 
-void low_isr (void)	{
-	PIR1bits.TMR1IF = 0;
-	LED0 = !LED0;
+void high_isr (void)	{
+	PIE1bits.SSPIE = 0;
 	
 	if(temp){
-		duration = data;
-		WriteTimer1(0xFFFF-duration);
+		LED0 = 1;
+		duration = speeds[data-0x30];
+		WriteTimer1(0xffff-duration);
 	}	
 	else{
-		WriteTimer1(0xFFFF-(10000-(duration)));
-	}		
+		LED0 = 0;
+		WriteTimer1(0xffff-(20000-(duration)));
+		//SendUARTchar(data);
+	}	
 	temp = !temp;
+	PIR1bits.TMR1IF = 0;
+	
+	PIE1bits.SSPIE = 1;
 }
 
 void initTimers()
@@ -146,10 +132,10 @@ void initTimers()
     			
     //Initializing Interrupts
     RCONbits.IPEN = 1;      //Initialize the IP
-    IPR1bits.TMR1IP = 0;    //Set Timer1 to LowP
+    IPR1bits.TMR1IP = 1;    //Set Timer1 to LowP
     PIE1bits.TMR1IE = 1;    //Enable TMR1 interrupt    
     
-    WriteTimer1(0xf000);
+    WriteTimer1(0xffff);
     T1CONbits.TMR1ON = 1; //timer 0 on
 }
 
@@ -158,13 +144,13 @@ void initI2C(void){
 	SSPCON1bits.SSPM1 = 1; //I am a slave
 	SSPCON1bits.SSPM2 = 1; //I am a slave
 	SSPCON1bits.SSPM3 = 0; //I am a slave
-	SSPADD = 0xff << 1; //enter slave address
-	
+	//SSPADD = 0xff << 1; //enter slave address
+	SSPADD = ADDR << 1;
 	
 	PIE1bits.SSPIE = 1;	//enable MSSP interrupts
-	IPR1bits.SSPIP = 1; //MSSP are high priority	
+	IPR1bits.SSPIP = 0; //MSSP are high priority	
 	
-	INTCONbits.PEIE = 1;    //Turn off LP interrupts
+	INTCONbits.PEIE = 1;    //Turn on LP interrupts
     INTCONbits.GIE = 1;     //Turn on HP interrupts
     
     Delay1KTCYx(500);
@@ -173,7 +159,7 @@ void initI2C(void){
 
 void initUART()
 {
-	SPBRG = 12;				//Baud Rate 19200 for 4MHz
+	SPBRG = 23;				//Baud Rate 19200 for 4MHz
 	TRISC = TRISC | 0xC0;	//RX & TX TRIS controls to 1
 	TXSTAbits.SYNC = 0;		//asynchronous operation
 	RCSTAbits.SPEN = 1;		//TX/CK I/O pins as output
@@ -198,5 +184,5 @@ void SendUART(char *c)
 void SendUARTchar(char c)
 {
 	TXREG = c;
-	Delay1KTCYx(5);
+	Delay1KTCYx(1);
 }

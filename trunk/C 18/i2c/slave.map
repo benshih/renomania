@@ -1,53 +1,53 @@
 MPLINK 4.33, Linker
-Linker Map File - Created Thu Apr 14 17:34:54 2011
+Linker Map File - Created Fri Apr 15 00:26:39 2011
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                _entry_scn       code   0x000000    program   0x000006
-                   .cinit    romdata   0x000006    program   0x000002
+           .code___init.o       code   0x000006    program   0x000002
               high_vector       code   0x000008    program   0x000006
-           .code___init.o       code   0x00000e    program   0x000002
-        .romdata___init.o    romdata   0x000010    program   0x000000
-        .idata___init.o_i    romdata   0x000010    program   0x000000
-       .romdata_t1write.o    romdata   0x000010    program   0x000000
-       .idata_t1write.o_i    romdata   0x000010    program   0x000000
-      .romdata_i2c_read.o    romdata   0x000010    program   0x000000
-      .idata_i2c_read.o_i    romdata   0x000010    program   0x000000
-        .romdata_t1open.o    romdata   0x000010    program   0x000000
-        .idata_t1open.o_i    romdata   0x000010    program   0x000000
-    .romdata_main-slave.o    romdata   0x000010    program   0x000000
-    .idata_main-slave.o_i    romdata   0x000010    program   0x000000
-            .code_c018i.o       code   0x000010    program   0x000000
-         .romdata_c018i.o    romdata   0x000010    program   0x000000
-         .idata_c018i.o_i    romdata   0x000010    program   0x000000
+         .romdata_c018i.o    romdata   0x00000e    program   0x000000
+        .romdata_t1open.o    romdata   0x00000e    program   0x000000
+        .idata_t1open.o_i    romdata   0x00000e    program   0x000000
+    .idata_main-slave.o_i    romdata   0x00000e    program   0x000008
+    .romdata_main-slave.o    romdata   0x00000e    program   0x000000
+        .romdata___init.o    romdata   0x00000e    program   0x000000
+      .romdata_i2c_read.o    romdata   0x00000e    program   0x000000
+       .idata_t1write.o_i    romdata   0x00000e    program   0x000000
+       .romdata_t1write.o    romdata   0x00000e    program   0x000000
+      .idata_i2c_read.o_i    romdata   0x000016    program   0x000000
+        .idata___init.o_i    romdata   0x000016    program   0x000000
+            .code_c018i.o       code   0x000016    program   0x000000
+         .idata_c018i.o_i    romdata   0x000016    program   0x000000
                low_vector       code   0x000018    program   0x000006
-       .code_main-slave.o       code   0x00001e    program   0x000310
-               _cinit_scn       code   0x00032e    program   0x00009e
-           .code_t1open.o       code   0x0003cc    program   0x000042
-          .code_t1write.o       code   0x00040e    program   0x000038
-              D1KTCYXCODE       code   0x000446    program   0x000020
-             _startup_scn       code   0x000466    program   0x00001c
-         .code_i2c_read.o       code   0x000482    program   0x00001a
-                    .code       code   0x00049c    program   0x00000e
+                   .cinit    romdata   0x00001e    program   0x00000e
+       .code_main-slave.o       code   0x00002c    program   0x000310
+               _cinit_scn       code   0x00033c    program   0x00009e
+           .code_t1open.o       code   0x0003da    program   0x000042
+          .code_t1write.o       code   0x00041c    program   0x000038
+              D1KTCYXCODE       code   0x000454    program   0x000020
+             _startup_scn       code   0x000474    program   0x00001c
+         .code_i2c_read.o       code   0x000490    program   0x00001a
+                    .code       code   0x0004aa    program   0x00000e
 .config_300001_main-slave.o    romdata   0x300001    program   0x000001
 .config_300006_main-slave.o    romdata   0x300006    program   0x000001
-              low_isr_tmp      udata   0x000000       data   0x000002
+             high_isr_tmp      udata   0x000000       data   0x000002
                 MATH_DATA      udata   0x000002       data   0x000002
                  .tmpdata      udata   0x000004       data   0x000002
                 DELAYDAT1      udata   0x000006       data   0x000001
-      .udata_main-slave.o      udata   0x000060       data   0x000015
-           .udata_c018i.o      udata   0x000075       data   0x00000a
-          .idata___init.o      idata   0x00007f       data   0x000000
-          .udata___init.o      udata   0x00007f       data   0x000000
-         .idata_t1write.o      idata   0x00007f       data   0x000000
-         .udata_t1write.o      udata   0x00007f       data   0x000000
-        .idata_i2c_read.o      idata   0x00007f       data   0x000000
-        .udata_i2c_read.o      udata   0x00007f       data   0x000000
-          .idata_t1open.o      idata   0x00007f       data   0x000000
-          .udata_t1open.o      udata   0x00007f       data   0x000000
-      .idata_main-slave.o      idata   0x00007f       data   0x000000
-           .idata_c018i.o      idata   0x00007f       data   0x000000
+      .udata_main-slave.o      udata   0x000060       data   0x000016
+           .udata_c018i.o      udata   0x000076       data   0x00000a
+      .idata_main-slave.o      idata   0x000080       data   0x000008
+          .idata___init.o      idata   0x000088       data   0x000000
+          .udata___init.o      udata   0x000088       data   0x000000
+         .idata_t1write.o      idata   0x000088       data   0x000000
+         .udata_t1write.o      udata   0x000088       data   0x000000
+        .idata_i2c_read.o      idata   0x000088       data   0x000000
+        .udata_i2c_read.o      udata   0x000088       data   0x000000
+          .idata_t1open.o      idata   0x000088       data   0x000000
+          .udata_t1open.o      udata   0x000088       data   0x000000
+           .idata_c018i.o      idata   0x000088       data   0x000000
                    .stack      udata   0x000500       data   0x000100
             SFR_UNBANKED0      udata   0x000f77       data   0x000089
 
@@ -56,55 +56,55 @@ Linker Map File - Created Thu Apr 14 17:34:54 2011
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x00000f      
-                            0x000018    0x0004a9      
+                            0x000000    0x000015      
+                            0x000018    0x0004b7      
                             0x300001    0x300001      
                             0x300006    0x300006      
-            1188 out of 33048 program addresses used, program memory utilization is 3%
+            1208 out of 33048 program addresses used, program memory utilization is 3%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    D1K_1   0x000452    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x000450    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-              Delay1KTCYx   0x000446    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
-               OpenTimer1   0x0003cc    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
-                  ReadI2C   0x000482    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-                 SendUART   0x000292    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-             SendUARTchar   0x00030e    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-              WriteTimer1   0x00040e    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
-        _D1KTCYXCODE_0010   0x000456    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00045c    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x000460    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x00045e    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+              Delay1KTCYx   0x000454    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
+               OpenTimer1   0x0003da    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+                  ReadI2C   0x000490    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+                 SendUART   0x0002a0    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+             SendUARTchar   0x00031c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+              WriteTimer1   0x00041c    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+        _D1KTCYXCODE_0010   0x000464    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00046a    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00001   0x000480    program     static                          
+       ___return_lbl00001   0x00048e    program     static                          
        ___return_lbl00001   0x00001c    program     static                          
-       ___return_lbl00002   0x0003ca    program     static                          
+       ___return_lbl00002   0x0003d8    program     static                          
                __config_0   0x300001    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                   __init   0x00000e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
-            __zero_memory   0x00049c    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                _do_cinit   0x00032e    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                   __init   0x000006    program     extern C:\MCC18\src\traditional\stdclib\__init.c
+            __zero_memory   0x0004aa    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                _do_cinit   0x00033c    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                 _startup   0x000466    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               clear_loop   0x0004a2    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
-                copy_loop   0x0003a0    program     static                          
-            copy_one_byte   0x0003a6    program     static                          
-                     done   0x0003ca    program     static                          
-             done_copying   0x0003b4    program     static                          
-                 high_isr   0x00004a    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     init   0x000038    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                  initI2C   0x000258    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-               initTimers   0x000234    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 initUART   0x00027a    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 _startup   0x000474    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               clear_loop   0x0004b0    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                copy_loop   0x0003ae    program     static                          
+            copy_one_byte   0x0003b4    program     static                          
+                     done   0x0003d8    program     static                          
+             done_copying   0x0003c2    program     static                          
+                 high_isr   0x000126    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                     init   0x000050    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                  initI2C   0x000266    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+               initTimers   0x000244    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 initUART   0x000288    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                  int_high   0x000008    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                   int_low   0x000018    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     loop   0x000476    program     static                          
-                  low_isr   0x000120    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     main   0x00001e    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     test   0x000348    program     static                          
+                     loop   0x000484    program     static                          
+                  low_isr   0x000062    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                     main   0x00002c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                     test   0x000356    program     static                          
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -302,14 +302,16 @@ Linker Map File - Created Thu Apr 14 17:34:54 2011
             __FPFLAGSbits   0x000003       data     extern C:\MCC18\src\traditional\math\cmath18.asm
                   __tmp_0   0x000004       data     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                   __tmp_2   0x000000       data     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                curr_byte   0x000078       data     static C:\MCC18\src\traditional\startup\c018i.c
-               curr_entry   0x00007a       data     static C:\MCC18\src\traditional\startup\c018i.c
+                curr_byte   0x000079       data     static C:\MCC18\src\traditional\startup\c018i.c
+               curr_entry   0x00007b       data     static C:\MCC18\src\traditional\startup\c018i.c
                      data   0x000063       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 data_ptr   0x00007c       data     static C:\MCC18\src\traditional\startup\c018i.c
+                 data_ptr   0x00007d       data     static C:\MCC18\src\traditional\startup\c018i.c
                  duration   0x000060       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     prom   0x000075       data     static C:\MCC18\src\traditional\startup\c018i.c
-                      str   0x000065       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                     prom   0x000076       data     static C:\MCC18\src\traditional\startup\c018i.c
+                   speeds   0x000080       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                      str   0x000066       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                      temp   0x000064       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 tempData   0x000065       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                       var   0x000062       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
 
 
@@ -319,57 +321,59 @@ Linker Map File - Created Thu Apr 14 17:34:54 2011
                 ---------  ---------  ---------  --------- ---------                
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
        ___return_lbl00000   0x000004    program     static                          
+                   __init   0x000006    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                  int_high   0x000008    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
        ___return_lbl00000   0x00000c    program     static                          
-                   __init   0x00000e    program     extern C:\MCC18\src\traditional\stdclib\__init.c
                   int_low   0x000018    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
        ___return_lbl00001   0x00001c    program     static                          
-                     main   0x00001e    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     init   0x000038    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 high_isr   0x00004a    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                  low_isr   0x000120    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-               initTimers   0x000234    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                  initI2C   0x000258    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 initUART   0x00027a    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 SendUART   0x000292    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-             SendUARTchar   0x00030e    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                _do_cinit   0x00032e    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x000348    program     static                          
-                copy_loop   0x0003a0    program     static                          
-            copy_one_byte   0x0003a6    program     static                          
-             done_copying   0x0003b4    program     static                          
-                     done   0x0003ca    program     static                          
-       ___return_lbl00002   0x0003ca    program     static                          
-               OpenTimer1   0x0003cc    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
-              WriteTimer1   0x00040e    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
-              Delay1KTCYx   0x000446    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x000450    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                    D1K_1   0x000452    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0010   0x000456    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00045c    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                 _startup   0x000466    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x000476    program     static                          
-       ___return_lbl00001   0x000480    program     static                          
-                  ReadI2C   0x000482    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-            __zero_memory   0x00049c    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-               clear_loop   0x0004a2    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     main   0x00002c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                     init   0x000050    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                  low_isr   0x000062    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 high_isr   0x000126    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+               initTimers   0x000244    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                  initI2C   0x000266    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 initUART   0x000288    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 SendUART   0x0002a0    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+             SendUARTchar   0x00031c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                _do_cinit   0x00033c    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x000356    program     static                          
+                copy_loop   0x0003ae    program     static                          
+            copy_one_byte   0x0003b4    program     static                          
+             done_copying   0x0003c2    program     static                          
+                     done   0x0003d8    program     static                          
+       ___return_lbl00002   0x0003d8    program     static                          
+               OpenTimer1   0x0003da    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+              WriteTimer1   0x00041c    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+              Delay1KTCYx   0x000454    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x00045e    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x000460    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0010   0x000464    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00046a    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                 _startup   0x000474    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x000484    program     static                          
+       ___return_lbl00001   0x00048e    program     static                          
+                  ReadI2C   0x000490    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+            __zero_memory   0x0004aa    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+               clear_loop   0x0004b0    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
                __config_0   0x300001    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                   __tmp_2   0x000000       data     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                      SIGN   0x000002       data     extern C:\MCC18\src\traditional\math\cmath18.asm
-            __FPFLAGSbits   0x000003       data     extern C:\MCC18\src\traditional\math\cmath18.asm
                 __FPFLAGS   0x000003       data     extern C:\MCC18\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x000003       data     extern C:\MCC18\src\traditional\math\cmath18.asm
                   __tmp_0   0x000004       data     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
             DelayCounter1   0x000006       data     extern C:\MCC18\src\traditional\delays\delayd1.asm
                  duration   0x000060       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                       var   0x000062       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                      data   0x000063       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                      temp   0x000064       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                      str   0x000065       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     prom   0x000075       data     static C:\MCC18\src\traditional\startup\c018i.c
-                curr_byte   0x000078       data     static C:\MCC18\src\traditional\startup\c018i.c
-               curr_entry   0x00007a       data     static C:\MCC18\src\traditional\startup\c018i.c
-                 data_ptr   0x00007c       data     static C:\MCC18\src\traditional\startup\c018i.c
+                 tempData   0x000065       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                      str   0x000066       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                     prom   0x000076       data     static C:\MCC18\src\traditional\startup\c018i.c
+                curr_byte   0x000079       data     static C:\MCC18\src\traditional\startup\c018i.c
+               curr_entry   0x00007b       data     static C:\MCC18\src\traditional\startup\c018i.c
+                 data_ptr   0x00007d       data     static C:\MCC18\src\traditional\startup\c018i.c
+                   speeds   0x000080       data     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                    SSPMSK   0x000f77       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                SSPMSKbits   0x000f77       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    SLRCON   0x000f78       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -382,59 +386,59 @@ Linker Map File - Created Thu Apr 14 17:34:54 2011
                   CM1CON0   0x000f7b       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  WPUBbits   0x000f7c       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      WPUB   0x000f7c       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                 IOCBbits   0x000f7d       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      IOCB   0x000f7d       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    ANSEL   0x000f7e       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                 IOCBbits   0x000f7d       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 ANSELbits   0x000f7e       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   ANSELH   0x000f7f       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    ANSEL   0x000f7e       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ANSELHbits   0x000f7f       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   ANSELH   0x000f7f       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 PORTAbits   0x000f80       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     PORTA   0x000f80       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    PORTB   0x000f81       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 PORTBbits   0x000f81       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    PORTB   0x000f81       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     PORTC   0x000f82       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 PORTCbits   0x000f82       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                PORTEbits   0x000f84       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     PORTE   0x000f84       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                 LATAbits   0x000f89       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                PORTEbits   0x000f84       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      LATA   0x000f89       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                 LATAbits   0x000f89       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      LATB   0x000f8a       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  LATBbits   0x000f8a       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                 LATCbits   0x000f8b       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      LATC   0x000f8b       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                     DDRA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                 DDRAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                TRISAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                 LATCbits   0x000f8b       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TRISA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                TRISAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                 DDRAbits   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     DDRA   0x000f92       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TRISB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                     DDRB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                 DDRBbits   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 TRISBbits   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                 DDRBbits   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     DDRB   0x000f93       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TRISC   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 TRISCbits   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                     DDRC   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  DDRCbits   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-              OSCTUNEbits   0x000f9b       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     DDRC   0x000f94       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   OSCTUNE   0x000f9b       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                     PIE1   0x000f9d       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+              OSCTUNEbits   0x000f9b       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  PIE1bits   0x000f9d       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                 PIR1bits   0x000f9e       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     PIE1   0x000f9d       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      PIR1   0x000f9e       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                 PIR1bits   0x000f9e       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      IPR1   0x000f9f       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  IPR1bits   0x000f9f       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  PIE2bits   0x000fa0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      PIE2   0x000fa0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      PIR2   0x000fa1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  PIR2bits   0x000fa1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                 IPR2bits   0x000fa2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      IPR2   0x000fa2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                 IPR2bits   0x000fa2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                EECON1bits   0x000fa6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    EECON1   0x000fa6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    EECON2   0x000fa7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    EEDATA   0x000fa8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     EEADR   0x000fa9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    RCSTA   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 RCSTAbits   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    RCSTA   0x000fab       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TXSTA   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 TXSTAbits   0x000fac       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TXREG   0x000fad       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -445,73 +449,73 @@ Linker Map File - Created Thu Apr 14 17:34:54 2011
                     T3CON   0x000fb1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TMR3L   0x000fb2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TMR3H   0x000fb3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-              CVRCON2bits   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   CVRCON2   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+              CVRCON2bits   0x000fb4       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    CVRCON   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                CVRCONbits   0x000fb5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               ECCP1ASbits   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   ECCP1AS   0x000fb6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               PWM1CONbits   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   PWM1CON   0x000fb7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-              BAUDCTLbits   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                  BAUDCTL   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-              BAUDCONbits   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   BAUDCON   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+              BAUDCONbits   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                  BAUDCTL   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+              BAUDCTLbits   0x000fb8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               PSTRCONbits   0x000fb9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   PSTRCON   0x000fb9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                  CCP2CON   0x000fba       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               CCP2CONbits   0x000fba       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                  CCP2CON   0x000fba       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     CCPR2   0x000fbb       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    CCPR2L   0x000fbb       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    CCPR2H   0x000fbc       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                  CCP1CON   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               CCP1CONbits   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                  CCP1CON   0x000fbd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     CCPR1   0x000fbe       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    CCPR1L   0x000fbe       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    CCPR1H   0x000fbf       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   ADCON2   0x000fc0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON2bits   0x000fc0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   ADCON2   0x000fc0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON1bits   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    ADRES   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADRESL   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    ADRES   0x000fc3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADRESH   0x000fc4       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                  SSPCON2   0x000fc5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               SSPCON2bits   0x000fc5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                  SSPCON2   0x000fc5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               SSPCON1bits   0x000fc6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   SSPCON1   0x000fc6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                  SSPSTAT   0x000fc7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               SSPSTATbits   0x000fc7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                  SSPSTAT   0x000fc7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    SSPADD   0x000fc8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    SSPBUF   0x000fc9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     T2CON   0x000fca       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 T2CONbits   0x000fca       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                       PR2   0x000fcb       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      TMR2   0x000fcc       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    T1CON   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 T1CONbits   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    T1CON   0x000fcd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TMR1L   0x000fce       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TMR1H   0x000fcf       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  RCONbits   0x000fd0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      RCON   0x000fd0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   WDTCON   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                WDTCONbits   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   LVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-               LVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-              HLVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   WDTCON   0x000fd1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   HLVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-               OSCCONbits   0x000fd3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+               LVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   LVDCON   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+              HLVDCONbits   0x000fd2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    OSCCON   0x000fd3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    T0CON   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+               OSCCONbits   0x000fd3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                 T0CONbits   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    T0CON   0x000fd5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TMR0L   0x000fd6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     TMR0H   0x000fd7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   STATUS   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                STATUSbits   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    FSR2L   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   STATUS   0x000fd8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      FSR2   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    FSR2L   0x000fd9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     FSR2H   0x000fda       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    PLUSW2   0x000fdb       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   PREINC2   0x000fdc       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -529,36 +533,36 @@ Linker Map File - Created Thu Apr 14 17:34:54 2011
                     INDF1   0x000fe7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      WREG   0x000fe8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                         W   0x000fe8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                    FSR0L   0x000fe9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      FSR0   0x000fe9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                    FSR0L   0x000fe9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     FSR0H   0x000fea       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    PLUSW0   0x000feb       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   PREINC0   0x000fec       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  POSTDEC0   0x000fed       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                  POSTINC0   0x000fee       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     INDF0   0x000fef       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-              INTCON3bits   0x000ff0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   INTCON3   0x000ff0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+              INTCON3bits   0x000ff0       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
               INTCON2bits   0x000ff1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   INTCON2   0x000ff1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   INTCON   0x000ff2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                INTCONbits   0x000ff2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   INTCON   0x000ff2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      PROD   0x000ff3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     PRODL   0x000ff3       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                     PRODH   0x000ff4       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    TABLAT   0x000ff5       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                   TBLPTR   0x000ff6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   TBLPTRL   0x000ff6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                   TBLPTR   0x000ff6       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   TBLPTRH   0x000ff7       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                   TBLPTRU   0x000ff8       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                       PC   0x000ff9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                       PCL   0x000ff9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                       PC   0x000ff9       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    PCLATH   0x000ffa       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    PCLATU   0x000ffb       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    STKPTR   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                STKPTRbits   0x000ffc       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                     TOSL   0x000ffd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                       TOS   0x000ffd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                     TOSL   0x000ffd       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      TOSH   0x000ffe       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                      TOSU   0x000fff       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
 
