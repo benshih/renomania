@@ -1,5 +1,5 @@
 MPLINK 4.33, Linker
-Linker Map File - Created Fri Apr 15 00:26:39 2011
+Linker Map File - Created Fri Apr 15 05:28:12 2011
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -22,14 +22,14 @@ Linker Map File - Created Fri Apr 15 00:26:39 2011
          .idata_c018i.o_i    romdata   0x000016    program   0x000000
                low_vector       code   0x000018    program   0x000006
                    .cinit    romdata   0x00001e    program   0x00000e
-       .code_main-slave.o       code   0x00002c    program   0x000310
-               _cinit_scn       code   0x00033c    program   0x00009e
-           .code_t1open.o       code   0x0003da    program   0x000042
-          .code_t1write.o       code   0x00041c    program   0x000038
-              D1KTCYXCODE       code   0x000454    program   0x000020
-             _startup_scn       code   0x000474    program   0x00001c
-         .code_i2c_read.o       code   0x000490    program   0x00001a
-                    .code       code   0x0004aa    program   0x00000e
+       .code_main-slave.o       code   0x00002c    program   0x000320
+               _cinit_scn       code   0x00034c    program   0x00009e
+           .code_t1open.o       code   0x0003ea    program   0x000042
+          .code_t1write.o       code   0x00042c    program   0x000038
+              D1KTCYXCODE       code   0x000464    program   0x000020
+             _startup_scn       code   0x000484    program   0x00001c
+         .code_i2c_read.o       code   0x0004a0    program   0x00001a
+                    .code       code   0x0004ba    program   0x00000e
 .config_300001_main-slave.o    romdata   0x300001    program   0x000001
 .config_300006_main-slave.o    romdata   0x300006    program   0x000001
              high_isr_tmp      udata   0x000000       data   0x000002
@@ -57,54 +57,54 @@ Linker Map File - Created Fri Apr 15 00:26:39 2011
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000015      
-                            0x000018    0x0004b7      
+                            0x000018    0x0004c7      
                             0x300001    0x300001      
                             0x300006    0x300006      
-            1208 out of 33048 program addresses used, program memory utilization is 3%
+            1224 out of 33048 program addresses used, program memory utilization is 3%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    D1K_1   0x000460    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x00045e    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-              Delay1KTCYx   0x000454    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
-               OpenTimer1   0x0003da    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
-                  ReadI2C   0x000490    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-                 SendUART   0x0002a0    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-             SendUARTchar   0x00031c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-              WriteTimer1   0x00041c    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
-        _D1KTCYXCODE_0010   0x000464    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00046a    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x000470    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x00046e    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+              Delay1KTCYx   0x000464    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
+               OpenTimer1   0x0003ea    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+                  ReadI2C   0x0004a0    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+                 SendUART   0x0002b0    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+             SendUARTchar   0x00032c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+              WriteTimer1   0x00042c    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+        _D1KTCYXCODE_0010   0x000474    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00047a    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00001   0x00048e    program     static                          
+       ___return_lbl00001   0x00049e    program     static                          
        ___return_lbl00001   0x00001c    program     static                          
-       ___return_lbl00002   0x0003d8    program     static                          
+       ___return_lbl00002   0x0003e8    program     static                          
                __config_0   0x300001    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                    __init   0x000006    program     extern C:\MCC18\src\traditional\stdclib\__init.c
-            __zero_memory   0x0004aa    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-                _do_cinit   0x00033c    program     extern C:\MCC18\src\traditional\startup\c018i.c
+            __zero_memory   0x0004ba    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+                _do_cinit   0x00034c    program     extern C:\MCC18\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                 _startup   0x000474    program     extern C:\MCC18\src\traditional\startup\c018i.c
-               clear_loop   0x0004b0    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
-                copy_loop   0x0003ae    program     static                          
-            copy_one_byte   0x0003b4    program     static                          
-                     done   0x0003d8    program     static                          
-             done_copying   0x0003c2    program     static                          
-                 high_isr   0x000126    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 _startup   0x000484    program     extern C:\MCC18\src\traditional\startup\c018i.c
+               clear_loop   0x0004c0    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                copy_loop   0x0003be    program     static                          
+            copy_one_byte   0x0003c4    program     static                          
+                     done   0x0003e8    program     static                          
+             done_copying   0x0003d2    program     static                          
+                 high_isr   0x00012e    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                      init   0x000050    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                  initI2C   0x000266    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-               initTimers   0x000244    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 initUART   0x000288    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                  initI2C   0x000276    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+               initTimers   0x000254    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 initUART   0x000298    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                  int_high   0x000008    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                   int_low   0x000018    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     loop   0x000484    program     static                          
-                  low_isr   0x000062    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                     loop   0x000494    program     static                          
+                  low_isr   0x00006a    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                      main   0x00002c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                     test   0x000356    program     static                          
+                     test   0x000366    program     static                          
                    ADCON0   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
@@ -328,33 +328,33 @@ Linker Map File - Created Fri Apr 15 00:26:39 2011
        ___return_lbl00001   0x00001c    program     static                          
                      main   0x00002c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                      init   0x000050    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                  low_isr   0x000062    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 high_isr   0x000126    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-               initTimers   0x000244    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                  initI2C   0x000266    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 initUART   0x000288    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                 SendUART   0x0002a0    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-             SendUARTchar   0x00031c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
-                _do_cinit   0x00033c    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     test   0x000356    program     static                          
-                copy_loop   0x0003ae    program     static                          
-            copy_one_byte   0x0003b4    program     static                          
-             done_copying   0x0003c2    program     static                          
-                     done   0x0003d8    program     static                          
-       ___return_lbl00002   0x0003d8    program     static                          
-               OpenTimer1   0x0003da    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
-              WriteTimer1   0x00041c    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
-              Delay1KTCYx   0x000454    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                     D1Kx   0x00045e    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                    D1K_1   0x000460    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0010   0x000464    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-        _D1KTCYXCODE_0016   0x00046a    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
-                 _startup   0x000474    program     extern C:\MCC18\src\traditional\startup\c018i.c
-                     loop   0x000484    program     static                          
-       ___return_lbl00001   0x00048e    program     static                          
-                  ReadI2C   0x000490    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
-            __zero_memory   0x0004aa    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
-               clear_loop   0x0004b0    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
+                  low_isr   0x00006a    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 high_isr   0x00012e    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+               initTimers   0x000254    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                  initI2C   0x000276    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 initUART   0x000298    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                 SendUART   0x0002b0    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+             SendUARTchar   0x00032c    program     extern C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
+                _do_cinit   0x00034c    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     test   0x000366    program     static                          
+                copy_loop   0x0003be    program     static                          
+            copy_one_byte   0x0003c4    program     static                          
+             done_copying   0x0003d2    program     static                          
+                     done   0x0003e8    program     static                          
+       ___return_lbl00002   0x0003e8    program     static                          
+               OpenTimer1   0x0003ea    program     extern C:\MCC18\src\pmc_common\Timers\t1open.c
+              WriteTimer1   0x00042c    program     extern C:\MCC18\src\pmc_common\Timers\t1write.c
+              Delay1KTCYx   0x000464    program     extern C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                     D1Kx   0x00046e    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                    D1K_1   0x000470    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0010   0x000474    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+        _D1KTCYXCODE_0016   0x00047a    program     static C:\MCC18\src\traditional\delays\d1ktcyx.asm
+                 _startup   0x000484    program     extern C:\MCC18\src\traditional\startup\c018i.c
+                     loop   0x000494    program     static                          
+       ___return_lbl00001   0x00049e    program     static                          
+                  ReadI2C   0x0004a0    program     extern C:\MCC18\src\pmc_common\i2c\i2c_read.c
+            __zero_memory   0x0004ba    program     extern C:\MCC18\src\traditional\proc\p18F25K20.asm
+               clear_loop   0x0004c0    program     static C:\MCC18\src\traditional\proc\p18F25K20.asm
                __config_0   0x300001    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                __config_1   0x300006    program     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c
                   __tmp_2   0x000000       data     static C:\Users\Samihan Yedkar\MOBOT11\renomania\C 18\i2c\main-slave.c

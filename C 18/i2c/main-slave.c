@@ -5,21 +5,24 @@
 #include <stdio.h>
 #include <i2c.h>
 
-#define LED0 LATAbits.LATA0
-#define LED1 LATAbits.LATA1
-#define LED2 LATAbits.LATA2
-#define LED3 LATAbits.LATA3
-#define LED4 LATAbits.LATA4
+#define LED0 PORTAbits.RA0
+#define LED1 PORTAbits.RA1
+#define LED2 PORTAbits.RA2
+#define LED3 PORTAbits.RA3
+#define LED4 PORTAbits.RA4
 #define OSCmask 0b10001111
 #define Fosc 5 //4MHz
 
-#define ADDR 0x03 //slave address
+#define ADDR 0xff //slave address
 
 int duration;
 unsigned char var;
 char data, temp, tempData;
 char str[16];
-int speeds[4] = {4000, 8000, 8000, 4000};
+int speeds[4] = {5000, 8000, 8000, 5000};
+char[10] prevIndices;
+char curIndex = 0;
+int average = 700;
 
 //*****************************
 //     FUNCTION PROTOTYPES
@@ -83,6 +86,11 @@ void init(){
 	TRISA = 0x00; //all output
 	TRISB = 0x00; //all output
 	TRISC = 0x18; //all but RC3,4 are output
+
+	PORTBbits.RB0=0; //right PMOS off
+	PORTBbits.RB1=0; //left PMOS off
+	PORTBbits.RB2=1; //right NMOS off
+	PORTBbits.RB3=1; //left NMOS off
 }	
 
 void low_isr (void) {
@@ -104,11 +112,18 @@ void high_isr (void)	{
 	
 	if(temp){
 		LED0 = 1;
+		LATB = 0x05;
+
+
+		prevIndices[curIndex] = data-0x30;
+		
 		duration = speeds[data-0x30];
+		//duration = speeds[0];
 		WriteTimer1(0xffff-duration);
 	}	
 	else{
 		LED0 = 0;
+		LATB = 0x0C;
 		WriteTimer1(0xffff-(20000-(duration)));
 		//SendUARTchar(data);
 	}	
@@ -153,7 +168,7 @@ void initI2C(void){
 	INTCONbits.PEIE = 1;    //Turn on LP interrupts
     INTCONbits.GIE = 1;     //Turn on HP interrupts
     
-    Delay1KTCYx(500);
+ 	Delay1KTCYx(1500);
     SSPCON1bits.SSPEN = 1;
 }	
 
