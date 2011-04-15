@@ -9,10 +9,10 @@
 #define OSCmask 0b10001111
 #define Fosc 5
 
-#define LED0 PORTAbits.RA4 
-#define LED1 PORTAbits.RA5 
-#define LED2 PORTAbits.RA6 
-#define LED3 PORTAbits.RA7 
+#define LED0 LATBbits.LATB4 
+#define LED1 LATBbits.LATB5 
+#define LED2 LATBbits.LATB6 
+#define LED3 LATBbits.LATB7 
 
 //*****************************
 //      GLOBAL VARIABLES
@@ -24,7 +24,7 @@ char sendMax;
 int servoPos[4] = {1000, 1100, 1350, 1500};
 char ran1, ran2, flag, adc0;
 int hightime;
-unsigned char slave_addr = 0x03 << 1;
+unsigned char slave_addr = 0xff << 1;
 
 //*****************************
 //     FUNCTION PROTOTYPES
@@ -74,13 +74,13 @@ void main(void)
 	initTimers();
 	Delay10KTCYx(50);
 //	InitializeUART();
-	InitializeLCD();
-	CommandLCD(0x01);
+//	InitializeLCD();
+//	CommandLCD(0x01);
 //	SendUART(str);
 
-	ClearLCD();
-	SetLine1();
-	SetLine2();
+//	ClearLCD();
+//	SetLine1();
+//	SetLine2();
 
 	while(1)
 	{
@@ -91,7 +91,7 @@ void main(void)
 
 		//read the sensor data
 		//Obtain value for first LED (RA0)
-		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH0 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
+		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH12 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
 		LED0 = 1; //Turns on IR LED0	
 		ConvertADC();
 		while(BusyADC());
@@ -101,7 +101,7 @@ void main(void)
 		LED0 = 0;
 
 		//Obtain value for second LED (RA1)
-		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH1 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
+		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH10 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
 		LED1 = 1; //Turns on IR LED1	
 		ConvertADC();
 		while(BusyADC());
@@ -111,7 +111,7 @@ void main(void)
 		LED1 = 0;
 	
 		//Obtain value for third LED (RA2)
-		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH2 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
+		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH8 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
 		LED2 = 1;
 		ConvertADC();
 		while(BusyADC());
@@ -121,7 +121,7 @@ void main(void)
 		LED2 = 0;
 
 		//Obtain value for fourth LED (RA3)
-		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH3 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
+		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH9 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
 		LED3 = 1;
 		ConvertADC();
 		while(BusyADC());
@@ -141,12 +141,12 @@ void main(void)
 		}
 		max = lmax;
 		sendMax = max + 0x30;
-		sprintf(line1, "%d %c ", hightime, sendMax);
-		sprintf(line2, "%d %d  ", led[2], led[3]);
-		SetLine1();
-		WriteLCD(line1);
-		SetLine2();
-		WriteLCD(line2);
+//		sprintf(line1, "%d %c ", hightime, sendMax);
+//		sprintf(line2, "%d %d  ", led[2], led[3]);
+//		SetLine1();
+//		WriteLCD(line1);
+//		SetLine2();
+//		WriteLCD(line2);
  	}
 }
 
@@ -200,12 +200,18 @@ void low_isr (void)
 		IdleI2C();
 		if(WriteI2C(slave_addr))	//Write returns 0 on success
 		{
-			return;
+		//	IdleI2C();
+		//	StopI2C();
+		//	IdleI2C();
+		//	return;
 		}
 		IdleI2C();
 		if(WriteI2C(sendMax))			//send index
 		{
-			return;
+		//	IdleI2C();
+		//	StopI2C();
+		//	IdleI2C();
+		//	return;
 		}
 		IdleI2C();
 		StopI2C();					//finish
@@ -226,7 +232,7 @@ void init()
 	//TRISA means 00000001 so only RA0 is an input (1 is input) while the rest are output(0 is output)
 	TRISA = 0x0F;			//PORTA output
 	//Precautionary
-	TRISB = 0x00;			//PORTB output
+	TRISB = 0x0F;			//PORTB output
 	TRISC = 0x18;
 }	
 
