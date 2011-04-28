@@ -1,19 +1,16 @@
 #include "RenLCD.h"
 
-#define LCD_RS PORTCbits.RC3
-#define LCD_RW PORTCbits.RC2
-#define LCD_EN PORTCbits.RC1
+#define LCD_RS LATCbits.LATC7
+#define LCD_RW LATCbits.LATC2
+#define LCD_EN LATCbits.LATC1
 
 void InitializeLCD()
 {
 	//Function set
-	Delay10KTCYx(2);
+	Delay10KTCYx(5);
 	CommandLCD(0x38);		//8-bit Data Line, 2-lines, 5x8 dots
-	//Delay10KTCYx(2);
-	CommandLCD(0x0F);
-//	Delay10KTCYx(2);
+	CommandLCD(0x0F);		//Display on, cursor on, no blinking
 	CommandLCD(0x06);
-//	Delay10KTCYx(2);
 	CommandLCD(0x02);
 }
 
@@ -25,21 +22,25 @@ void WriteLCD(char *c)		//Writes Characters to LCD
 	LCD_EN=0;
 	for( i = 0; c[i] != '\0'; i++ )
 	{
-		PORTB = c[i];
+		LATB = c[i];
 		LCD_EN = 1;
+		Nop();
 		LCD_EN = 0;
-		//Nop();
-		//Nop();
+		Nop();
+		LCD_EN = 1;
+		Nop();
+		LCD_EN = 0;
+		Nop();
 	}
 }
 
 void CommandLCD(char c)		//Sends Commands to LCD
 {
-	PORTB=c;				
+	LATB=c;				
 	LCD_RS = LCD_RW = 0;
 	LCD_EN = 1;
 	LCD_EN = 0;
-	PORTB = 0x00;
+	Delay10TCYx(5);			//minimum Texec = 38us
 }
 
 void SetLine1()				//Set cursor to beginning of first line
@@ -55,5 +56,13 @@ void SetLine2()				//Set cursor to beginning of second line
 void ClearLCD()				//clear the whole screen
 {
 	CommandLCD(0x01);
-	Delay1KTCYx(1);		//1ms
+	Delay1KTCYx(2);			//Texec = 1.5ms
 }
+
+void LCDon(){
+	CommandLCD(0x0C);
+}
+
+void LCDoff(){
+	CommandLCD(0x08);
+}		

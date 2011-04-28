@@ -1,5 +1,6 @@
 #include <p18f25k20.h>
 #include <timers.h>
+#include <delays.h>
 #include "RenLCD.h"
 
 #pragma config FOSC = INTIO67, LVP = OFF
@@ -71,6 +72,12 @@ void main(void)
 	TRISA = 0x00;			//PORTA output
 	TRISB = 0x00;			//PORTB output
 	TRISC = TRISC | 0x01;	//RC0 input
+
+	while(1){
+		LATAbits.LATA0 = !LATAbits.LATA0;
+		LATBbits.LATB0 = !LATBbits.LATB0;
+		Delay1KTCYx(1000);	
+	}	
 	
 	InitializeUART();
 	InitializeLCD();

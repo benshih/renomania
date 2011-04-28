@@ -1,11 +1,12 @@
 #include <p18f25k20.h>
 #include <stdio.h>
 #include <timers.h>
+#include <delays.h>
 #include <adc.h>
 #include "RenLCD.h"
 
 #define dur 0xFA23
-#define OSCmask 0b0001111
+#define OSCmask 0b10001111
 #define Fosc 5
 
 #define LED0 PORTAbits.RA4 
@@ -68,9 +69,9 @@ void main(void)
     ran1 = 1; ran2 = 0;
 
 	init();
-	initTimers();
+	//initTimers();
 	Delay10KTCYx(50);
-	InitializeUART();
+	//InitializeUART();
 	InitializeLCD();
 	CommandLCD(0x01);
 //	SendUART(str);
@@ -84,7 +85,7 @@ while(1){
 
 	//read the sensor data
 		//Obtain value for first LED (RA0)
-		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH0 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
+		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH0 & ADC_INT_OFF &  ADC_VREFPLUS_VDD  & ADC_VREFMINUS_EXT, 0); 	
 		LED0 = 1; //Turns on IR LED0	
 		ConvertADC();
 		while(BusyADC());
@@ -94,7 +95,7 @@ while(1){
 		LED0 = 0;
 
 		//Obtain value for second LED (RA1)
-		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH1 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
+		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH1 & ADC_INT_OFF & ADC_VREFPLUS_VDD  & ADC_VREFMINUS_EXT, 0); 	
 		LED1 = 1; //Turns on IR LED1	
 		ConvertADC();
 		while(BusyADC());
@@ -114,7 +115,7 @@ while(1){
 		LED2 = 0;
 
 		//Obtain value for fourth LED (RA3)
-		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH3 & ADC_INT_OFF & ADC_VREFPLUS_VDD & ADC_VREFMINUS_VSS, 0); 	
+		OpenADC(ADC_FOSC_32 & ADC_RIGHT_JUST,ADC_CH3 & ADC_INT_OFF &  ADC_VREFPLUS_VDD  & ADC_VREFMINUS_EXT, 0); 	
 		LED3 = 1;
 		ConvertADC();
 		while(BusyADC());
@@ -132,12 +133,15 @@ while(1){
 			}
 		}
 		max = lmax;
-		sprintf(line1, "%d %d  ", hightime);
+		sprintf(line1, "%d %d  ", led[0], led[1]);
 		sprintf(line2, "%d %d  ", led[2], led[3]);
 		SetLine1();
 		WriteLCD(line1);
+		SendUART(line1);
 		SetLine2();
 		WriteLCD(line2);
+ 		//SendUART(line2);
+ 		Delay1KTCYx(500);
  	}
 }
 
