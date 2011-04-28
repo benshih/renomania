@@ -1,4 +1,0 @@
-Message[302] C:\USERS\FREEFOOD\DOCUMENTS\FLASHCOLORLED\16F877ATMPO.ASM 137 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[202] C:\USERS\FREEFOOD\DOCUMENTS\FLASHCOLORLED\16F877ATMPO.ASM 144 : Argument out of range.  Least significant bits used.
-Warning[202] C:\USERS\FREEFOOD\DOCUMENTS\FLASHCOLORLED\16F877ATMPO.ASM 168 : Argument out of range.  Least significant bits used.
-Warning[202] C:\USERS\FREEFOOD\DOCUMENTS\FLASHCOLORLED\16F877ATMPO.ASM 191 : Argument out of range.  Least significant bits used.
